@@ -1,0 +1,16 @@
+# General product Gaussian circuits
+
+This work [@brod2016efficient] shows that Gaussian circuits 
+with arbitrary product states input and arbitrary product-state 
+intermediate measurements remain classically simulable. 
+
+## Product input and measurement simulation 
+::: {.theorem #pimoSimulation name="product-input multiple-output simulation"} 
+
+
+
+Let $\{M_n\}$ be a uniform family of (possibly adaptive) quantum 
+circuits with $\poly(n)$ Gaussian unitaries over $n$ qubits acting 
+on an arbitrary $n$-qubit product state $|\psi\ra = \otimes |\psi_n\ra$. 
+The circuit is strongly and adaptively simulable. 
+:::

@@ -1,0 +1,34 @@
+---
+title: "Paper Notes"
+author: "Nicholas Lyu"
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [refs.bib]
+biblio-style: "numeric"
+split_bib: yes
+link-citations: true
+---
+
+\newcommand{\mbb}{\mathbb}
+\newcommand{\mbf}{\mathbf}
+\newcommand{\mrm}{\mathrm}
+\newcommand{\mca}{\mathcal}
+\newcommand{\mfk}{\mathfrak}
+
+\newcommand{\tr}{\mrm{tr}} 
+\newcommand{\df}{\dfrac}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\dag}{\dagger}
+
+\newcommand{\Cl}{\mca C}
+\newcommand{\Gr}{\mca G}
+\newcommand{\Pf}{\mrm{Pf}}
+\newcommand{\Pa}{\mca P}
+
+\newcommand{\poly}{\mrm{poly}}
+
+
+
+# Preface {-}

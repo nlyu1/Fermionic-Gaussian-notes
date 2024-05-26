@@ -1,0 +1,72 @@
+# Computational-basis Gaussian Circuits
+
+This work [@terhal2002classical] is the first to draw the connection 
+between Valiant's matchgates and noninteracting fermions. 
+It proves that Gaussian circuits 
+with computational basis input and computational-basis von-Neumann measurements 
+are both strongly and adaptively simulable. 
+
+## Insightful general case 
+Let us first consider a subclass of number-preserving Gaussian unitaries 
+and projective measurements in the computational basis. 
+This case suffices to show the main insight of the paper. 
+
+::: {.definition #npunitary name="number-preserving unitary"}
+A Gaussian unitary $U$ is number-preserving if it does not mix annihilation 
+and creation operators. The following operator $(V_{jk})$ is unitary 
+\[ 
+    U a_j^\dag U^\dag = V_{jk} a_k^\dag\implies 
+    U^\dag a_j^\dag U = V^\dag_{jk} a_k^\dag, \quad U^\dag a_j 
+    U = (V_{jk}^\dag)^* a_k = V_{kj} a_k
+\] 
+Note that $U$ preserves the hamming weights of computational basis states. 
+In particular, $U|0\ra = |0\ra$. 
+:::
+
+::: {.proposition #compbasismeasurement name="computational basis measurement"} 
+Let $|I\ra, |K\ra$ be computational basis states. 
+:::
+One can efficiently compute $\la K|U|I\ra$ by the following procedure. Consider 
+\begin{aligned} 
+    U|I\ra 
+    &= U a^\dag_I |0\ra = U a_I^\dag U^\dag (U|0\ra) 
+    = \sum_{j_1\cdots j_i} V_{I_1j_1}\cdots V_{I_iJ_i} 
+    a_{j_1}^\dag \cdots a_{j_i}^\dag |0\ra 
+\end{aligned}
+When paired with $\la K|$, only when $(j_l)$ is a permutation of $K$ 
+will this be nonzero, then 
+\[ 
+    \la K|U|I\ra = \sum_{J\in \pi(K)} \mrm{sgn}(J) V_{IJ} = \det V_{|IK} 
+\] 
+Here $\pi(K)$ denotes permutations of $K$ and 
+$V_{|IK}$ is the $i\times i$ matrix which selects the $I$ rows 
+and $K$ columns of $V$.  
+
+
+## Generalization
+::: {.theorem #cimoStrongSimulation name="strong simulation"} 
+Given a Gaussian unitary $U$ acting on a computational basis $|J\ra$, 
+the probability $\Pr(K^*|J)$, where $K^*$ of measuring any subset 
+$K\subset [2n]$ of the qubits and finding the bitstring $K^*\in \{0, 1\}^k$, 
+is efficiently classically computable. 
+:::
+
+The proof extends that of the special case \@ref(prp:compbasismeasurement). 
+One generalizes computational-basis projective to 
+von-Neumann measurement by applying Wick's theorem and 
+recognizing the sum as a Pfaffian of a cleverly-constructed matrix 
+(instead of the determinant). 
+The generalization from number-preserving to parity-preserving Gaussian unitaries 
+is done by using the majorana instead of the dirac operators. 
+
+Constructing the matrix whose Pfaffian yield the desired quantity 
+is quite technical. 
+A much more insightful interpretation is that this problem reduces to computing 
+the overlap between $U|J\ra$ and the binary Hermitian observable corresponding to $K^*$. 
+Both are Gaussian, so the Gaussian overlap formula 
+\@ref(thm:GaussianOverlap) applies. The next result follows. 
+
+::: {.theorem #cimoAdaptiveSimulation name="adaptive simulation"} 
+Adaptive Gaussian circuits with computational-basis input and computational-basis 
+von-Neumann measurements are adaptively simulable. 
+:::
