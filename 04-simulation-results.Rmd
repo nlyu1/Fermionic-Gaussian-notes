@@ -2,7 +2,11 @@
 The pioneering works by [@terhal2002classical] and 
 [@jozsa2008matchgates] provide classical simulation 
 methods for Gaussian circuits under two different conditions, 
-which are subsequently unified and generalized by [@brod2016efficient]. 
+subsequently unified and generalized by [@brod2016efficient]. 
+To the best of our knowledge, [@hebenstreit2020computational] 
+provides the comprehensive catalogue of the computational power of 
+fermionic Gaussian circuits under various conditions. 
+
 
 ## Computational-basis input and measurement
 
