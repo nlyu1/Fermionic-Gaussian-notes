@@ -35,3 +35,9 @@ link-citations: true
 
 
 # Preface {-}
+This set of notes document paper notes and research results 
+for fermionic Gaussian computation, also known as fermionic linear optics 
+in physics, and matchgate computation in computer science. 
+
+It is a rich area of research lying at the intersection of 
+physics, computer science, and statistics. 
