@@ -332,9 +332,12 @@ the freedom to re-order fermionic modes.</p>
 <h3><span class="header-section-number">3.3.2</span> Insightful perspective: affine Gaussian overlap<a href="classical-simulation-results.html#insightful-perspective-affine-gaussian-overlap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>One may see that the single-qubit product state <span class="math inline">\(|\psi\rangle\)</span> is affine-Gaussian
 equivalent to <span class="math inline">\(|0\rangle^{\otimes n}\)</span> using a similar protocol.
-Affine Gaussians include single-qubit unitaries on the first qubit, as well as all
-even Gaussian unitaries. One can prepare <span class="math inline">\(|\psi_n\rangle\cdots |\psi_1\rangle\)</span> on the first
-qubit and f-swap them to their respective positions using <span class="math inline">\(G(Z, X)\)</span>.
+Affine Gaussians include single-qubit unitaries on the first qubit
+in addition to even Gaussian unitaries.
+One can prepare <span class="math inline">\(|\psi_n\rangle\cdots |\psi_1\rangle\)</span> on the first
+qubit and f-swap them to their respective positions using <span class="math inline">\(G(Z, X)\)</span>;
+in other words, every single-qubit product state is affine-Gaussian equivalent
+to <span class="math inline">\(|0\rangle^{\otimes n}\)</span>.
 Then <span class="math inline">\(\Pr(\tilde y|\psi)\)</span> as in <a href="classical-simulation-results.html#eq:simulationProb">(3.1)</a> is the tracial overlap
 between the even-Gaussian Hermitian <span class="math inline">\(P_{\tilde y}\)</span> and the affine Gaussian
 <span class="math inline">\(U|0\rangle^{\otimes n}\)</span>, where <span class="math inline">\(U\)</span> is an affine Gaussian unitary.</p>
