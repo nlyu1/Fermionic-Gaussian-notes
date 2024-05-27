@@ -1,5 +1,5 @@
 ---
-title: "Paper Notes"
+title: "Fermionic Gaussian Computation"
 author: "Nicholas Lyu"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
@@ -35,9 +35,9 @@ link-citations: true
 
 
 # Preface {-}
-This set of notes document paper notes and research results 
+This set of notes document existing and ongoing research efforts 
 for fermionic Gaussian computation, also known as fermionic linear optics 
-in physics, and matchgate computation in computer science. 
+in physics and matchgate computation in computer science. 
 
 It is a rich area of research lying at the intersection of 
 physics, computer science, and statistics. 

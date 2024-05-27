@@ -1,11 +1,4 @@
-book_filename: "Paper reads"
+book_filename: "Fermionic Gaussian Computation"
 language:
-  # ui:
-    # chapter_name: "Paper "
-# rmd_files: [
-#   "index.Rmd",
-#   "01-Terhal-DeVincenzo.Rmd",
-#   "02-Fermionic-magic.Rmd"
-# ]
 output_dir: "docs"
 delete_merged_file: true
