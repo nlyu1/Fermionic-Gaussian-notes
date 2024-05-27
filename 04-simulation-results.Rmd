@@ -243,7 +243,11 @@ magic states (MAGIC)
 - _Intermediate measurements_ (ADAPT)
 - _Final measurement (M):_ single-qubit (ONE) or multi-qubit product-state (PROD) measurements. 
 
-The following theorems, together with \@ref(thm:pimoSimulation) and 
+The following theorems, together with aforementioned results, 
+completely establish the simulation complexity landscape 
+of Gaussian circuits in terms of adaptiveness, input state (product or magic), 
+output (single-qubit or multiple), and weak or strong simulation.
+
 ### Non-adaptive single-qubit measurement 
 
 ::: {.theorem #naOneSimulation} 

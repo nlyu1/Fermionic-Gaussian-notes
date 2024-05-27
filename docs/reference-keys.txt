@@ -75,5 +75,6 @@ magic-states
 measurement-based-universal-computation
 characterization-of-magic-states
 complexity-landscape
+non-adaptive-single-qubit-measurement
 adaptive-single-qubit-measurement
 non-adaptive-product-state-measurement

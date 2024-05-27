@@ -142,8 +142,9 @@ div.csl-indent {
 </ul></li>
 <li class="chapter" data-level="3.5" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#complexity-landscape"><i class="fa fa-check"></i><b>3.5</b> Complexity landscape</a>
 <ul>
-<li class="chapter" data-level="3.5.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#adaptive-single-qubit-measurement"><i class="fa fa-check"></i><b>3.5.1</b> Adaptive single-qubit measurement</a></li>
-<li class="chapter" data-level="3.5.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#non-adaptive-product-state-measurement"><i class="fa fa-check"></i><b>3.5.2</b> Non-adaptive product-state measurement</a></li>
+<li class="chapter" data-level="3.5.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#non-adaptive-single-qubit-measurement"><i class="fa fa-check"></i><b>3.5.1</b> Non-adaptive single-qubit measurement</a></li>
+<li class="chapter" data-level="3.5.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#adaptive-single-qubit-measurement"><i class="fa fa-check"></i><b>3.5.2</b> Adaptive single-qubit measurement</a></li>
+<li class="chapter" data-level="3.5.3" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#non-adaptive-product-state-measurement"><i class="fa fa-check"></i><b>3.5.3</b> Non-adaptive product-state measurement</a></li>
 </ul></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
@@ -395,22 +396,27 @@ magic states (MAGIC)</li>
 <li><em>Intermediate measurements</em> (ADAPT)</li>
 <li><em>Final measurement (M):</em> single-qubit (ONE) or multi-qubit product-state (PROD) measurements.</li>
 </ul>
-<p>The following theorems, together with <a href="classical-simulation-results.html#thm:pimoSimulation">3.3</a> and
-### Non-adaptive single-qubit measurement</p>
+<p>The following theorems, together with aforementioned results,
+completely establish the simulation complexity landscape
+of Gaussian circuits in terms of adaptiveness, input state (product or magic),
+output (single-qubit or multiple), and weak or strong simulation.</p>
+<div id="non-adaptive-single-qubit-measurement" class="section level3 hasAnchor" number="3.5.1">
+<h3><span class="header-section-number">3.5.1</span> Non-adaptive single-qubit measurement<a href="classical-simulation-results.html#non-adaptive-single-qubit-measurement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="theorem">
 <p><span id="thm:naOneSimulation" class="theorem"><strong>Theorem 3.7  </strong></span>Strong simulation of
 non-adaptive Gaussian circuits with magic input
 and single-qubit measurement is poly-time.</p>
 </div>
-<div id="adaptive-single-qubit-measurement" class="section level3 hasAnchor" number="3.5.1">
-<h3><span class="header-section-number">3.5.1</span> Adaptive single-qubit measurement<a href="classical-simulation-results.html#adaptive-single-qubit-measurement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="adaptive-single-qubit-measurement" class="section level3 hasAnchor" number="3.5.2">
+<h3><span class="header-section-number">3.5.2</span> Adaptive single-qubit measurement<a href="classical-simulation-results.html#adaptive-single-qubit-measurement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="theorem">
 <p><span id="thm:aOneSimulation" class="theorem"><strong>Theorem 3.8  </strong></span>Strong simulation of adaptive Gaussian circuits with product-state input
 and single-qubit measurement is #P-hard.</p>
 </div>
 </div>
-<div id="non-adaptive-product-state-measurement" class="section level3 hasAnchor" number="3.5.2">
-<h3><span class="header-section-number">3.5.2</span> Non-adaptive product-state measurement<a href="classical-simulation-results.html#non-adaptive-product-state-measurement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="non-adaptive-product-state-measurement" class="section level3 hasAnchor" number="3.5.3">
+<h3><span class="header-section-number">3.5.3</span> Non-adaptive product-state measurement<a href="classical-simulation-results.html#non-adaptive-product-state-measurement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="theorem">
 <p><span id="thm:naProdSimulation" class="theorem"><strong>Theorem 3.9  </strong></span>Strong simulation of nonadaptive Gaussian circuits with
 magic input and product-state measurement is #P-hard.</p>
