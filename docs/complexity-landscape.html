@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>3 Bounded-output Gaussian circuits | Paper Notes</title>
-  <meta name="description" content="3 Bounded-output Gaussian circuits | Paper Notes" />
+  <title>5 Complexity landscape | Paper Notes</title>
+  <meta name="description" content="5 Complexity landscape | Paper Notes" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="3 Bounded-output Gaussian circuits | Paper Notes" />
+  <meta property="og:title" content="5 Complexity landscape | Paper Notes" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3 Bounded-output Gaussian circuits | Paper Notes" />
+  <meta name="twitter:title" content="5 Complexity landscape | Paper Notes" />
   
   
   
@@ -23,15 +23,15 @@
 <meta name="author" content="Nicholas Lyu" />
 
 
-<meta name="date" content="2024-05-26" />
+<meta name="date" content="2024-05-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="computational-basis-gaussian-circuits.html"/>
-<link rel="next" href="general-product-gaussian-circuits.html"/>
+<link rel="prev" href="classical-simulation-results.html"/>
+<link rel="next" href="magic-states.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -104,17 +104,32 @@ div.csl-indent {
 <li class="chapter" data-level="1.4" data-path="preliminaries.html"><a href="preliminaries.html#grassmann-integrals"><i class="fa fa-check"></i><b>1.4</b> Grassmann integrals</a></li>
 <li class="chapter" data-level="1.5" data-path="preliminaries.html"><a href="preliminaries.html#classical-simulatibility"><i class="fa fa-check"></i><b>1.5</b> Classical simulatibility</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="computational-basis-gaussian-circuits.html"><a href="computational-basis-gaussian-circuits.html"><i class="fa fa-check"></i><b>2</b> Computational-basis Gaussian Circuits</a>
+<li class="chapter" data-level="2" data-path="gaussians.html"><a href="gaussians.html"><i class="fa fa-check"></i><b>2</b> Gaussians</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="computational-basis-gaussian-circuits.html"><a href="computational-basis-gaussian-circuits.html#insightful-general-case"><i class="fa fa-check"></i><b>2.1</b> Insightful general case</a></li>
-<li class="chapter" data-level="2.2" data-path="computational-basis-gaussian-circuits.html"><a href="computational-basis-gaussian-circuits.html#generalization"><i class="fa fa-check"></i><b>2.2</b> Generalization</a></li>
+<li class="chapter" data-level="2.1" data-path="gaussians.html"><a href="gaussians.html#even-gaussian"><i class="fa fa-check"></i><b>2.1</b> Even Gaussian</a></li>
+<li class="chapter" data-level="2.2" data-path="gaussians.html"><a href="gaussians.html#affine-gaussian"><i class="fa fa-check"></i><b>2.2</b> Affine Gaussian</a></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="bounded-output-gaussian-circuits.html"><a href="bounded-output-gaussian-circuits.html"><i class="fa fa-check"></i><b>3</b> Bounded-output Gaussian circuits</a></li>
-<li class="chapter" data-level="4" data-path="general-product-gaussian-circuits.html"><a href="general-product-gaussian-circuits.html"><i class="fa fa-check"></i><b>4</b> General product Gaussian circuits</a>
+<li class="chapter" data-level="3" data-path="fourier-perspectives-on-gaussianity.html"><a href="fourier-perspectives-on-gaussianity.html"><i class="fa fa-check"></i><b>3</b> Fourier perspectives on Gaussianity</a></li>
+<li class="chapter" data-level="4" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html"><i class="fa fa-check"></i><b>4</b> Classical simulation results</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="general-product-gaussian-circuits.html"><a href="general-product-gaussian-circuits.html#product-input-and-measurement-simulation"><i class="fa fa-check"></i><b>4.1</b> Product input and measurement simulation</a></li>
+<li class="chapter" data-level="4.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#computational-basis-input-and-measurement"><i class="fa fa-check"></i><b>4.1</b> Computational-basis input and measurement</a>
+<ul>
+<li class="chapter" data-level="4.1.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#insightful-special-case"><i class="fa fa-check"></i><b>4.1.1</b> Insightful special case</a></li>
+<li class="chapter" data-level="4.1.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#generalization"><i class="fa fa-check"></i><b>4.1.2</b> Generalization</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="magic-states.html"><a href="magic-states.html"><i class="fa fa-check"></i><b>5</b> Magic states</a></li>
+<li class="chapter" data-level="4.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#bounded-output-support"><i class="fa fa-check"></i><b>4.2</b> Bounded output support</a>
+<ul>
+<li class="chapter" data-level="4.2.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#matchgate-decomposition-and-simulation"><i class="fa fa-check"></i><b>4.2.1</b> Matchgate decomposition and simulation</a></li>
+<li class="chapter" data-level="4.2.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#resourcefulness-of-swap"><i class="fa fa-check"></i><b>4.2.2</b> Resourcefulness of swap</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#generalization-1"><i class="fa fa-check"></i><b>4.3</b> Generalization</a>
+<ul>
+<li class="chapter" data-level="4.3.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#product-input-and-measurement-simulation"><i class="fa fa-check"></i><b>4.3.1</b> Product input and measurement simulation</a></li>
+<li class="chapter" data-level="4.3.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#insightful-perspective-affine-gaussian-overlap"><i class="fa fa-check"></i><b>4.3.2</b> Insightful perspective: affine Gaussian overlap</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="complexity-landscape.html"><a href="complexity-landscape.html"><i class="fa fa-check"></i><b>5</b> Complexity landscape</a></li>
+<li class="chapter" data-level="6" data-path="magic-states.html"><a href="magic-states.html"><i class="fa fa-check"></i><b>6</b> Magic states</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
 </ul>
 
@@ -133,26 +148,18 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="bounded-output-gaussian-circuits" class="section level1 hasAnchor" number="3">
-<h1><span class="header-section-number">3</span> Bounded-output Gaussian circuits<a href="bounded-output-gaussian-circuits.html#bounded-output-gaussian-circuits" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This work <span class="citation">(<a href="#ref-jozsa2008matchgates">Jozsa and Miyake 2008</a>)</span> provides strong simulation
-for Gaussian circuits with arbitrary product-state input
-and measurements with bounded majorana support.</p>
+<div id="complexity-landscape" class="section level1 hasAnchor" number="5">
+<h1><span class="header-section-number">5</span> Complexity landscape<a href="complexity-landscape.html#complexity-landscape" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Hello?</p>
 
-</div>
-<h3>Bibliography<a href="bibliography.html#bibliography" class="anchor-section" aria-label="Anchor link to header"></a></h3>
-<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-jozsa2008matchgates" class="csl-entry">
-Jozsa, Richard, and Akimasa Miyake. 2008. <span>“Matchgates and Classical Simulation of Quantum Circuits.”</span> <em>Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences</em> 464 (2100): 3089–3106.
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="computational-basis-gaussian-circuits.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="general-product-gaussian-circuits.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="classical-simulation-results.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="magic-states.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

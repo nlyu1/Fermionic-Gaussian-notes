@@ -49,35 +49,32 @@ The $2n$ majorana operators over $n$ fermionic modes is given by
         q_j \\ p_j 
     \end{pmatrix} = \Omega \begin{pmatrix}
         a_j \\ a_j^\dag 
-    \end{pmatrix} = \df 1 {\sqrt{2}}\begin{pmatrix}
+    \end{pmatrix} = \begin{pmatrix}
     a_j + a_j^\dag \\ 
     (a_j^\dag - a_j)i
     \end{pmatrix}, \quad 
     \Omega 
-    = \df 1 {\sqrt 2} \begin{pmatrix}
+    = \begin{pmatrix}
         1 & 1 \\ -i & i
     \end{pmatrix}
 \] 
 We use $\gamma$ to denote the vector of $2n$ majorana operators 
 \[ 
     (\gamma_j) = (q_1, p_1, \cdots, q_n, p_n), 
-    \quad \{\gamma_j, \gamma_k\} = \delta_{jk}
+    \quad \{\gamma_j, \gamma_k\} = 2\delta_{jk}
 \] 
 The $2n$ majorana operators freely generate a $2^{2n}$-dimensional 
-Clifford algebra we denote $\Cl_{2n}$. The basis for $\Cl_{2n}$ are the $2^{2n}$ 
+Clifford algebra we denote $\Cl_{2n}$ (note the factor of $2$). 
+The basis for $\Cl_{2n}$ are the $2^{2n}$ 
 monomials $\gamma_J$ which are at most linear in the generators $\gamma_j$. 
 :::
 ::: {.definition #jw name="Jordan-Wigner transform, ONB"}
-Depending on context, it is often more convenient to 
-define $\gamma_j\mapsto \sqrt 2\gamma_j$ 
-so $q_j=a_j+a_j^\dag, p_j=(a_j^\dag-a_j)i$. In this case 
-the majorana operators may be represented by the Pauli operators 
+The majorana operators may be represented by the Pauli operators 
 \[
     q_j = Z^{\otimes (j-1)}\otimes X \otimes I^{\otimes (n-j)}, 
     \quad p_j = Z^{\otimes (j-1)}\otimes Y \otimes I^{\otimes (n-j)}
 \] 
-One may check that this faithfully represents the Clifford algebra 
-$\{\gamma_j, \gamma_k\} = 2\delta_{jk}$ in 
+One may check that this faithfully represents the Clifford algebra in 
 $\mbb C^{2n}$, the Hilbert space over $n$ qubits. Moreover, the generated 
 basis $(\gamma_J)$ is orthonormal under the Hilbert-Schmidt inner product 
 \[ 
@@ -179,8 +176,76 @@ and RHS are respectively
     \df 1 2 j(j-1) \equiv n + j(2n-j) + \df 1 2 (2n-j)(2n-j-1) \mod 2
 \] 
 
-## Grassmann integrals 
-The following two formulas are found in [@knill2001fermionic]. 
+## Grassmann calculus
+
+::: {.definition #grassmannDiff name="Grassmann differentiation and integration"}
+A partial derivative $\pd a$ over Grassmann numbers $(\theta_j)$ generating $\Gr_{2n}$ 
+is the linear operator $\pd a:\Gr_{2n}\to \Gr_{2n}$ defined by 
+\[ 
+    \pd a 1 = 0, \quad \pd a \theta_b = \delta_{ab}, \quad 
+    \pd a [\theta_b f(\theta)] = \delta_{ab}f(\theta) - \theta_b\pd a f(\theta)
+\] 
+It follows that Grassmann derives anti-commute 
+\[ 
+    \pd {ab}^2 + \pd {ba}^2 = 0
+\] 
+Grassmann integration is the same as differentiation: $\int d\theta_a = \pd a$, with 
+the notation 
+\[ 
+    \int D\theta = \int d\theta_n\cdots d\theta_1\implies \int D\theta\, \theta_{[2n]} = 1
+\] 
+:::
+
+::: {.proposition #leibniz name="Leibniz rule"}
+when $f(\theta)$ has _homogeneous degree_ $\sigma \in \{-1, 1\}$, we have 
+\[ 
+    \pd a [f(\theta)g(\theta)] = [\pd a f(\theta)]g(\theta) + \sigma f(\theta) \pd b g(\theta)
+\] 
+:::
+
+::: {.proposition #integrationByPart name="integration by part"}
+If one of $f, g$ is even, then 
+\[ 
+    \int D\theta\, (\pd a f)g = \pm \int D\theta\, f\pd a g
+\] 
+with $+, -$ standing for even $g$ or even $f$, respectively. 
+:::
+_Proof:_ Now $\pd a (fg) = (\pd a f)g + \sigma_f \pd a g$. Apply $\int D\theta$ 
+to both sides, rearrange, and note that $\int D\theta \, \pd a(\cdots) = 0$ yields 
+\[ 
+    \int D\theta\, (\pd a f)g = -\sigma_f \int D\theta\, \pd a g + \int D\theta\, (\pd a f)g 
+\] 
+
+### Grassmann fourier identities 
+
+::: {.definition #diracDelta name="dirac delta function"}
+The Grassmann analogue of the dirac delta function is 
+\begin{aligned}
+    \delta(\theta, \mu) 
+    &= \prod_a (\theta_a - \mu_a) = \int D\eta \, \exp\left[(\theta - \mu)^T\eta \right]
+    \\ 
+    X(\theta) &= \int D\mu\, \delta(\theta, \mu) X(\mu) 
+\end{aligned}
+
+To see the first equation, the $2n$-degree expansion of $\exp$ is 
+\begin{aligned}
+    \prod i(\theta_j - \mu_j)\eta_j 
+    &= i^{2n} (-1)^{2n(2n-1)/2} \mu_{[2n]} \prod \theta_j - \mu_j = \mu_{[2n]} \prod\theta_j - \mu_j
+\end{aligned}
+To see the second property, 
+$\delta(\theta, \mu) = \sigma_{J, \bar J}(-1)^j \theta_{J} \mu_{\bar J}$, 
+where $\sigma_{J, \bar J}$ is the sign associated with rearranging $[2n]\to (J, \bar J)$. 
+Note that the sign associated with rearranging $(\bar J, J)\to [2n]$ is then exactly 
+$\sigma_{J, \bar J}(-1)^j$, then 
+\[ 
+    \int D\mu\, \delta(\theta, \mu) \mu_K = \int D\mu\, 
+    \sigma_{J, \bar J}(-1)^j \theta_{J} \mu_{\bar J} \mu_K = \theta_K
+\] 
+:::
+
+
+### Gaussian integrals
+The following two formulas are found in [@bravyi2004lagrangian]. 
 We expand upon the proofs. 
 
 ::: {.theorem #evenGaussianIntegral name="homogeneous Gaussian integral"}

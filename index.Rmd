@@ -10,6 +10,9 @@ split_bib: yes
 link-citations: true
 ---
 
+\usepackage{cancel}
+\newcommand{\pd}[1]{\partial_{#1}}
+
 \newcommand{\mbb}{\mathbb}
 \newcommand{\mbf}{\mathbf}
 \newcommand{\mrm}{\mathrm}

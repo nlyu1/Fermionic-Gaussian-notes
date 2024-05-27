@@ -1,0 +1,261 @@
+# Gaussian Operators
+The following definition Gaussian operators in terms of their 
+Fourier property is made by [@bravyi2005classical].
+
+::: {.definition #gaussianDef name="Gaussian operator"}
+An operator $A\in \Cl_{2n}$ with $\tr(A)\neq 0$ is affine Gaussian if 
+\[ 
+    X(\theta) = \exp\left(\df 1 2 \theta^T M\theta + d^T\theta\right)
+\] 
+for some antisymmetric $(M_{jk})\in \mbb C^{2n\times 2n}$ and 
+$d\in \mbb C^{2n}$. It is (even) Gaussian if $d$ vanishes, which is 
+equivalent to $X(\theta)$ being homogeneously even. 
+Traceless Gaussians are defined as limits.
+Two special cases
+
+- Affine Gaussian hermitian operator: 
+\[ 
+    H(\theta) = \exp\left(\df i 2 \theta^T h\theta + d^T\theta\right), 
+    \quad (h_{jk})\in \mfk{so}(2n, \mbb R), \quad (d_j)\in \mbb R^{2n}
+\] 
+- Affine Gaussian unitary: 
+\[ 
+    U(\theta) = \exp\left(\df 1 2 \theta^T u\theta + id^T\theta\right), 
+    \quad (u_{jk})\in \mfk{so}(2n, \mbb R), \quad (d_j)\in \mbb R^{2n}
+\] 
+:::
+Unlike in traditional statistics, fermionic Gaussians with zero mean 
+is the norm rather than exception for most existing research. This is 
+partly due to the boson-fermion superselection rule. 
+We focus on even Gaussians first then extend known results, as possible, 
+to affine Gaussians. 
+
+## Even Gaussian
+### Even Gaussian operators
+Bravyi's work [@bravyi2004lagrangian] provides many important 
+results about Gaussian operators and maps from the Fourier perspective. 
+
+::: {.theorem #fourierEvenGaussianCharacterization 
+name="fourier characterization of Gaussian operators"}
+
+An operator $X\in \Cl_{2n}$ is Gaussian iff it is even and satisfies 
+\[ 
+    [\hat \Lambda, X\otimes X]=0, \quad \hat \Lambda = \gamma_a\otimes \gamma_a
+\] 
+:::
+
+_Proof:_ We first derive the adjoint action of $\hat \Lambda$ in fourier space 
+\@ref(lem:adjointLambda). 
+The two directions \@ref(lem:fourierEvenGaussianfwd), 
+\@ref(lem:fourierEvenGaussianbwd) follow. 
+
+::: {.lemma #adjointLambda}
+Consider the following differential operator 
+$\Delta_a:\Gr_{2n}\otimes \Gr_{2n}\to \Gr_{2n}\otimes \Gr_{2n}$. 
+\[ 
+    \Delta_a = 2(\theta_a\otimes \pd a + \pd a \otimes \theta_a)
+\] 
+For any $Y, Z\in \Cl_{2n}$ having the same parity 
+\[  
+    [\gamma_a\otimes \gamma_a, Y\otimes Z](\theta) = \Delta_a[Y(\theta)\otimes Z(\theta)]
+\] 
+:::
+_Proof:_ Take $Y, Z$ to be monomials $\gamma_J, \gamma_K$. 
+If neither $J, K$ contains $a$ then both sides vanish. 
+If both $J, K$ contains $a$, then the LHS vanishes by commutation, 
+and both terms of the RHS are annihilated by $\theta_a$. 
+If only $J$ contains $a$, then $\gamma_a\otimes \gamma_a$ anticommutes with 
+$\gamma_J\otimes \gamma_K$ since $J$ contains one less factor than $K$ for $\gamma_a$ 
+to commute across, then 
+\[ 
+    [\gamma_a\otimes \gamma_a, \gamma_J\otimes \gamma_K] 
+    = 2 \gamma_a \gamma_J \otimes \gamma_a \gamma_K 
+\] 
+On the right hand side, only the second term in $\Delta_a$ survives, with 
+\[ 
+    2 (\pd a \otimes \theta_a) \theta_J \otimes \theta_K 
+\] 
+The two coefficients are seen to be equal: commuting $\pd a$ (resp. $\gamma_a$) 
+across $\gamma_J$ (resp. $\theta_J$) takes the same number of swaps. 
+
+::: {.lemma #fourierEvenGaussianfwd}
+
+Given a Gaussian operator $X(\theta)=\exp(i\theta^TM\theta/2)$
+\[ 
+    \sum_a \Delta_a[X(\theta)\otimes X(\theta)]=0\implies [\Lambda, X\otimes X] = 0 
+\] 
+The traceless case follows by continuity. 
+:::
+
+_Proof:_ First compute $\pd a X = i M_{ab}\theta_b X$. This is not at all 
+apparant as it seems, the exponential property arises from the power rule 
+$\pd x x^n = nx^{n-1}$, which is only true in Grassmann calculus if 
+$x$ (in this case $iM_{ab}\theta^TM\theta/2$) is even. Then 
+\begin{equation}\begin{aligned}
+\left[\hat \Lambda, X\otimes X\right](\theta)
+&= 2\sum_a \left(\theta_a \otimes \pd a + \pd a \otimes \theta_a \right)
+\exp\left(\df i 2 \theta^T M \theta\right)^{\otimes 2} \\ 
+&= 2\sum_{a, b} \theta_a X \otimes iM_{ab} \theta_b X + iM_{ab} \theta_b X \otimes \theta_a X  \\ 
+&= 2 i \sum_{a, b} M_{ab} (\theta_a \otimes \theta_b) (X\otimes X) = 0
+\end{aligned}\end{equation}
+
+::: {.lemma #fourierEvenGaussianbwd}
+Suppose $X\in \Cl_{2n}$ is even with $\sum \Delta_a [X(\theta)\otimes X(\theta)]=0$, 
+then $X$ is Gaussian. 
+:::
+
+_Proof:_ We provide the proof for non-vanishing trace case. 
+Pin down the degree expansion of $X(\theta)$ 
+\[ 
+    X(\theta) = C + \df{iC}{2} M_{ab}\theta_a\theta_b + O(\theta^4) 
+    \iff X(\theta) = C \exp\left(\df{i}{2} M_{ab}\theta_a\theta_b + \cdots\right)
+\] 
+Apply $1\otimes \pd b$ to the equation of interest, yielding 
+\begin{aligned}
+    0 &= (1\otimes \pd b) \sum_a (\theta_a X \otimes \pd a X + \pd a X\otimes \theta_a X) \\ 
+    &= \sum_a \theta_aX \otimes \pd {ba}^2 X + \pd a X \otimes (\delta_{ab}X - \theta_a \pd b X) \\ 
+    &= \pd b X \otimes X + \sum_a \theta_aX \otimes \pd {ba}^2 X - \pd a X \otimes \theta_a \pd b X \\
+\end{aligned}
+Consider the weaker equation where we only look at the linear term in the second 
+tensor component, then the last term above vanishes due to $\theta_a$ 
+and the equation simplifies to 
+\begin{aligned}
+    0 &= \pd b X \otimes C + \sum_a \theta_aX \otimes \df{iC}{2}M_{ab} \implies 
+    0 = \pd b X + \df i 2 \sum_a M_{ab} \theta_a X 
+\end{aligned}
+This suffices to show that $X$ must be Gaussian.
+
+
+### Even Gaussian linear maps
+::: {.definition #gaussianMapDef name="Gaussian linear map"}
+A linear map $\mca E:\Cl_{2n}\to \Cl_{2n}$ is Gaussian if 
+\[ 
+    \mca E(X)(\theta) = C\int D\eta\, D\mu\, 
+    \exp \left[S(\theta, \eta) + i \eta^T \mu\right] X(\mu), \quad 
+    S(\theta, \eta) = \df i 2 \begin{pmatrix}
+        \theta \\ \eta
+    \end{pmatrix} ^T \begin{pmatrix}
+        A & B \\ -B^T & D 
+    \end{pmatrix} \begin{pmatrix}
+        \theta \\ \eta
+    \end{pmatrix}
+    (\#eq:gaussianLinearMap)
+\] 
+Here $A, D$ are antisymmetric and $B$ arbitrary. All values are complex. 
+:::
+
+::: {.example #identityExample name="identity map"}
+Recalling the Grassmann dirac delta \@ref(def:diracDelta). 
+\[ 
+    X(\theta) = \int D\eta\, D\mu\, \exp(i\theta^T\eta + i\eta^T\mu) X(\mu) 
+    \implies S = \begin{pmatrix}
+        0 & I \\ -I & 0
+    \end{pmatrix}
+\] 
+:::
+
+::: {.proposition}
+Gaussian linear maps are parity-preserving. 
+:::
+_Proof:_ Consider the automorphism $\overline{(\cdot)}$ 
+such that $\overline X(\theta) = X(-\theta)$. It suffices to prove that 
+\[ 
+    \overline{\mca E(X)} = \mca E(\overline X)
+\] 
+Here $\overline{\mca E(X)}(\theta)$ is equivalent to replacing 
+$\theta\mapsto -\theta$ in \@ref(eq:gaussianLinearMap), while $\mca E(\overline X)(\theta)$ 
+is equivalent to replacing $\mu\mapsto -\mu$. 
+They yield the same expression upon substitution by virtue of $S(\theta, -\eta) = S(-\theta, \eta)$ 
+and $D(-\mu) = D\mu, D(-\eta) = D\eta$. 
+
+
+::: {.proposition}
+Gaussian linear maps map Gaussian operators into Gausian operators. 
+:::
+_Proof:_ Since $\mca E$ is parity preserving, it suffices to apply 
+\@ref(thm:fourierEvenGaussianCharacterization) on $\mca E(X)$, for $X$ Gaussian. 
+Note the following identity 
+\begin{equation}
+    \sum_a (\theta_a\otimes \pd {\theta_a} + \pd {\theta_a}\otimes \theta_a) 
+        (e^{i\theta^TB\eta})^{\otimes 2}
+    = -\sum_a (\eta_a\otimes \pd {\eta_a} + \pd {\eta_a}\otimes \eta_a) 
+        (e^{i\theta^TB\eta})^{\otimes 2}
+    (\#eq:convenientIdentity)
+\end{equation}
+We also need the Leibniz rule \@ref(prp:leibniz) and integration 
+by part formula \@ref(prp:integrationByPart). Rewrite \@ref(eq:gaussianLinearMap) 
+using an auxillary polynomial $f(\eta)$ 
+\[ 
+    \mca E(X)(\theta) = C\int D\eta\, 
+    \exp \left[S(\theta, \eta)\right] f(\eta), \quad 
+    f(\eta) = \int D\mu\, e^{i\eta^T\mu} X(\mu)
+\] 
+One can show that $f(\eta)$ is even. One can go on to show that 
+\[ 
+    \Lambda_{\mrm{ad}} \, \mca E(X)\otimes \mca E(X) 
+    = \mca E\otimes \mca E(\Lambda_{\mrm{ad}}\, X\otimes X) = 0
+\] 
+
+::: {.proposition name="effect of Gaussian linear maps"}
+Let $X$ be a Gaussian operator with correlation $M$ and pre-exponential 
+factor $C$, then $\mca E(X)$ as defined in \@ref(eq:gaussianLinearMap) 
+has correlation matrix 
+\[ 
+    \mca E(M) = B(M^{-1}+D)^{-1}B^T + A 
+\] 
+The pre-exponential factor is 
+\begin{aligned}
+    \tr\, \mca E(X) &= C (-1)^n \Pf(M)\Pf(M^{-1}+D)\tr(X) \\ 
+    \tr[\mca E(X)]^2 &= C^2 \det (I+MD)\tr(X)^2
+\end{aligned}
+:::
+
+_Proof:_ 
+
+## Lie algebra embedding
+Results from [@knill2001fermionic] provide the mathematical 
+link between even and affine Gaussians. 
+
+::: {.definition #gaussianLie name="Gaussian Lie groups and algebras"}
+Fixing $n$ fermionic modes
+
+- Let $\mca L_1, \mca L_2$ denote the linear and quadratic polynomials in $2n$ 
+    majorana operators, respectively. 
+- Let $\mca L_2'$ denote quadratic monomials. 
+    Note that $\dim \mca L_2=2n^2 + n + 1, \dim \mca L_2'=2n^2-n$. 
+- Let $\mca L_2^*$ denote the quadratic polynomials without constant terms, so 
+    $\dim \mca L_2^*=2n^2+n$. 
+:::
+
+::: {.theorem #evenReduction name="even Gaussian algebra reduction"}
+the affine Gaussian algebra $\mca L_2^*$ is isomorphic to a subalgebra 
+of the even Gaussian algebra $\mca L_2'$ on one more mode.
+:::
+
+_Proof:_ Let the new mode append majorana operators $\gamma_{2n+1}, \gamma_{2n+2}$. 
+Consider $\iota:\mca L_2^*\to \mca L_2'$ defined by 
+\[ 
+    \iota(\gamma_j) = i \gamma_j \gamma_{2n+1}, \quad 
+    \iota(\gamma_j\gamma_k) = \gamma_j\gamma_k
+\] 
+In short, it appends $i\gamma_{2n+1}$ to linear terms and 
+leaves quadratic terms unchanged. This is manifestly and injection, to 
+demonstrate embedding it then suffices to show that 
+$\iota\, [a, b] = [\iota\, a, \iota\, b]$. Consider the following representative 
+cases with nonvanishing brackets
+\begin{aligned}
+    \iota\, [\gamma_1, \gamma_2] &= \iota(2\gamma_1\gamma_2) = 2\gamma_1\gamma_2 \\ 
+    [\iota\, \gamma_1, \iota\, \gamma_2] 
+    &= [i\gamma_1\gamma_{2n+1}, i\gamma_2\gamma_{2n+1}] = 2\gamma_1\gamma_2 \\ 
+    \iota[\gamma_1, \gamma_1\gamma_2] 
+    &= \iota(2\gamma_2) = 2i\gamma_2\gamma_{2n+1} \\ 
+    [\iota\, \gamma_1, \iota\, \gamma_1\gamma_2] 
+    &= [i\gamma_1\gamma_{2n+1}, \gamma_1\gamma_2] = 2i\gamma_2\gamma_{2n+1}
+\end{aligned}
+
+::: {.corollary #evenReductionCor name="even Gaussian unitary reduction"}
+The affine Gaussian unitary group on $n$ fermionic modes is isomorphic to 
+a subgroup of the even Gaussian unitary group on $n+1$ fermionic modes. 
+:::
+
+## Affine Gaussian

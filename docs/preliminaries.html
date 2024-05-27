@@ -23,7 +23,7 @@
 <meta name="author" content="Nicholas Lyu" />
 
 
-<meta name="date" content="2024-05-26" />
+<meta name="date" content="2024-05-27" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 <link rel="prev" href="index.html"/>
-<link rel="next" href="computational-basis-gaussian-circuits.html"/>
+<link rel="next" href="gaussian-operators.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -101,20 +101,51 @@ div.csl-indent {
 <li class="chapter" data-level="1.1" data-path="preliminaries.html"><a href="preliminaries.html#notation"><i class="fa fa-check"></i><b>1.1</b> Notation</a></li>
 <li class="chapter" data-level="1.2" data-path="preliminaries.html"><a href="preliminaries.html#fermionic-operators"><i class="fa fa-check"></i><b>1.2</b> Fermionic operators</a></li>
 <li class="chapter" data-level="1.3" data-path="preliminaries.html"><a href="preliminaries.html#clifford-grassmann-fourier-transform"><i class="fa fa-check"></i><b>1.3</b> Clifford-Grassmann Fourier transform</a></li>
-<li class="chapter" data-level="1.4" data-path="preliminaries.html"><a href="preliminaries.html#grassmann-integrals"><i class="fa fa-check"></i><b>1.4</b> Grassmann integrals</a></li>
+<li class="chapter" data-level="1.4" data-path="preliminaries.html"><a href="preliminaries.html#grassmann-calculus"><i class="fa fa-check"></i><b>1.4</b> Grassmann calculus</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="preliminaries.html"><a href="preliminaries.html#grassmann-fourier-identities"><i class="fa fa-check"></i><b>1.4.1</b> Grassmann fourier identities</a></li>
+<li class="chapter" data-level="1.4.2" data-path="preliminaries.html"><a href="preliminaries.html#gaussian-integrals"><i class="fa fa-check"></i><b>1.4.2</b> Gaussian integrals</a></li>
+</ul></li>
 <li class="chapter" data-level="1.5" data-path="preliminaries.html"><a href="preliminaries.html#classical-simulatibility"><i class="fa fa-check"></i><b>1.5</b> Classical simulatibility</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="computational-basis-gaussian-circuits.html"><a href="computational-basis-gaussian-circuits.html"><i class="fa fa-check"></i><b>2</b> Computational-basis Gaussian Circuits</a>
+<li class="chapter" data-level="2" data-path="gaussian-operators.html"><a href="gaussian-operators.html"><i class="fa fa-check"></i><b>2</b> Gaussian Operators</a>
 <ul>
-<li class="chapter" data-level="2.1" data-path="computational-basis-gaussian-circuits.html"><a href="computational-basis-gaussian-circuits.html#insightful-general-case"><i class="fa fa-check"></i><b>2.1</b> Insightful general case</a></li>
-<li class="chapter" data-level="2.2" data-path="computational-basis-gaussian-circuits.html"><a href="computational-basis-gaussian-circuits.html#generalization"><i class="fa fa-check"></i><b>2.2</b> Generalization</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="bounded-output-gaussian-circuits.html"><a href="bounded-output-gaussian-circuits.html"><i class="fa fa-check"></i><b>3</b> Bounded-output Gaussian circuits</a></li>
-<li class="chapter" data-level="4" data-path="general-product-gaussian-circuits.html"><a href="general-product-gaussian-circuits.html"><i class="fa fa-check"></i><b>4</b> General product Gaussian circuits</a>
+<li class="chapter" data-level="2.1" data-path="gaussian-operators.html"><a href="gaussian-operators.html#even-gaussian"><i class="fa fa-check"></i><b>2.1</b> Even Gaussian</a>
 <ul>
-<li class="chapter" data-level="4.1" data-path="general-product-gaussian-circuits.html"><a href="general-product-gaussian-circuits.html#product-input-and-measurement-simulation"><i class="fa fa-check"></i><b>4.1</b> Product input and measurement simulation</a></li>
+<li class="chapter" data-level="2.1.1" data-path="gaussian-operators.html"><a href="gaussian-operators.html#even-gaussian-operators"><i class="fa fa-check"></i><b>2.1.1</b> Even Gaussian operators</a></li>
+<li class="chapter" data-level="2.1.2" data-path="gaussian-operators.html"><a href="gaussian-operators.html#even-gaussian-linear-maps"><i class="fa fa-check"></i><b>2.1.2</b> Even Gaussian linear maps</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="magic-states.html"><a href="magic-states.html"><i class="fa fa-check"></i><b>5</b> Magic states</a></li>
+<li class="chapter" data-level="2.2" data-path="gaussian-operators.html"><a href="gaussian-operators.html#lie-algebra-embedding"><i class="fa fa-check"></i><b>2.2</b> Lie algebra embedding</a></li>
+<li class="chapter" data-level="2.3" data-path="gaussian-operators.html"><a href="gaussian-operators.html#affine-gaussian"><i class="fa fa-check"></i><b>2.3</b> Affine Gaussian</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html"><i class="fa fa-check"></i><b>3</b> Classical simulation results</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#computational-basis-input-and-measurement"><i class="fa fa-check"></i><b>3.1</b> Computational-basis input and measurement</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#insightful-special-case"><i class="fa fa-check"></i><b>3.1.1</b> Insightful special case</a></li>
+<li class="chapter" data-level="3.1.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#generalization"><i class="fa fa-check"></i><b>3.1.2</b> Generalization</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#bounded-output-support"><i class="fa fa-check"></i><b>3.2</b> Bounded output support</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#matchgate-decomposition-and-simulation"><i class="fa fa-check"></i><b>3.2.1</b> Matchgate decomposition and simulation</a></li>
+<li class="chapter" data-level="3.2.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#resourcefulness-of-swap"><i class="fa fa-check"></i><b>3.2.2</b> Resourcefulness of swap</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#generalization-1"><i class="fa fa-check"></i><b>3.3</b> Generalization</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#product-input-and-measurement-simulation"><i class="fa fa-check"></i><b>3.3.1</b> Product input and measurement simulation</a></li>
+<li class="chapter" data-level="3.3.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#insightful-perspective-affine-gaussian-overlap"><i class="fa fa-check"></i><b>3.3.2</b> Insightful perspective: affine Gaussian overlap</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#magic-states"><i class="fa fa-check"></i><b>3.4</b> Magic states</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#measurement-based-universal-computation"><i class="fa fa-check"></i><b>3.4.1</b> Measurement-based universal computation</a></li>
+<li class="chapter" data-level="3.4.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#characterization-of-magic-states"><i class="fa fa-check"></i><b>3.4.2</b> Characterization of magic states</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#complexity-landscape"><i class="fa fa-check"></i><b>3.5</b> Complexity landscape</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#adaptive-single-qubit-measurement"><i class="fa fa-check"></i><b>3.5.1</b> Adaptive single-qubit measurement</a></li>
+<li class="chapter" data-level="3.5.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#non-adaptive-product-state-measurement"><i class="fa fa-check"></i><b>3.5.2</b> Non-adaptive product-state measurement</a></li>
+</ul></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
 </ul>
 
@@ -183,35 +214,32 @@ to denote the vector of <span class="math inline">\(2n\)</span> operators
         q_j \\ p_j
     \end{pmatrix} = \Omega \begin{pmatrix}
         a_j \\ a_j^\dagger
-    \end{pmatrix} = \dfrac 1 {\sqrt{2}}\begin{pmatrix}
+    \end{pmatrix} = \begin{pmatrix}
     a_j + a_j^\dagger\\
     (a_j^\dagger- a_j)i
     \end{pmatrix}, \quad
     \Omega
-    = \dfrac 1 {\sqrt 2} \begin{pmatrix}
+    = \begin{pmatrix}
         1 &amp; 1 \\ -i &amp; i
     \end{pmatrix}
 \]</span>
 We use <span class="math inline">\(\gamma\)</span> to denote the vector of <span class="math inline">\(2n\)</span> majorana operators
 <span class="math display">\[
     (\gamma_j) = (q_1, p_1, \cdots, q_n, p_n),
-    \quad \{\gamma_j, \gamma_k\} = \delta_{jk}
+    \quad \{\gamma_j, \gamma_k\} = 2\delta_{jk}
 \]</span>
 The <span class="math inline">\(2n\)</span> majorana operators freely generate a <span class="math inline">\(2^{2n}\)</span>-dimensional
-Clifford algebra we denote <span class="math inline">\(\mathcal C_{2n}\)</span>. The basis for <span class="math inline">\(\mathcal C_{2n}\)</span> are the <span class="math inline">\(2^{2n}\)</span>
+Clifford algebra we denote <span class="math inline">\(\mathcal C_{2n}\)</span> (note the factor of <span class="math inline">\(2\)</span>).
+The basis for <span class="math inline">\(\mathcal C_{2n}\)</span> are the <span class="math inline">\(2^{2n}\)</span>
 monomials <span class="math inline">\(\gamma_J\)</span> which are at most linear in the generators <span class="math inline">\(\gamma_j\)</span>.</p>
 </div>
 <div class="definition">
-<p><span id="def:jw" class="definition"><strong>Definition 1.6  (Jordan-Wigner transform, ONB) </strong></span>Depending on context, it is often more convenient to
-define <span class="math inline">\(\gamma_j\mapsto \sqrt 2\gamma_j\)</span>
-so <span class="math inline">\(q_j=a_j+a_j^\dagger, p_j=(a_j^\dagger-a_j)i\)</span>. In this case
-the majorana operators may be represented by the Pauli operators
+<p><span id="def:jw" class="definition"><strong>Definition 1.6  (Jordan-Wigner transform, ONB) </strong></span>The majorana operators may be represented by the Pauli operators
 <span class="math display">\[
     q_j = Z^{\otimes (j-1)}\otimes X \otimes I^{\otimes (n-j)},
     \quad p_j = Z^{\otimes (j-1)}\otimes Y \otimes I^{\otimes (n-j)}
 \]</span>
-One may check that this faithfully represents the Clifford algebra
-<span class="math inline">\(\{\gamma_j, \gamma_k\} = 2\delta_{jk}\)</span> in
+One may check that this faithfully represents the Clifford algebra in
 <span class="math inline">\(\mathbb C^{2n}\)</span>, the Hilbert space over <span class="math inline">\(n\)</span> qubits. Moreover, the generated
 basis <span class="math inline">\((\gamma_J)\)</span> is orthonormal under the Hilbert-Schmidt inner product
 <span class="math display">\[
@@ -308,9 +336,73 @@ and RHS are respectively
     \dfrac 1 2 j(j-1) \equiv n + j(2n-j) + \dfrac 1 2 (2n-j)(2n-j-1) \mod 2
 \]</span></p>
 </div>
-<div id="grassmann-integrals" class="section level2 hasAnchor" number="1.4">
-<h2><span class="header-section-number">1.4</span> Grassmann integrals<a href="preliminaries.html#grassmann-integrals" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>The following two formulas are found in <span class="citation">(<a href="#ref-knill2001fermionic">Knill 2001</a>)</span>.
+<div id="grassmann-calculus" class="section level2 hasAnchor" number="1.4">
+<h2><span class="header-section-number">1.4</span> Grassmann calculus<a href="preliminaries.html#grassmann-calculus" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="definition">
+<p><span id="def:grassmannDiff" class="definition"><strong>Definition 1.9  (Grassmann differentiation and integration) </strong></span>A partial derivative <span class="math inline">\(\partial_{a}\)</span> over Grassmann numbers <span class="math inline">\((\theta_j)\)</span> generating <span class="math inline">\(\mathcal G_{2n}\)</span>
+is the linear operator <span class="math inline">\(\partial_{a}:\mathcal G_{2n}\to \mathcal G_{2n}\)</span> defined by
+<span class="math display">\[
+    \partial_{a} 1 = 0, \quad \partial_{a} \theta_b = \delta_{ab}, \quad
+    \partial_{a} [\theta_b f(\theta)] = \delta_{ab}f(\theta) - \theta_b\partial_{a} f(\theta)
+\]</span>
+It follows that Grassmann derives anti-commute
+<span class="math display">\[
+    \partial_{ab}^2 + \partial_{ba}^2 = 0
+\]</span>
+Grassmann integration is the same as differentiation: <span class="math inline">\(\int d\theta_a = \partial_{a}\)</span>, with
+the notation
+<span class="math display">\[
+    \int D\theta = \int d\theta_n\cdots d\theta_1\implies \int D\theta\, \theta_{[2n]} = 1
+\]</span></p>
+</div>
+<div class="proposition">
+<p><span id="prp:leibniz" class="proposition"><strong>Proposition 1.2  (Leibniz rule) </strong></span>when <span class="math inline">\(f(\theta)\)</span> has <em>homogeneous degree</em> <span class="math inline">\(\sigma \in \{-1, 1\}\)</span>, we have
+<span class="math display">\[
+    \partial_{a} [f(\theta)g(\theta)] = [\partial_{a} f(\theta)]g(\theta) + \sigma f(\theta) \partial_{b} g(\theta)
+\]</span></p>
+</div>
+<div class="proposition">
+<p><span id="prp:integrationByPart" class="proposition"><strong>Proposition 1.3  (integration by part) </strong></span>If one of <span class="math inline">\(f, g\)</span> is even, then
+<span class="math display">\[
+    \int D\theta\, (\partial_{a} f)g = \pm \int D\theta\, f\partial_{a} g
+\]</span>
+with <span class="math inline">\(+, -\)</span> standing for even <span class="math inline">\(g\)</span> or even <span class="math inline">\(f\)</span>, respectively.</p>
+</div>
+<p><em>Proof:</em> Now <span class="math inline">\(\partial_{a} (fg) = (\partial_{a} f)g + \sigma_f \partial_{a} g\)</span>. Apply <span class="math inline">\(\int D\theta\)</span>
+to both sides, rearrange, and note that <span class="math inline">\(\int D\theta \, \partial_{a}(\cdots) = 0\)</span> yields
+<span class="math display">\[
+    \int D\theta\, (\partial_{a} f)g = -\sigma_f \int D\theta\, \partial_{a} g + \int D\theta\, (\partial_{a} f)g
+\]</span></p>
+<div id="grassmann-fourier-identities" class="section level3 hasAnchor" number="1.4.1">
+<h3><span class="header-section-number">1.4.1</span> Grassmann fourier identities<a href="preliminaries.html#grassmann-fourier-identities" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="definition">
+<p><span id="def:diracDelta" class="definition"><strong>Definition 1.10  (dirac delta function) </strong></span></p>
+The Grassmann analogue of the dirac delta function is
+<span class="math display">\[\begin{aligned}
+    \delta(\theta, \mu)
+    &amp;= \prod_a (\theta_a - \mu_a) = \int D\eta \, \exp\left[(\theta - \mu)^T\eta \right]
+    \\
+    X(\theta) &amp;= \int D\mu\, \delta(\theta, \mu) X(\mu)
+\end{aligned}\]</span>
+To see the first equation, the <span class="math inline">\(2n\)</span>-degree expansion of <span class="math inline">\(\exp\)</span> is
+<span class="math display">\[\begin{aligned}
+    \prod i(\theta_j - \mu_j)\eta_j
+    &amp;= i^{2n} (-1)^{2n(2n-1)/2} \mu_{[2n]} \prod \theta_j - \mu_j = \mu_{[2n]} \prod\theta_j - \mu_j
+\end{aligned}\]</span>
+<p>To see the second property,
+<span class="math inline">\(\delta(\theta, \mu) = \sigma_{J, \bar J}(-1)^j \theta_{J} \mu_{\bar J}\)</span>,
+where <span class="math inline">\(\sigma_{J, \bar J}\)</span> is the sign associated with rearranging <span class="math inline">\([2n]\to (J, \bar J)\)</span>.
+Note that the sign associated with rearranging <span class="math inline">\((\bar J, J)\to [2n]\)</span> is then exactly
+<span class="math inline">\(\sigma_{J, \bar J}(-1)^j\)</span>, then
+<span class="math display">\[
+    \int D\mu\, \delta(\theta, \mu) \mu_K = \int D\mu\,
+    \sigma_{J, \bar J}(-1)^j \theta_{J} \mu_{\bar J} \mu_K = \theta_K
+\]</span></p>
+</div>
+</div>
+<div id="gaussian-integrals" class="section level3 hasAnchor" number="1.4.2">
+<h3><span class="header-section-number">1.4.2</span> Gaussian integrals<a href="preliminaries.html#gaussian-integrals" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>The following two formulas are found in <span class="citation">(<a href="#ref-bravyi2004lagrangian">Bravyi 2004</a>)</span>.
 We expand upon the proofs.</p>
 <div class="theorem">
 <p><span id="thm:evenGaussianIntegral" class="theorem"><strong>Theorem 1.2  (homogeneous Gaussian integral) </strong></span>For <span class="math inline">\(2n\times 2n\)</span> antisymmetric <span class="math inline">\(M\)</span>
@@ -394,6 +486,7 @@ yields
     &amp;= (-i)^n \mathrm{Pf}(A)\mathrm{Pf}(B - A^{-1})
 \end{aligned}\]</span>
 </div>
+</div>
 <div id="classical-simulatibility" class="section level2 hasAnchor" number="1.5">
 <h2><span class="header-section-number">1.5</span> Classical simulatibility<a href="preliminaries.html#classical-simulatibility" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>The following notions of classical simulatibility are taken from
@@ -401,13 +494,13 @@ yields
 <p>For the following two definitions,
 we consider a uniformly family of quantum circuits <span class="math inline">\(\{C_n\}\)</span>.</p>
 <div class="definition">
-<p><span id="def:strongSimulation" class="definition"><strong>Definition 1.9  (Strong simulation) </strong></span><span class="math inline">\(\{C_n\}\)</span> is strongly simulable if,
+<p><span id="def:strongSimulation" class="definition"><strong>Definition 1.11  (Strong simulation) </strong></span><span class="math inline">\(\{C_n\}\)</span> is strongly simulable if,
 for every <span class="math inline">\(k\)</span> and assignment of <span class="math inline">\(k\)</span> output bits <span class="math inline">\(\tilde y\)</span>,
 one can compute <span class="math inline">\(\Pr(\tilde y|\psi_n)\)</span> in <span class="math inline">\(\mathrm{poly}(n)\)</span> time on
 a classical computer.</p>
 </div>
 <div class="definition">
-<p><span id="def:weakSimulation" class="definition"><strong>Definition 1.10  (weak simulation) </strong></span><span class="math inline">\(\{C_n\}\)</span> is weakly simulable if sampling
+<p><span id="def:weakSimulation" class="definition"><strong>Definition 1.12  (weak simulation) </strong></span><span class="math inline">\(\{C_n\}\)</span> is weakly simulable if sampling
 from <span class="math inline">\(\Pr(\tilde y|\psi_n)\)</span>
 can be done in <span class="math inline">\(\mathrm{poly}(n)\)</span> time on a classical computer.</p>
 </div>
@@ -415,7 +508,7 @@ can be done in <span class="math inline">\(\mathrm{poly}(n)\)</span> time on a c
 one is allowed to make intermediate measurements and condition
 subsequent operations on their outcomes.</p>
 <div class="definition">
-<p><span id="def:adaptiveSimulation" class="definition"><strong>Definition 1.11  (weak simulation) </strong></span><span class="math inline">\(\{C_n\}\)</span> is adaptively simulable if</p>
+<p><span id="def:adaptiveSimulation" class="definition"><strong>Definition 1.13  (weak simulation) </strong></span><span class="math inline">\(\{C_n\}\)</span> is adaptively simulable if</p>
 <ul>
 <li>All intermediate measurements are weakly simulable.</li>
 <li>The final measurements on the circuit, conditioning on intermediate outcomes,
@@ -427,14 +520,14 @@ is strongly simulable.</li>
 </div>
 <h3>Bibliography<a href="bibliography.html#bibliography" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-bravyi2004lagrangian" class="csl-entry">
+Bravyi, Sergey. 2004. <span>“Lagrangian Representation for Fermionic Linear Optics.”</span> <em>arXiv Preprint Quant-Ph/0404180</em>.
+</div>
 <div id="ref-brod2016efficient" class="csl-entry">
 Brod, Daniel J. 2016. <span>“Efficient Classical Simulation of Matchgate Circuits with Generalized Inputs and Measurements.”</span> <em>Physical Review A</em> 93 (6): 062332.
 </div>
 <div id="ref-hudson1980translation" class="csl-entry">
 Hudson, RL, MD Wilkinson, and SN Peck. 1980. <span>“Translation-Invariant Integrals, and Fourier Analysis on Clifford and Grassmann Algebras.”</span> <em>Journal of Functional Analysis</em> 37 (1): 68–87.
-</div>
-<div id="ref-knill2001fermionic" class="csl-entry">
-Knill, Emanuel. 2001. <span>“Fermionic Linear Optics and Matchgates.”</span> <em>arXiv Preprint Quant-Ph/0108033</em>.
 </div>
 </div>
             </section>
@@ -443,7 +536,7 @@ Knill, Emanuel. 2001. <span>“Fermionic Linear Optics and Matchgates.”</span>
         </div>
       </div>
 <a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="computational-basis-gaussian-circuits.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="gaussian-operators.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

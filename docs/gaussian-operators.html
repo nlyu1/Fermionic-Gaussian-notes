@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>2 Gaussian Operators | Paper Notes</title>
+  <meta name="description" content="2 Gaussian Operators | Paper Notes" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="2 Gaussian Operators | Paper Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="2 Gaussian Operators | Paper Notes" />
+  
+  
+  
+
+<meta name="author" content="Nicholas Lyu" />
+
+
+<meta name="date" content="2024-05-27" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="preliminaries.html"/>
+<link rel="next" href="classical-simulation-results.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+<style type="text/css">
+/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
+<li class="chapter" data-level="1" data-path="preliminaries.html"><a href="preliminaries.html"><i class="fa fa-check"></i><b>1</b> Preliminaries</a>
+<ul>
+<li class="chapter" data-level="1.1" data-path="preliminaries.html"><a href="preliminaries.html#notation"><i class="fa fa-check"></i><b>1.1</b> Notation</a></li>
+<li class="chapter" data-level="1.2" data-path="preliminaries.html"><a href="preliminaries.html#fermionic-operators"><i class="fa fa-check"></i><b>1.2</b> Fermionic operators</a></li>
+<li class="chapter" data-level="1.3" data-path="preliminaries.html"><a href="preliminaries.html#clifford-grassmann-fourier-transform"><i class="fa fa-check"></i><b>1.3</b> Clifford-Grassmann Fourier transform</a></li>
+<li class="chapter" data-level="1.4" data-path="preliminaries.html"><a href="preliminaries.html#grassmann-calculus"><i class="fa fa-check"></i><b>1.4</b> Grassmann calculus</a>
+<ul>
+<li class="chapter" data-level="1.4.1" data-path="preliminaries.html"><a href="preliminaries.html#grassmann-fourier-identities"><i class="fa fa-check"></i><b>1.4.1</b> Grassmann fourier identities</a></li>
+<li class="chapter" data-level="1.4.2" data-path="preliminaries.html"><a href="preliminaries.html#gaussian-integrals"><i class="fa fa-check"></i><b>1.4.2</b> Gaussian integrals</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path="preliminaries.html"><a href="preliminaries.html#classical-simulatibility"><i class="fa fa-check"></i><b>1.5</b> Classical simulatibility</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="gaussian-operators.html"><a href="gaussian-operators.html"><i class="fa fa-check"></i><b>2</b> Gaussian Operators</a>
+<ul>
+<li class="chapter" data-level="2.1" data-path="gaussian-operators.html"><a href="gaussian-operators.html#even-gaussian"><i class="fa fa-check"></i><b>2.1</b> Even Gaussian</a>
+<ul>
+<li class="chapter" data-level="2.1.1" data-path="gaussian-operators.html"><a href="gaussian-operators.html#even-gaussian-operators"><i class="fa fa-check"></i><b>2.1.1</b> Even Gaussian operators</a></li>
+<li class="chapter" data-level="2.1.2" data-path="gaussian-operators.html"><a href="gaussian-operators.html#even-gaussian-linear-maps"><i class="fa fa-check"></i><b>2.1.2</b> Even Gaussian linear maps</a></li>
+</ul></li>
+<li class="chapter" data-level="2.2" data-path="gaussian-operators.html"><a href="gaussian-operators.html#lie-algebra-embedding"><i class="fa fa-check"></i><b>2.2</b> Lie algebra embedding</a></li>
+<li class="chapter" data-level="2.3" data-path="gaussian-operators.html"><a href="gaussian-operators.html#affine-gaussian"><i class="fa fa-check"></i><b>2.3</b> Affine Gaussian</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html"><i class="fa fa-check"></i><b>3</b> Classical simulation results</a>
+<ul>
+<li class="chapter" data-level="3.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#computational-basis-input-and-measurement"><i class="fa fa-check"></i><b>3.1</b> Computational-basis input and measurement</a>
+<ul>
+<li class="chapter" data-level="3.1.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#insightful-special-case"><i class="fa fa-check"></i><b>3.1.1</b> Insightful special case</a></li>
+<li class="chapter" data-level="3.1.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#generalization"><i class="fa fa-check"></i><b>3.1.2</b> Generalization</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#bounded-output-support"><i class="fa fa-check"></i><b>3.2</b> Bounded output support</a>
+<ul>
+<li class="chapter" data-level="3.2.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#matchgate-decomposition-and-simulation"><i class="fa fa-check"></i><b>3.2.1</b> Matchgate decomposition and simulation</a></li>
+<li class="chapter" data-level="3.2.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#resourcefulness-of-swap"><i class="fa fa-check"></i><b>3.2.2</b> Resourcefulness of swap</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#generalization-1"><i class="fa fa-check"></i><b>3.3</b> Generalization</a>
+<ul>
+<li class="chapter" data-level="3.3.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#product-input-and-measurement-simulation"><i class="fa fa-check"></i><b>3.3.1</b> Product input and measurement simulation</a></li>
+<li class="chapter" data-level="3.3.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#insightful-perspective-affine-gaussian-overlap"><i class="fa fa-check"></i><b>3.3.2</b> Insightful perspective: affine Gaussian overlap</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#magic-states"><i class="fa fa-check"></i><b>3.4</b> Magic states</a>
+<ul>
+<li class="chapter" data-level="3.4.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#measurement-based-universal-computation"><i class="fa fa-check"></i><b>3.4.1</b> Measurement-based universal computation</a></li>
+<li class="chapter" data-level="3.4.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#characterization-of-magic-states"><i class="fa fa-check"></i><b>3.4.2</b> Characterization of magic states</a></li>
+</ul></li>
+<li class="chapter" data-level="3.5" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#complexity-landscape"><i class="fa fa-check"></i><b>3.5</b> Complexity landscape</a>
+<ul>
+<li class="chapter" data-level="3.5.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#adaptive-single-qubit-measurement"><i class="fa fa-check"></i><b>3.5.1</b> Adaptive single-qubit measurement</a></li>
+<li class="chapter" data-level="3.5.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#non-adaptive-product-state-measurement"><i class="fa fa-check"></i><b>3.5.2</b> Non-adaptive product-state measurement</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Paper Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="gaussian-operators" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Gaussian Operators<a href="gaussian-operators.html#gaussian-operators" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The following definition Gaussian operators in terms of their
+Fourier property is made by <span class="citation">(<a href="#ref-bravyi2005classical">Bravyi 2005</a>)</span>.</p>
+<div class="definition">
+<p><span id="def:gaussianDef" class="definition"><strong>Definition 2.1  (Gaussian operator) </strong></span>An operator <span class="math inline">\(A\in \mathcal C_{2n}\)</span> with <span class="math inline">\(\mathrm{tr}(A)\neq 0\)</span> is affine Gaussian if
+<span class="math display">\[
+    X(\theta) = \exp\left(\dfrac 1 2 \theta^T M\theta + d^T\theta\right)
+\]</span>
+for some antisymmetric <span class="math inline">\((M_{jk})\in \mathbb C^{2n\times 2n}\)</span> and
+<span class="math inline">\(d\in \mathbb C^{2n}\)</span>. It is (even) Gaussian if <span class="math inline">\(d\)</span> vanishes, which is
+equivalent to <span class="math inline">\(X(\theta)\)</span> being homogeneously even.
+Traceless Gaussians are defined as limits.
+Two special cases</p>
+<ul>
+<li>Affine Gaussian hermitian operator:
+<span class="math display">\[
+  H(\theta) = \exp\left(\dfrac i 2 \theta^T h\theta + d^T\theta\right),
+  \quad (h_{jk})\in \mathfrak{so}(2n, \mathbb R), \quad (d_j)\in \mathbb R^{2n}
+\]</span></li>
+<li>Affine Gaussian unitary:
+<span class="math display">\[
+  U(\theta) = \exp\left(\dfrac 1 2 \theta^T u\theta + id^T\theta\right),
+  \quad (u_{jk})\in \mathfrak{so}(2n, \mathbb R), \quad (d_j)\in \mathbb R^{2n}
+\]</span></li>
+</ul>
+</div>
+<p>Unlike in traditional statistics, fermionic Gaussians with zero mean
+is the norm rather than exception for most existing research. This is
+partly due to the boson-fermion superselection rule.
+We focus on even Gaussians first then extend known results, as possible,
+to affine Gaussians.</p>
+<div id="even-gaussian" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Even Gaussian<a href="gaussian-operators.html#even-gaussian" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div id="even-gaussian-operators" class="section level3 hasAnchor" number="2.1.1">
+<h3><span class="header-section-number">2.1.1</span> Even Gaussian operators<a href="gaussian-operators.html#even-gaussian-operators" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<p>Bravyi’s work <span class="citation">(<a href="#ref-bravyi2004lagrangian">Bravyi 2004</a>)</span> provides many important
+results about Gaussian operators and maps from the Fourier perspective.</p>
+<div class="theorem">
+<p><span id="thm:fourierEvenGaussianCharacterization" class="theorem"><strong>Theorem 2.1  (fourier characterization of Gaussian operators) </strong></span>An operator <span class="math inline">\(X\in \mathcal C_{2n}\)</span> is Gaussian iff it is even and satisfies
+<span class="math display">\[
+    [\hat \Lambda, X\otimes X]=0, \quad \hat \Lambda = \gamma_a\otimes \gamma_a
+\]</span></p>
+</div>
+<p><em>Proof:</em> We first derive the adjoint action of <span class="math inline">\(\hat \Lambda\)</span> in fourier space
+<a href="gaussian-operators.html#lem:adjointLambda">2.1</a>.
+The two directions <a href="gaussian-operators.html#lem:fourierEvenGaussianfwd">2.2</a>,
+<a href="gaussian-operators.html#lem:fourierEvenGaussianbwd">2.3</a> follow.</p>
+<div class="lemma">
+<p><span id="lem:adjointLambda" class="lemma"><strong>Lemma 2.1  </strong></span>Consider the following differential operator
+<span class="math inline">\(\Delta_a:\mathcal G_{2n}\otimes \mathcal G_{2n}\to \mathcal G_{2n}\otimes \mathcal G_{2n}\)</span>.
+<span class="math display">\[
+    \Delta_a = 2(\theta_a\otimes \partial_{a} + \partial_{a} \otimes \theta_a)
+\]</span>
+For any <span class="math inline">\(Y, Z\in \mathcal C_{2n}\)</span> having the same parity
+<span class="math display">\[  
+    [\gamma_a\otimes \gamma_a, Y\otimes Z](\theta) = \Delta_a[Y(\theta)\otimes Z(\theta)]
+\]</span></p>
+</div>
+<p><em>Proof:</em> Take <span class="math inline">\(Y, Z\)</span> to be monomials <span class="math inline">\(\gamma_J, \gamma_K\)</span>.
+If neither <span class="math inline">\(J, K\)</span> contains <span class="math inline">\(a\)</span> then both sides vanish.
+If both <span class="math inline">\(J, K\)</span> contains <span class="math inline">\(a\)</span>, then the LHS vanishes by commutation,
+and both terms of the RHS are annihilated by <span class="math inline">\(\theta_a\)</span>.
+If only <span class="math inline">\(J\)</span> contains <span class="math inline">\(a\)</span>, then <span class="math inline">\(\gamma_a\otimes \gamma_a\)</span> anticommutes with
+<span class="math inline">\(\gamma_J\otimes \gamma_K\)</span> since <span class="math inline">\(J\)</span> contains one less factor than <span class="math inline">\(K\)</span> for <span class="math inline">\(\gamma_a\)</span>
+to commute across, then
+<span class="math display">\[
+    [\gamma_a\otimes \gamma_a, \gamma_J\otimes \gamma_K]
+    = 2 \gamma_a \gamma_J \otimes \gamma_a \gamma_K
+\]</span>
+On the right hand side, only the second term in <span class="math inline">\(\Delta_a\)</span> survives, with
+<span class="math display">\[
+    2 (\partial_{a} \otimes \theta_a) \theta_J \otimes \theta_K
+\]</span>
+The two coefficients are seen to be equal: commuting <span class="math inline">\(\partial_{a}\)</span> (resp. <span class="math inline">\(\gamma_a\)</span>)
+across <span class="math inline">\(\gamma_J\)</span> (resp. <span class="math inline">\(\theta_J\)</span>) takes the same number of swaps.</p>
+<div class="lemma">
+<p><span id="lem:fourierEvenGaussianfwd" class="lemma"><strong>Lemma 2.2  </strong></span>Given a Gaussian operator <span class="math inline">\(X(\theta)=\exp(i\theta^TM\theta/2)\)</span>
+<span class="math display">\[
+    \sum_a \Delta_a[X(\theta)\otimes X(\theta)]=0\implies [\Lambda, X\otimes X] = 0
+\]</span>
+The traceless case follows by continuity.</p>
+</div>
+<p><em>Proof:</em> First compute <span class="math inline">\(\partial_{a} X = i M_{ab}\theta_b X\)</span>. This is not at all
+apparant as it seems, the exponential property arises from the power rule
+<span class="math inline">\(\partial_{x} x^n = nx^{n-1}\)</span>, which is only true in Grassmann calculus if
+<span class="math inline">\(x\)</span> (in this case <span class="math inline">\(iM_{ab}\theta^TM\theta/2\)</span>) is even. Then
+<span class="math display">\[\begin{equation}\begin{aligned}
+\left[\hat \Lambda, X\otimes X\right](\theta)
+&amp;= 2\sum_a \left(\theta_a \otimes \partial_{a} + \partial_{a} \otimes \theta_a \right)
+\exp\left(\dfrac i 2 \theta^T M \theta\right)^{\otimes 2} \\
+&amp;= 2\sum_{a, b} \theta_a X \otimes iM_{ab} \theta_b X + iM_{ab} \theta_b X \otimes \theta_a X  \\
+&amp;= 2 i \sum_{a, b} M_{ab} (\theta_a \otimes \theta_b) (X\otimes X) = 0
+\end{aligned}\end{equation}\]</span></p>
+<div class="lemma">
+<p><span id="lem:fourierEvenGaussianbwd" class="lemma"><strong>Lemma 2.3  </strong></span>Suppose <span class="math inline">\(X\in \mathcal C_{2n}\)</span> is even with <span class="math inline">\(\sum \Delta_a [X(\theta)\otimes X(\theta)]=0\)</span>,
+then <span class="math inline">\(X\)</span> is Gaussian.</p>
+</div>
+<em>Proof:</em> We provide the proof for non-vanishing trace case.
+Pin down the degree expansion of <span class="math inline">\(X(\theta)\)</span>
+<span class="math display">\[
+    X(\theta) = C + \dfrac{iC}{2} M_{ab}\theta_a\theta_b + O(\theta^4)
+    \iff X(\theta) = C \exp\left(\dfrac{i}{2} M_{ab}\theta_a\theta_b + \cdots\right)
+\]</span>
+Apply <span class="math inline">\(1\otimes \partial_{b}\)</span> to the equation of interest, yielding
+<span class="math display">\[\begin{aligned}
+    0 &amp;= (1\otimes \partial_{b}) \sum_a (\theta_a X \otimes \partial_{a} X + \partial_{a} X\otimes \theta_a X) \\
+    &amp;= \sum_a \theta_aX \otimes \partial_{ba}^2 X + \partial_{a} X \otimes (\delta_{ab}X - \theta_a \partial_{b} X) \\
+    &amp;= \partial_{b} X \otimes X + \sum_a \theta_aX \otimes \partial_{ba}^2 X - \partial_{a} X \otimes \theta_a \partial_{b} X \\
+\end{aligned}\]</span>
+Consider the weaker equation where we only look at the linear term in the second
+tensor component, then the last term above vanishes due to <span class="math inline">\(\theta_a\)</span>
+and the equation simplifies to
+<span class="math display">\[\begin{aligned}
+    0 &amp;= \partial_{b} X \otimes C + \sum_a \theta_aX \otimes \dfrac{iC}{2}M_{ab} \implies
+    0 = \partial_{b} X + \dfrac i 2 \sum_a M_{ab} \theta_a X
+\end{aligned}\]</span>
+<p>This suffices to show that <span class="math inline">\(X\)</span> must be Gaussian.</p>
+</div>
+<div id="even-gaussian-linear-maps" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Even Gaussian linear maps<a href="gaussian-operators.html#even-gaussian-linear-maps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="definition">
+<p><span id="def:gaussianMapDef" class="definition"><strong>Definition 2.2  (Gaussian linear map) </strong></span>A linear map <span class="math inline">\(\mathcal E:\mathcal C_{2n}\to \mathcal C_{2n}\)</span> is Gaussian if
+<span class="math display" id="eq:gaussianLinearMap">\[
+    \mathcal E(X)(\theta) = C\int D\eta\, D\mu\,
+    \exp \left[S(\theta, \eta) + i \eta^T \mu\right] X(\mu), \quad
+    S(\theta, \eta) = \dfrac i 2 \begin{pmatrix}
+        \theta \\ \eta
+    \end{pmatrix} ^T \begin{pmatrix}
+        A &amp; B \\ -B^T &amp; D
+    \end{pmatrix} \begin{pmatrix}
+        \theta \\ \eta
+    \end{pmatrix}
+    \tag{2.1}
+\]</span>
+Here <span class="math inline">\(A, D\)</span> are antisymmetric and <span class="math inline">\(B\)</span> arbitrary. All values are complex.</p>
+</div>
+<div class="example">
+<p><span id="exm:identityExample" class="example"><strong>Example 2.1  (identity map) </strong></span>Recalling the Grassmann dirac delta <a href="preliminaries.html#def:diracDelta">1.10</a>.
+<span class="math display">\[
+    X(\theta) = \int D\eta\, D\mu\, \exp(i\theta^T\eta + i\eta^T\mu) X(\mu)
+    \implies S = \begin{pmatrix}
+        0 &amp; I \\ -I &amp; 0
+    \end{pmatrix}
+\]</span></p>
+</div>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-2" class="proposition"><strong>Proposition 2.1  </strong></span>Gaussian linear maps are parity-preserving.</p>
+</div>
+<p><em>Proof:</em> Consider the automorphism <span class="math inline">\(\overline{(\cdot)}\)</span>
+such that <span class="math inline">\(\overline X(\theta) = X(-\theta)\)</span>. It suffices to prove that
+<span class="math display">\[
+    \overline{\mathcal E(X)} = \mathcal E(\overline X)
+\]</span>
+Here <span class="math inline">\(\overline{\mathcal E(X)}(\theta)\)</span> is equivalent to replacing
+<span class="math inline">\(\theta\mapsto -\theta\)</span> in <a href="gaussian-operators.html#eq:gaussianLinearMap">(2.1)</a>, while <span class="math inline">\(\mathcal E(\overline X)(\theta)\)</span>
+is equivalent to replacing <span class="math inline">\(\mu\mapsto -\mu\)</span>.
+They yield the same expression upon substitution by virtue of <span class="math inline">\(S(\theta, -\eta) = S(-\theta, \eta)\)</span>
+and <span class="math inline">\(D(-\mu) = D\mu, D(-\eta) = D\eta\)</span>.</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-3" class="proposition"><strong>Proposition 2.2  </strong></span>Gaussian linear maps map Gaussian operators into Gausian operators.</p>
+</div>
+<p><em>Proof:</em> Since <span class="math inline">\(\mathcal E\)</span> is parity preserving, it suffices to apply
+<a href="gaussian-operators.html#thm:fourierEvenGaussianCharacterization">2.1</a> on <span class="math inline">\(\mathcal E(X)\)</span>, for <span class="math inline">\(X\)</span> Gaussian.
+Note the following identity
+<span class="math display" id="eq:convenientIdentity">\[\begin{equation}
+    \sum_a (\theta_a\otimes \partial_{\theta_a} + \partial_{\theta_a}\otimes \theta_a)
+        (e^{i\theta^TB\eta})^{\otimes 2}
+    = -\sum_a (\eta_a\otimes \partial_{\eta_a} + \partial_{\eta_a}\otimes \eta_a)
+        (e^{i\theta^TB\eta})^{\otimes 2}
+    \tag{2.2}
+\end{equation}\]</span>
+We also need the Leibniz rule <a href="preliminaries.html#prp:leibniz">1.2</a> and integration
+by part formula <a href="preliminaries.html#prp:integrationByPart">1.3</a>. Rewrite <a href="gaussian-operators.html#eq:gaussianLinearMap">(2.1)</a>
+using an auxillary polynomial <span class="math inline">\(f(\eta)\)</span>
+<span class="math display">\[
+    \mathcal E(X)(\theta) = C\int D\eta\,
+    \exp \left[S(\theta, \eta)\right] f(\eta), \quad
+    f(\eta) = \int D\mu\, e^{i\eta^T\mu} X(\mu)
+\]</span>
+One can show that <span class="math inline">\(f(\eta)\)</span> is even. One can go on to show that
+<span class="math display">\[
+    \Lambda_{\mathrm{ad}} \, \mathcal E(X)\otimes \mathcal E(X)
+    = \mathcal E\otimes \mathcal E(\Lambda_{\mathrm{ad}}\, X\otimes X) = 0
+\]</span></p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-4" class="proposition"><strong>Proposition 2.3  (effect of Gaussian linear maps) </strong></span></p>
+Let <span class="math inline">\(X\)</span> be a Gaussian operator with correlation <span class="math inline">\(M\)</span> and pre-exponential
+factor <span class="math inline">\(C\)</span>, then <span class="math inline">\(\mathcal E(X)\)</span> as defined in <a href="gaussian-operators.html#eq:gaussianLinearMap">(2.1)</a>
+has correlation matrix
+<span class="math display">\[
+    \mathcal E(M) = B(M^{-1}+D)^{-1}B^T + A
+\]</span>
+The pre-exponential factor is
+<span class="math display">\[\begin{aligned}
+    \mathrm{tr}\, \mathcal E(X) &amp;= C (-1)^n \mathrm{Pf}(M)\mathrm{Pf}(M^{-1}+D)\mathrm{tr}(X) \\
+    \mathrm{tr}[\mathcal E(X)]^2 &amp;= C^2 \det (I+MD)\mathrm{tr}(X)^2
+\end{aligned}\]</span>
+</div>
+<p><em>Proof:</em></p>
+</div>
+</div>
+<div id="lie-algebra-embedding" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Lie algebra embedding<a href="gaussian-operators.html#lie-algebra-embedding" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Results from <span class="citation">(<a href="#ref-knill2001fermionic">Knill 2001</a>)</span> provide the mathematical
+link between even and affine Gaussians.</p>
+<div class="definition">
+<p><span id="def:gaussianLie" class="definition"><strong>Definition 2.3  (Gaussian Lie groups and algebras) </strong></span>Fixing <span class="math inline">\(n\)</span> fermionic modes</p>
+<ul>
+<li>Let <span class="math inline">\(\mathcal L_1, \mathcal L_2\)</span> denote the linear and quadratic polynomials in <span class="math inline">\(2n\)</span>
+majorana operators, respectively.</li>
+<li>Let <span class="math inline">\(\mathcal L_2&#39;\)</span> denote quadratic monomials.
+Note that <span class="math inline">\(\dim \mathcal L_2=2n^2 + n + 1, \dim \mathcal L_2&#39;=2n^2-n\)</span>.</li>
+<li>Let <span class="math inline">\(\mathcal L_2^*\)</span> denote the quadratic polynomials without constant terms, so
+<span class="math inline">\(\dim \mathcal L_2^*=2n^2+n\)</span>.</li>
+</ul>
+</div>
+<div class="theorem">
+<p><span id="thm:evenReduction" class="theorem"><strong>Theorem 2.2  (even Gaussian algebra reduction) </strong></span>the affine Gaussian algebra <span class="math inline">\(\mathcal L_2^*\)</span> is isomorphic to a subalgebra
+of the even Gaussian algebra <span class="math inline">\(\mathcal L_2&#39;\)</span> on one more mode.</p>
+</div>
+<em>Proof:</em> Let the new mode append majorana operators <span class="math inline">\(\gamma_{2n+1}, \gamma_{2n+2}\)</span>.
+Consider <span class="math inline">\(\iota:\mathcal L_2^*\to \mathcal L_2&#39;\)</span> defined by
+<span class="math display">\[
+    \iota(\gamma_j) = i \gamma_j \gamma_{2n+1}, \quad
+    \iota(\gamma_j\gamma_k) = \gamma_j\gamma_k
+\]</span>
+In short, it appends <span class="math inline">\(i\gamma_{2n+1}\)</span> to linear terms and
+leaves quadratic terms unchanged. This is manifestly and injection, to
+demonstrate embedding it then suffices to show that
+<span class="math inline">\(\iota\, [a, b] = [\iota\, a, \iota\, b]\)</span>. Consider the following representative
+cases with nonvanishing brackets
+<span class="math display">\[\begin{aligned}
+    \iota\, [\gamma_1, \gamma_2] &amp;= \iota(2\gamma_1\gamma_2) = 2\gamma_1\gamma_2 \\
+    [\iota\, \gamma_1, \iota\, \gamma_2]
+    &amp;= [i\gamma_1\gamma_{2n+1}, i\gamma_2\gamma_{2n+1}] = 2\gamma_1\gamma_2 \\
+    \iota[\gamma_1, \gamma_1\gamma_2]
+    &amp;= \iota(2\gamma_2) = 2i\gamma_2\gamma_{2n+1} \\
+    [\iota\, \gamma_1, \iota\, \gamma_1\gamma_2]
+    &amp;= [i\gamma_1\gamma_{2n+1}, \gamma_1\gamma_2] = 2i\gamma_2\gamma_{2n+1}
+\end{aligned}\]</span>
+<div class="corollary">
+<p><span id="cor:evenReductionCor" class="corollary"><strong>Corollary 2.1  (even Gaussian unitary reduction) </strong></span>The affine Gaussian unitary group on <span class="math inline">\(n\)</span> fermionic modes is isomorphic to
+a subgroup of the even Gaussian unitary group on <span class="math inline">\(n+1\)</span> fermionic modes.</p>
+</div>
+</div>
+<div id="affine-gaussian" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Affine Gaussian<a href="gaussian-operators.html#affine-gaussian" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+
+</div>
+</div>
+<h3>Bibliography<a href="bibliography.html#bibliography" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
+<div id="ref-bravyi2004lagrangian" class="csl-entry">
+Bravyi, Sergey. 2004. <span>“Lagrangian Representation for Fermionic Linear Optics.”</span> <em>arXiv Preprint Quant-Ph/0404180</em>.
+</div>
+<div id="ref-bravyi2005classical" class="csl-entry">
+———. 2005. <span>“Classical Capacity of Fermionic Product Channels.”</span> <em>arXiv Preprint Quant-Ph/0507282</em>.
+</div>
+<div id="ref-knill2001fermionic" class="csl-entry">
+Knill, Emanuel. 2001. <span>“Fermionic Linear Optics and Matchgates.”</span> <em>arXiv Preprint Quant-Ph/0108033</em>.
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="preliminaries.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="classical-simulation-results.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

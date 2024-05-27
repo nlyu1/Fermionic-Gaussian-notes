@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>5 Magic states | Paper Notes</title>
-  <meta name="description" content="5 Magic states | Paper Notes" />
+  <title>2 Gaussians | Paper Notes</title>
+  <meta name="description" content="2 Gaussians | Paper Notes" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="5 Magic states | Paper Notes" />
+  <meta property="og:title" content="2 Gaussians | Paper Notes" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="5 Magic states | Paper Notes" />
+  <meta name="twitter:title" content="2 Gaussians | Paper Notes" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="classical-simulation-results.html"/>
-<link rel="next" href="bibliography.html"/>
+<link rel="prev" href="preliminaries.html"/>
+<link rel="next" href="fourier-perspectives-on-gaussianity.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -107,7 +107,8 @@ div.csl-indent {
 <li class="chapter" data-level="2" data-path="gaussians.html"><a href="gaussians.html"><i class="fa fa-check"></i><b>2</b> Gaussians</a>
 <ul>
 <li class="chapter" data-level="2.1" data-path="gaussians.html"><a href="gaussians.html#even-gaussian"><i class="fa fa-check"></i><b>2.1</b> Even Gaussian</a></li>
-<li class="chapter" data-level="2.2" data-path="gaussians.html"><a href="gaussians.html#affine-gaussian"><i class="fa fa-check"></i><b>2.2</b> Affine Gaussian</a></li>
+<li class="chapter" data-level="2.2" data-path="gaussians.html"><a href="gaussians.html#lie-algebra-embedding"><i class="fa fa-check"></i><b>2.2</b> Lie algebra embedding</a></li>
+<li class="chapter" data-level="2.3" data-path="gaussians.html"><a href="gaussians.html#affine-gaussian"><i class="fa fa-check"></i><b>2.3</b> Affine Gaussian</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="fourier-perspectives-on-gaussianity.html"><a href="fourier-perspectives-on-gaussianity.html"><i class="fa fa-check"></i><b>3</b> Fourier perspectives on Gaussianity</a></li>
 <li class="chapter" data-level="4" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html"><i class="fa fa-check"></i><b>4</b> Classical simulation results</a>
@@ -127,13 +128,17 @@ div.csl-indent {
 <li class="chapter" data-level="4.3.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#product-input-and-measurement-simulation"><i class="fa fa-check"></i><b>4.3.1</b> Product input and measurement simulation</a></li>
 <li class="chapter" data-level="4.3.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#insightful-perspective-affine-gaussian-overlap"><i class="fa fa-check"></i><b>4.3.2</b> Insightful perspective: affine Gaussian overlap</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#complexity-landscape"><i class="fa fa-check"></i><b>4.4</b> Complexity landscape</a>
+<li class="chapter" data-level="4.4" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#magic-states"><i class="fa fa-check"></i><b>4.4</b> Magic states</a>
 <ul>
-<li class="chapter" data-level="4.4.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#adaptive-single-qubit-measurement"><i class="fa fa-check"></i><b>4.4.1</b> Adaptive single-qubit measurement</a></li>
-<li class="chapter" data-level="4.4.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#non-adaptive-product-state-measurement"><i class="fa fa-check"></i><b>4.4.2</b> Non-adaptive product-state measurement</a></li>
+<li class="chapter" data-level="4.4.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#measurement-based-universal-computation"><i class="fa fa-check"></i><b>4.4.1</b> Measurement-based universal computation</a></li>
+<li class="chapter" data-level="4.4.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#characterization-of-magic-states"><i class="fa fa-check"></i><b>4.4.2</b> Characterization of magic states</a></li>
+</ul></li>
+<li class="chapter" data-level="4.5" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#complexity-landscape"><i class="fa fa-check"></i><b>4.5</b> Complexity landscape</a>
+<ul>
+<li class="chapter" data-level="4.5.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#adaptive-single-qubit-measurement"><i class="fa fa-check"></i><b>4.5.1</b> Adaptive single-qubit measurement</a></li>
+<li class="chapter" data-level="4.5.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#non-adaptive-product-state-measurement"><i class="fa fa-check"></i><b>4.5.2</b> Non-adaptive product-state measurement</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="magic-states.html"><a href="magic-states.html"><i class="fa fa-check"></i><b>5</b> Magic states</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
 </ul>
 
@@ -152,16 +157,92 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="magic-states" class="section level1 hasAnchor" number="5">
-<h1><span class="header-section-number">5</span> Magic states<a href="magic-states.html#magic-states" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>Josza’s work <span class="citation">(<a href="#ref-hebenstreit2019all">Hebenstreit et al. 2019</a>)</span> provides a characterization of
-resourceful states for Gaussian unitaries.</p>
+<div id="gaussians" class="section level1 hasAnchor" number="2">
+<h1><span class="header-section-number">2</span> Gaussians<a href="gaussians.html#gaussians" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>The following definition Gaussian operators in terms of their
+Fourier property is made by <span class="citation">(<a href="#ref-bravyi2005classical">Bravyi 2005</a>)</span>.</p>
+<div class="definition">
+<p><span id="def:gaussianDef" class="definition"><strong>Definition 2.1  (Gaussian operator) </strong></span>An operator <span class="math inline">\(A\in \mathcal C_{2n}\)</span> with <span class="math inline">\(\mathrm{tr}(A)\neq 0\)</span> is affine Gaussian if
+<span class="math display">\[
+    X(\theta) = \exp\left(\dfrac 1 2 \theta^T M\theta + d^T\theta\right)
+\]</span>
+for some antisymmetric <span class="math inline">\((M_{jk})\in \mathbb C^{2n\times 2n}\)</span> and
+<span class="math inline">\(d\in \mathbb C^{2n}\)</span>. It is (even) Gaussian if <span class="math inline">\(d\)</span> vanishes, which is
+equivalent to <span class="math inline">\(X(\theta)\)</span> being homogeneously even.
+Traceless Gaussians are defined as limits.
+Two special cases</p>
+<ul>
+<li>Affine Gaussian hermitian operator:
+<span class="math display">\[
+  H(\theta) = \exp\left(\dfrac i 2 \theta^T h\theta + d^T\theta\right),
+  \quad (h_{jk})\in \mathfrak{so}(2n, \mathbb R), \quad (d_j)\in \mathbb R^{2n}
+\]</span></li>
+<li>Affine Gaussian unitary:
+<span class="math display">\[
+  U(\theta) = \exp\left(\dfrac 1 2 \theta^T u\theta + id^T\theta\right),
+  \quad (u_{jk})\in \mathfrak{so}(2n, \mathbb R), \quad (d_j)\in \mathbb R^{2n}
+\]</span></li>
+</ul>
+</div>
+<div id="even-gaussian" class="section level2 hasAnchor" number="2.1">
+<h2><span class="header-section-number">2.1</span> Even Gaussian<a href="gaussians.html#even-gaussian" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+</div>
+<div id="lie-algebra-embedding" class="section level2 hasAnchor" number="2.2">
+<h2><span class="header-section-number">2.2</span> Lie algebra embedding<a href="gaussians.html#lie-algebra-embedding" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Results from <span class="citation">(<a href="#ref-knill2001fermionic">Knill 2001</a>)</span> provide the mathematical
+link between even and affine Gaussians.</p>
+<div class="definition">
+<p><span id="def:gaussianLie" class="definition"><strong>Definition 2.2  (Gaussian Lie groups and algebras) </strong></span>Fixing <span class="math inline">\(n\)</span> fermionic modes</p>
+<ul>
+<li>Let <span class="math inline">\(\mathcal L_1, \mathcal L_2\)</span> denote the linear and quadratic polynomials in <span class="math inline">\(2n\)</span>
+majorana operators, respectively.</li>
+<li>Let <span class="math inline">\(\mathcal L_2&#39;\)</span> denote quadratic monomials.
+Note that <span class="math inline">\(\dim \mathcal L_2=2n^2 + n + 1, \dim \mathcal L_2&#39;=2n^2-n\)</span>.</li>
+<li>Let <span class="math inline">\(\mathcal L_2^*\)</span> denote the quadratic polynomials without constant terms, so
+<span class="math inline">\(\dim \mathcal L_2^*=2n^2+n\)</span>.</li>
+</ul>
+</div>
+<div class="theorem">
+<p><span id="thm:evenReduction" class="theorem"><strong>Theorem 2.1  (even Gaussian algebra reduction) </strong></span>the affine Gaussian algebra <span class="math inline">\(\mathcal L_2^*\)</span> is isomorphic to a subalgebra
+of the even Gaussian algebra <span class="math inline">\(\mathcal L_2&#39;\)</span> on one more mode.</p>
+</div>
+<em>Proof:</em> Let the new mode append majorana operators <span class="math inline">\(\gamma_{2n+1}, \gamma_{2n+2}\)</span>.
+Consider <span class="math inline">\(\iota:\mathcal L_2^*\to \mathcal L_2&#39;\)</span> defined by
+<span class="math display">\[
+    \iota(\gamma_j) = i \gamma_j \gamma_{2n+1}, \quad
+    \iota(\gamma_j\gamma_k) = \gamma_j\gamma_k
+\]</span>
+In short, it appends <span class="math inline">\(i\gamma_{2n+1}\)</span> to linear terms and
+leaves quadratic terms unchanged. This is manifestly and injection, to
+demonstrate embedding it then suffices to show that
+<span class="math inline">\(\iota\, [a, b] = [\iota\, a, \iota\, b]\)</span>. Consider the following representative
+cases with nonvanishing brackets
+<span class="math display">\[\begin{aligned}
+    \iota\, [\gamma_1, \gamma_2] &amp;= \iota(2\gamma_1\gamma_2) = 2\gamma_1\gamma_2 \\
+    [\iota\, \gamma_1, \iota\, \gamma_2]
+    &amp;= [i\gamma_1\gamma_{2n+1}, i\gamma_2\gamma_{2n+1}] = 2\gamma_1\gamma_2 \\
+    \iota[\gamma_1, \gamma_1\gamma_2]
+    &amp;= \iota(2\gamma_2) = 2i\gamma_2\gamma_{2n+1} \\
+    [\iota\, \gamma_1, \iota\, \gamma_1\gamma_2]
+    &amp;= [i\gamma_1\gamma_{2n+1}, \gamma_1\gamma_2] = 2i\gamma_2\gamma_{2n+1}
+\end{aligned}\]</span>
+<div class="corollary">
+<p><span id="cor:evenReductionCor" class="corollary"><strong>Corollary 2.1  (even Gaussian unitary reduction) </strong></span>The affine Gaussian unitary group on <span class="math inline">\(n\)</span> fermionic modes is isomorphic to
+a subgroup of the even Gaussian unitary group on <span class="math inline">\(n+1\)</span> fermionic modes.</p>
+</div>
+</div>
+<div id="affine-gaussian" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Affine Gaussian<a href="gaussians.html#affine-gaussian" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 
+</div>
 </div>
 <h3>Bibliography<a href="bibliography.html#bibliography" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-hebenstreit2019all" class="csl-entry">
-Hebenstreit, Martin, Richard Jozsa, Barbara Kraus, Sergii Strelchuk, and Mithuna Yoganathan. 2019. <span>“All Pure Fermionic Non-Gaussian States Are Magic States for Matchgate Computations.”</span> <em>Physical Review Letters</em> 123 (8): 080503.
+<div id="ref-bravyi2005classical" class="csl-entry">
+———. 2005. <span>“Classical Capacity of Fermionic Product Channels.”</span> <em>arXiv Preprint Quant-Ph/0507282</em>.
+</div>
+<div id="ref-knill2001fermionic" class="csl-entry">
+Knill, Emanuel. 2001. <span>“Fermionic Linear Optics and Matchgates.”</span> <em>arXiv Preprint Quant-Ph/0108033</em>.
 </div>
 </div>
             </section>
@@ -169,8 +250,8 @@ Hebenstreit, Martin, Richard Jozsa, Barbara Kraus, Sergii Strelchuk, and Mithuna
           </div>
         </div>
       </div>
-<a href="classical-simulation-results.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="bibliography.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="preliminaries.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="fourier-perspectives-on-gaussianity.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

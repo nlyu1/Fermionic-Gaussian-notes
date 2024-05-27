@@ -1,0 +1,1140 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+% definitions for citeproc citations
+\NewDocumentCommand\citeproctext{}{}
+\NewDocumentCommand\citeproc{mm}{%
+  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
+\makeatletter
+ % allow citations to break across lines
+ \let\@cite@ofmt\@firstofone
+ % avoid brackets around text for \cite:
+ \def\@biblabel#1{}
+ \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
+\makeatother
+\newlength{\cslhangindent}
+\setlength{\cslhangindent}{1.5em}
+\newlength{\csllabelwidth}
+\setlength{\csllabelwidth}{3em}
+\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
+ {\begin{list}{}{%
+  \setlength{\itemindent}{0pt}
+  \setlength{\leftmargin}{0pt}
+  \setlength{\parsep}{0pt}
+  % turn on hanging indent if param 1 is 1
+  \ifodd #1
+   \setlength{\leftmargin}{\cslhangindent}
+   \setlength{\itemindent}{-1\cslhangindent}
+  \fi
+  % set entry spacing
+  \setlength{\itemsep}{#2\baselineskip}}}
+ {\end{list}}
+\usepackage{calc}
+\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
+\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
+\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Paper Notes},
+  pdfauthor={Nicholas Lyu},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Paper Notes}
+\author{Nicholas Lyu}
+\date{2024-05-27}
+
+\usepackage{amsthm}
+\newtheorem{theorem}{Theorem}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Corollary}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{conjecture}{Conjecture}[chapter]
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[chapter]
+\theoremstyle{definition}
+\newtheorem{example}{Example}[chapter]
+\theoremstyle{definition}
+\newtheorem{exercise}{Exercise}[chapter]
+\theoremstyle{definition}
+\newtheorem{hypothesis}{Hypothesis}[chapter]
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
+\newtheorem*{solution}{Solution}
+\begin{document}
+\maketitle
+
+{
+\setcounter{tocdepth}{1}
+\tableofcontents
+}
+\usepackage{cancel}
+\newcommand{\pd}[1]{\partial_{#1}}
+
+\newcommand{\mbb}{\mathbb}
+\newcommand{\mbf}{\mathbf}
+\newcommand{\mrm}{\mathrm}
+\newcommand{\mca}{\mathcal}
+\newcommand{\mfk}{\mathfrak}
+
+\newcommand{\tr}{\mrm{tr}} 
+\newcommand{\df}{\dfrac}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+\newcommand{\dag}{\dagger}
+
+\newcommand{\Cl}{\mca C}
+\newcommand{\Gr}{\mca G}
+\newcommand{\Pf}{\mrm{Pf}}
+\newcommand{\Pa}{\mca P}
+
+\newcommand{\poly}{\mrm{poly}}
+
+\chapter*{Preface}\label{preface}
+\addcontentsline{toc}{chapter}{Preface}
+
+\chapter{Preliminaries}\label{preliminaries}
+
+\section{Notation}\label{notation}
+
+\begin{definition}[vector and matrix notation]
+\protect\hypertarget{def:vecmatnot}{}\label{def:vecmatnot}We sometimes denote a vector \(\mathbf v\) with components \(v_j\) by \((v_j)\) or,
+when it is clear from context, simply \(v\).
+Similarly, paranthesis around matrix components \((h_{jk})\) denote
+the matrix \(\mathbf h\).
+\end{definition}
+
+\begin{definition}[multi-index notation]
+\protect\hypertarget{def:multiindex}{}\label{def:multiindex}We often work with multi-indices, which are ordered subsets of an index set
+\([N]=\{1, \cdots, N\}\). The index set should be clear from context.
+Single indices are denoted by lower-case
+\(a, b, c, d, j, k, l, \cdots\), while upper-case \(I, J, K, \cdots\)
+denote multi-indices.
+
+For example, when \(J=\{1, 2, 4\}\), the expression (here \(a_j\) is often an operator)
+\[ 
+    a_J = a_1a_2a_4 
+\]
+Given a defined-multi-index \(J\), we use \(|J|\), or sometimes simply \(j\), to
+denote its order. For our example, \(|J|=j=3\).
+\end{definition}
+
+\begin{definition}[summation notation]
+\protect\hypertarget{def:implicitsum}{}\label{def:implicitsum}A free index which appears twice in an expression is summed over.
+Single-indices sum over the index set, while multi-indices sum over the
+power-set of the index set.
+\end{definition}
+
+\section{Fermionic operators}\label{fermionic-operators}
+
+\begin{definition}[creation and annihilation operators]
+\protect\hypertarget{def:car}{}\label{def:car}The annihilation operators \(a_j^\dagger\) and
+creation operators \(a_j\) satisfy the \emph{canonical anti-commutation relations}
+\[ 
+    \{a_i, a_j^\dagger\} = \delta_{ij}, \quad \{a_i, a_j\} = 0
+\]
+We use \(\mathbf a\), or sometimes just \(a\) (when clear from context),
+to denote the vector of \(2n\) operators
+\[ 
+    \mathbf a = (a_1, a_1^\dagger, a_2, a_2^\dagger, \cdots)
+\]
+\end{definition}
+
+\begin{definition}[majorana operators]
+\protect\hypertarget{def:maj}{}\label{def:maj}The \(2n\) majorana operators over \(n\) fermionic modes is given by
+\[ 
+\begin{pmatrix}
+        q_j \\ p_j 
+    \end{pmatrix} = \Omega \begin{pmatrix}
+        a_j \\ a_j^\dagger
+    \end{pmatrix} = \begin{pmatrix}
+    a_j + a_j^\dagger\\ 
+    (a_j^\dagger- a_j)i
+    \end{pmatrix}, \quad 
+    \Omega 
+    = \begin{pmatrix}
+        1 & 1 \\ -i & i
+    \end{pmatrix}
+\]
+We use \(\gamma\) to denote the vector of \(2n\) majorana operators
+\[ 
+    (\gamma_j) = (q_1, p_1, \cdots, q_n, p_n), 
+    \quad \{\gamma_j, \gamma_k\} = 2\delta_{jk}
+\]
+The \(2n\) majorana operators freely generate a \(2^{2n}\)-dimensional
+Clifford algebra we denote \(\mathcal C_{2n}\) (note the factor of \(2\)).
+The basis for \(\mathcal C_{2n}\) are the \(2^{2n}\)
+monomials \(\gamma_J\) which are at most linear in the generators \(\gamma_j\).
+\end{definition}
+
+\begin{definition}[Jordan-Wigner transform, ONB]
+\protect\hypertarget{def:jw}{}\label{def:jw}The majorana operators may be represented by the Pauli operators
+\[
+    q_j = Z^{\otimes (j-1)}\otimes X \otimes I^{\otimes (n-j)}, 
+    \quad p_j = Z^{\otimes (j-1)}\otimes Y \otimes I^{\otimes (n-j)}
+\]
+One may check that this faithfully represents the Clifford algebra in
+\(\mathbb C^{2n}\), the Hilbert space over \(n\) qubits. Moreover, the generated
+basis \((\gamma_J)\) is orthonormal under the Hilbert-Schmidt inner product
+\[ 
+    \langle A, B\rangle= \dfrac 1 {2^n} \mathrm{tr}(A^\dagger B)
+\]
+Thus, given a \(n\)-qubit operator \(X\in \mathcal C_{2n}\), we have the decomposition
+(note the implicit summation)
+\[ 
+    X = X_J \gamma_J, \quad 
+    X_J = \langle\gamma_J, X\rangle= \dfrac 1 {2^n} \mathrm{tr}(\gamma_J^\dagger B)
+\]
+Note that \(\gamma_J^\dagger= (-1)^{j(j-1)/2}\gamma_J\) since it requires
+\(j(j-1)/2\) swaps to reorder \(J\) from reversed order.
+\end{definition}
+
+\begin{definition}[Grassmann numbers]
+\protect\hypertarget{def:gra}{}\label{def:gra}There are also \(2n\) Grassmann numbers associated with \(n\) fermionic modes
+often labeled by \(\theta, \omega, \eta, \cdots\).
+They freely generate the \(2^{2n}\)-dimensional Grassmann algebra \(\mathcal G_{2n}\).
+
+\emph{Grassmann numbers are always taken to anti-commute with other operators,
+including both Grassmann and majorana operators}.
+\end{definition}
+
+\section{Clifford-Grassmann Fourier transform}\label{clifford-grassmann-fourier-transform}
+
+There is a suitable definition of Fourier transform between the
+Grassmann and Clifford algebras. To the best of our knowledge,
+this notion of the Fourier transform first appeared in (\citeproc{ref-hudson1980translation}{Hudson, Wilkinson, and Peck 1980}).
+
+\begin{definition}[Fourier transform]
+\protect\hypertarget{def:clgrabij}{}\label{def:clgrabij}Given \(X=X_J\gamma_J\), its fourier transform is the Grassmann element
+\(X(\theta)\in \mathcal G_{2n}\) defined by
+\[ 
+    X(\theta) = X_J \theta_J 
+\]
+Given the JW-transform, this takes on the more inspiring form
+\[ 
+    X(\theta) = \dfrac 1 {2^n} \mathrm{tr}_{\mathcal C_{2n}}(e^{\gamma_j\theta_j} X)
+\]
+When \(X\) is a density operator, \(X(\theta)\) is its moment-generating
+function. The classical analogue is the moment-generating function
+\[ 
+    M_X(t) = \mathbb E[e^{tX}] = \int e^{tx} f_X(x)\, dx 
+\]
+Formal substitution is equivalent to the tracial formula
+by means of the following convenient identity.
+\end{definition}
+
+\begin{proposition}
+Given Grassmann generators \(\theta\) and majorana generators \(\gamma\) which
+anti-commute with each other
+\[ 
+    \exp(\gamma_j\theta_j) = (-1)^{j(j-1)/2} \theta_J \gamma_J 
+    = \theta_J \gamma_J^\dagger
+\]
+Similarly, for Grassmann generators \(\theta, \eta\)
+\[ 
+    \exp(\theta_j\eta_j) = (-1)^{j(j-1)/2)}\theta_J \eta_J 
+\]
+\end{proposition}
+
+\emph{Proof}: without loss of generality consider \(J=[k]\) for some \(k\leq 2n\).
+The \(k\)-th degree of the expansion
+contains \(\theta_1\gamma_1\cdots\theta_k\gamma_k\).
+There are \(k!\) of such terms, cancelling the \(1/k!\) taylor coefficient, and
+ordering this into \(\theta_J\eta_J\) requires \(j(j-1)/2\) swaps.
+
+\begin{theorem}[Fourier formula for inner product]
+\protect\hypertarget{thm:tracialOverlap}{}\label{thm:tracialOverlap}Given \(X, Y\in \mathcal C_{2n}\), the trace \(\mathrm{tr}(X, Y)\) may be computed
+in Fourier-space as a Grassmann integral
+\[ 
+    \dfrac 1 {2^n}\mathrm{tr}(XY) 
+    = (-1)^n \int D\theta\, D\eta \, e^{\theta^T\eta} X(\theta) Y(\eta)
+\]
+\end{theorem}
+
+Let \(X=X_J \gamma_J\) and similarly for \(Y\), then
+\[ 
+    \dfrac 1 {2^n}\mathrm{tr}(XY) = \dfrac 1 {2^n}\mathrm{tr}(X_JY_K \gamma_J\gamma_K)
+    = X_J Y_J \dfrac 1 {2^n}\mathrm{tr}(\gamma_J^2) = (-1)^{j(j-1)/2} X_JY_J
+\]
+On the RHS, the integrand expands to
+\((-1)^{l(l-1)/2}X_J Y_K \theta_L\eta_L\theta_J\eta_K\).
+The highest-order in \(\theta, \eta\) arises from \(J=K, L=[2n]-J=\bar J\), then
+substituting \(l=2n-j\) yields
+\[ 
+    \int D\theta\, D\eta \, e^{\theta^T\eta} X(\theta) Y(\eta) 
+    = (-1)^{(2n-j)((2n-j)-1)/2}X_J Y_J\int D\theta\, D\eta\,  \theta_{\bar J}\eta_{\bar J} \theta_J \eta_J 
+\]
+Reordering to match the signs
+\[ 
+    \theta_{\bar J}\eta_{\bar J}\theta_J \eta_J 
+    = (-1)^{j(2n-j)}\theta_{\bar J}\theta_J \eta_{\bar J}\eta_J
+    = (-1)^{j(2n-j)}\eta_{\bar J}\eta_J\theta_{\bar J}\theta_J 
+    = (-1)^{j(2n-j)}\eta_{[2n]}\theta_{[2n]}
+\]
+Recollecting the parity in the \((-2)^n\) factor, the parities of the LHS
+and RHS are respectively
+\[ 
+    \dfrac 1 2 j(j-1) \equiv n + j(2n-j) + \dfrac 1 2 (2n-j)(2n-j-1) \mod 2
+\]
+
+\section{Grassmann calculus}\label{grassmann-calculus}
+
+\begin{definition}[Grassmann differentiation and integration]
+\protect\hypertarget{def:grassmannDiff}{}\label{def:grassmannDiff}A partial derivative \(\partial_{a}\) over Grassmann numbers \((\theta_j)\) generating \(\mathcal G_{2n}\)
+is the linear operator \(\partial_{a}:\mathcal G_{2n}\to \mathcal G_{2n}\) defined by
+\[ 
+    \partial_{a} 1 = 0, \quad \partial_{a} \theta_b = \delta_{ab}, \quad 
+    \partial_{a} [\theta_b f(\theta)] = \delta_{ab}f(\theta) - \theta_b\partial_{a} f(\theta)
+\]
+It follows that Grassmann derives anti-commute
+\[ 
+    \partial_{ab}^2 + \partial_{ba}^2 = 0
+\]
+Grassmann integration is the same as differentiation: \(\int d\theta_a = \partial_{a}\), with
+the notation
+\[ 
+    \int D\theta = \int d\theta_n\cdots d\theta_1\implies \int D\theta\, \theta_{[2n]} = 1
+\]
+\end{definition}
+
+\begin{proposition}[Leibniz rule]
+\protect\hypertarget{prp:leibniz}{}\label{prp:leibniz}when \(f(\theta)\) has \emph{homogeneous degree} \(\sigma \in \{-1, 1\}\), we have
+\[ 
+    \partial_{a} [f(\theta)g(\theta)] = [\partial_{a} f(\theta)]g(\theta) + \sigma f(\theta) \partial_{b} g(\theta)
+\]
+\end{proposition}
+
+\begin{proposition}[integration by part]
+\protect\hypertarget{prp:integrationByPart}{}\label{prp:integrationByPart}If one of \(f, g\) is even, then
+\[ 
+    \int D\theta\, (\partial_{a} f)g = \pm \int D\theta\, f\partial_{a} g
+\]
+with \(+, -\) standing for even \(g\) or even \(f\), respectively.
+\end{proposition}
+
+\emph{Proof:} Now \(\partial_{a} (fg) = (\partial_{a} f)g + \sigma_f \partial_{a} g\). Apply \(\int D\theta\)
+to both sides, rearrange, and note that \(\int D\theta \, \partial_{a}(\cdots) = 0\) yields
+\[ 
+    \int D\theta\, (\partial_{a} f)g = -\sigma_f \int D\theta\, \partial_{a} g + \int D\theta\, (\partial_{a} f)g 
+\]
+
+\subsection{Grassmann fourier identities}\label{grassmann-fourier-identities}
+
+\begin{definition}[dirac delta function]
+\protect\hypertarget{def:diracDelta}{}\label{def:diracDelta}\leavevmode
+
+The Grassmann analogue of the dirac delta function is
+
+\begin{aligned}
+    \delta(\theta, \mu) 
+    &= \prod_a (\theta_a - \mu_a) = \int D\eta \, \exp\left[(\theta - \mu)^T\eta \right]
+    \\ 
+    X(\theta) &= \int D\mu\, \delta(\theta, \mu) X(\mu) 
+\end{aligned}
+
+To see the first equation, the \(2n\)-degree expansion of \(\exp\) is
+
+\begin{aligned}
+    \prod i(\theta_j - \mu_j)\eta_j 
+    &= i^{2n} (-1)^{2n(2n-1)/2} \mu_{[2n]} \prod \theta_j - \mu_j = \mu_{[2n]} \prod\theta_j - \mu_j
+\end{aligned}
+
+To see the second property,
+\(\delta(\theta, \mu) = \sigma_{J, \bar J}(-1)^j \theta_{J} \mu_{\bar J}\),
+where \(\sigma_{J, \bar J}\) is the sign associated with rearranging \([2n]\to (J, \bar J)\).
+Note that the sign associated with rearranging \((\bar J, J)\to [2n]\) is then exactly
+\(\sigma_{J, \bar J}(-1)^j\), then
+\[ 
+    \int D\mu\, \delta(\theta, \mu) \mu_K = \int D\mu\, 
+    \sigma_{J, \bar J}(-1)^j \theta_{J} \mu_{\bar J} \mu_K = \theta_K
+\]
+
+\end{definition}
+
+\subsection{Gaussian integrals}\label{gaussian-integrals}
+
+The following two formulas are found in (\citeproc{ref-bravyi2004lagrangian}{Bravyi 2004}).
+We expand upon the proofs.
+
+\begin{theorem}[homogeneous Gaussian integral]
+\protect\hypertarget{thm:evenGaussianIntegral}{}\label{thm:evenGaussianIntegral}For \(2n\times 2n\) antisymmetric \(M\)
+\[ 
+    \int D\theta \exp\left(\dfrac i 2 \theta^T M \theta\right) = i^n \mathrm{Pf}(M)
+\]
+\end{theorem}
+
+\emph{Proof:} Using antisymmetry to cancel the factor of \(2\) and summing over \(j<k\)
+\[ 
+    \exp\left(\dfrac i 2 \theta^T M \theta\right) = 
+    \exp\left(i M_{jk}\theta_j \theta_k \right)
+\]
+Here \(D\theta\) extracts the maximal-degree element in the sum, then
+\[ 
+    \int D\theta \, \exp\left(\dfrac i 2 \theta^T M \theta\right) = 
+    \exp\left(i M_{jk}\theta_j \theta_k \right) 
+    = \int D\theta \, \dfrac{i^n}{n!} \left(M_{jk}\theta_j \theta_k\right)^n 
+    = i^n \sum_{p\in \mathcal P_n} \sigma_p \prod_{b\in p} M_{b_1}M_{b_2}
+\]
+where \(\mathcal P_n\) is the set of pair-partitions of \(2n\), the factor \(1/n!\) is
+canceled by the \(n!\) number of ways we can pick across the
+\(n\) identical products \((M_{jk}\theta_j\theta_k)\).
+
+\begin{theorem}[affine Gaussian integral]
+\protect\hypertarget{thm:affGaussianIntegral}{}\label{thm:affGaussianIntegral}Given anti-symmetric \(M\) and \(\eta, \theta\in \mathcal G_{4n}\)
+mutually anticommuting
+\[ 
+    \int D\theta \, \exp \left(\eta^T\theta + \dfrac i 2 \theta^T M \theta\right) 
+    = i^n \mathrm{Pf}(M)\exp\left(-\dfrac i 2 \eta^T M^{-1}\eta\right)
+\]
+\end{theorem}
+
+\emph{Proof}: Complete the square: find \(\xi, N\) such that (here \(j, k\) are totally summed-over)
+\[ 
+    \eta^T \theta + \dfrac i 2 \theta^T M \theta = \dfrac i 2 (\theta + \xi)^T M (\theta + \xi) 
+    + \dfrac 1 2 \eta^T N \eta = \dfrac i 2  M_{jk} (\theta_j + \xi_j)(\theta_k + \xi_k) + \dfrac 1 2 N_{jk}\eta_j\eta_k 
+\]
+Matching the linear term yields \(\xi = i M^{-1}\eta, \xi_j = i M^{-1}_{jk}\eta_k\)
+\[ 
+    \eta^T \theta 
+    = \eta_j \theta_j 
+    = \dfrac i 2 \left(M_{jk} \theta_j \xi_k + M_{jk} \xi_j \theta_k\right) 
+    = i (M_{jk} \theta_j \xi_k) \implies \eta_j = i M_{jk}\xi_k 
+\]
+Matching the quadratic term in \(\eta\) yields \(N=-iM^{-1}\)
+
+\begin{aligned}
+    -\dfrac 1 2 N_{jk}\eta_j \eta_k 
+    &= \dfrac i 2 \xi_j M_{jk} \xi_k
+    = \dfrac i 2 (i M_{ja}^{-1}\eta_a) M_{jk} (i M_{kb}^{-1}\eta_b) 
+    = -\dfrac i 2 M_{ja}^{-1}\eta_a  \delta_{jb} \eta_b = \dfrac i 2 \eta_a M_{ab}^{-1}\eta_b 
+\end{aligned}
+
+Using commutativity to bring \(\exp(\eta^TN\eta/2)\) out of the integral and the shift-invariant property
+
+\begin{aligned}
+    \int D\theta \, \exp \left(\eta^T\theta + \dfrac i 2 \theta^T M \theta\right) 
+    &= \int D\theta \, \exp \left(\dfrac i 2 (\theta + \xi)^T M (\theta + \xi) 
+    + \dfrac 1 2 \eta^T N \eta\right)\\ 
+    &= \exp\left(\dfrac 1 2 \eta^T N\eta\right) \int D\theta\,\left(\dfrac i 2 (\theta + \xi)^T M (\theta + \xi) \right)\\ 
+    &= i^n \mathrm{Pf}(M)
+    \exp\left(-\dfrac i 2 \eta^T M^{-1}\eta\right)
+\end{aligned}
+
+\begin{theorem}[Gaussian operator overlap]
+\protect\hypertarget{thm:GaussianOverlap}{}\label{thm:GaussianOverlap}Given Gaussian operators \(X, Y\) and \(X\) Hermitian
+\[ 
+    X(\eta) = \exp\left(\dfrac i 2 \eta^T A\eta\right), \quad 
+    Y(\theta) = \exp\left(\dfrac i 2 \theta^T B\theta\right)
+\]
+Using theorems \ref{thm:affGaussianIntegral} and \ref{thm:tracialOverlap}
+yields
+\[ 
+    \langle X, Y\rangle= (-i)^n \mathrm{Pf}(A)\mathrm{Pf}(B - A^{-1})
+\]
+\end{theorem}
+
+\emph{Proof:} Using Hermiticity \(X^\dagger= X\)
+
+\begin{aligned}
+    \langle X, Y\rangle
+    &= \dfrac 1 {2^n}\mathrm{tr}(XY) 
+    = (-1)^n \int D\theta\, D\eta \, e^{\theta^T\eta} X(\eta) Y(\theta) \\ 
+    &= (-1)^n \int D\theta \exp\left(\dfrac i 2 \theta^T B\theta\right) 
+    \int D\eta \, e^{\theta^T\eta} 
+    \exp\left(\dfrac i 2 \eta^T A\eta\right) \\ 
+    &= (-1)^n \int D\theta \exp\left(\dfrac i 2 \theta^T B\theta\right) 
+    i^n \mathrm{Pf}(A) \exp\left(-\dfrac i 2 \theta^T A^{-1} \theta\right) \\ 
+    &= (-i)^n \mathrm{Pf}(A)\mathrm{Pf}(B - A^{-1})
+\end{aligned}
+
+\section{Classical simulatibility}\label{classical-simulatibility}
+
+The following notions of classical simulatibility are taken from
+(\citeproc{ref-brod2016efficient}{Brod 2016}).
+
+For the following two definitions,
+we consider a uniformly family of quantum circuits \(\{C_n\}\).
+
+\begin{definition}[Strong simulation]
+\protect\hypertarget{def:strongSimulation}{}\label{def:strongSimulation}\(\{C_n\}\) is strongly simulable if,
+for every \(k\) and assignment of \(k\) output bits \(\tilde y\),
+one can compute \(\Pr(\tilde y|\psi_n)\) in \(\mathrm{poly}(n)\) time on
+a classical computer.
+\end{definition}
+
+\begin{definition}[weak simulation]
+\protect\hypertarget{def:weakSimulation}{}\label{def:weakSimulation}\(\{C_n\}\) is weakly simulable if sampling
+from \(\Pr(\tilde y|\psi_n)\)
+can be done in \(\mathrm{poly}(n)\) time on a classical computer.
+\end{definition}
+
+Now consider a uniform family of adaptive quantum circuits \(\{C_n\}\) where
+one is allowed to make intermediate measurements and condition
+subsequent operations on their outcomes.
+
+\begin{definition}[weak simulation]
+\protect\hypertarget{def:adaptiveSimulation}{}\label{def:adaptiveSimulation}
+
+\(\{C_n\}\) is adaptively simulable if
+
+\begin{itemize}
+\tightlist
+\item
+  All intermediate measurements are weakly simulable.
+\item
+  The final measurements on the circuit, conditioning on intermediate outcomes,
+  is strongly simulable.
+\end{itemize}
+
+\end{definition}
+
+\chapter{Gaussian Operators}\label{gaussian-operators}
+
+The following definition Gaussian operators in terms of their
+Fourier property is made by (\citeproc{ref-bravyi2005classical}{Bravyi 2005}).
+
+\begin{definition}[Gaussian operator]
+\protect\hypertarget{def:gaussianDef}{}\label{def:gaussianDef}
+
+An operator \(A\in \mathcal C_{2n}\) with \(\mathrm{tr}(A)\neq 0\) is affine Gaussian if
+\[ 
+    X(\theta) = \exp\left(\dfrac 1 2 \theta^T M\theta + d^T\theta\right)
+\]
+for some antisymmetric \((M_{jk})\in \mathbb C^{2n\times 2n}\) and
+\(d\in \mathbb C^{2n}\). It is (even) Gaussian if \(d\) vanishes, which is
+equivalent to \(X(\theta)\) being homogeneously even.
+Traceless Gaussians are defined as limits.
+Two special cases
+
+\begin{itemize}
+\tightlist
+\item
+  Affine Gaussian hermitian operator:
+  \[ 
+    H(\theta) = \exp\left(\dfrac i 2 \theta^T h\theta + d^T\theta\right), 
+    \quad (h_{jk})\in \mathfrak{so}(2n, \mathbb R), \quad (d_j)\in \mathbb R^{2n}
+  \]
+\item
+  Affine Gaussian unitary:
+  \[ 
+    U(\theta) = \exp\left(\dfrac 1 2 \theta^T u\theta + id^T\theta\right), 
+    \quad (u_{jk})\in \mathfrak{so}(2n, \mathbb R), \quad (d_j)\in \mathbb R^{2n}
+  \]
+\end{itemize}
+
+\end{definition}
+
+\subsection{Even Gaussian operators}\label{even-gaussian-operators}
+
+Bravyi's work (\citeproc{ref-bravyi2004lagrangian}{Bravyi 2004}) provides many important
+results about Gaussian operators and maps from the Fourier perspective.
+
+\begin{theorem}[fourier characterization of Gaussian operators]
+\protect\hypertarget{thm:fourierEvenGaussianCharacterization}{}\label{thm:fourierEvenGaussianCharacterization}An operator \(X\in \mathcal C_{2n}\) is Gaussian iff it is even and satisfies
+\[ 
+    [\hat \Lambda, X\otimes X]=0, \quad \hat \Lambda = \gamma_a\otimes \gamma_a
+\]
+\end{theorem}
+
+\emph{Proof:} We first derive the adjoint action of \(\hat \Lambda\) in fourier space
+\ref{lem:adjointLambda}.
+The two directions \ref{lem:fourierEvenGaussianfwd},
+\ref{lem:fourierEvenGaussianbwd} follow.
+
+\begin{lemma}
+\protect\hypertarget{lem:adjointLambda}{}\label{lem:adjointLambda}Consider the following differential operator
+\(\Delta_a:\mathcal G_{2n}\otimes \mathcal G_{2n}\to \mathcal G_{2n}\otimes \mathcal G_{2n}\).
+\[ 
+    \Delta_a = 2(\theta_a\otimes \partial_{a} + \partial_{a} \otimes \theta_a)
+\]
+For any \(Y, Z\in \mathcal C_{2n}\) having the same parity
+\[  
+    [\gamma_a\otimes \gamma_a, Y\otimes Z](\theta) = \Delta_a[Y(\theta)\otimes Z(\theta)]
+\]
+\end{lemma}
+
+\emph{Proof:} Take \(Y, Z\) to be monomials \(\gamma_J, \gamma_K\).
+If neither \(J, K\) contains \(a\) then both sides vanish.
+If both \(J, K\) contains \(a\), then the LHS vanishes by commutation,
+and both terms of the RHS are annihilated by \(\theta_a\).
+If only \(J\) contains \(a\), then \(\gamma_a\otimes \gamma_a\) anticommutes with
+\(\gamma_J\otimes \gamma_K\) since \(J\) contains one less factor than \(K\) for \(\gamma_a\)
+to commute across, then
+\[ 
+    [\gamma_a\otimes \gamma_a, \gamma_J\otimes \gamma_K] 
+    = 2 \gamma_a \gamma_J \otimes \gamma_a \gamma_K 
+\]
+On the right hand side, only the second term in \(\Delta_a\) survives, with
+\[ 
+    2 (\partial_{a} \otimes \theta_a) \theta_J \otimes \theta_K 
+\]
+The two coefficients are seen to be equal: commuting \(\partial_{a}\) (resp. \(\gamma_a\))
+across \(\gamma_J\) (resp. \(\theta_J\)) takes the same number of swaps.
+
+\begin{lemma}
+\protect\hypertarget{lem:fourierEvenGaussianfwd}{}\label{lem:fourierEvenGaussianfwd}Given a Gaussian operator \(X(\theta)=\exp(i\theta^TM\theta/2)\)
+\[ 
+    \sum_a \Delta_a[X(\theta)\otimes X(\theta)]=0\implies [\Lambda, X\otimes X] = 0 
+\]
+The traceless case follows by continuity.
+\end{lemma}
+
+\emph{Proof:} First compute \(\partial_{a} X = i M_{ab}\theta_b X\). This is not at all
+apparant as it seems, the exponential property arises from the power rule
+\(\partial_{x} x^n = nx^{n-1}\), which is only true in Grassmann calculus if
+\(x\) (in this case \(iM_{ab}\theta^TM\theta/2\)) is even. Then
+\begin{equation}\begin{aligned}
+\left[\hat \Lambda, X\otimes X\right](\theta)
+&= 2\sum_a \left(\theta_a \otimes \partial_{a} + \partial_{a} \otimes \theta_a \right)
+\exp\left(\dfrac i 2 \theta^T M \theta\right)^{\otimes 2} \\ 
+&= 2\sum_{a, b} \theta_a X \otimes iM_{ab} \theta_b X + iM_{ab} \theta_b X \otimes \theta_a X  \\ 
+&= 2 i \sum_{a, b} M_{ab} (\theta_a \otimes \theta_b) (X\otimes X) = 0
+\end{aligned}\end{equation}
+
+\begin{lemma}
+\protect\hypertarget{lem:fourierEvenGaussianbwd}{}\label{lem:fourierEvenGaussianbwd}Suppose \(X\in \mathcal C_{2n}\) is even with \(\sum \Delta_a [X(\theta)\otimes X(\theta)]=0\),
+then \(X\) is Gaussian.
+\end{lemma}
+
+\emph{Proof:} We provide the proof for non-vanishing trace case.
+Pin down the degree expansion of \(X(\theta)\)
+\[ 
+    X(\theta) = C + \dfrac{iC}{2} M_{ab}\theta_a\theta_b + O(\theta^4) 
+    \iff X(\theta) = C \exp\left(\dfrac{i}{2} M_{ab}\theta_a\theta_b + \cdots\right)
+\]
+Apply \(1\otimes \partial_{b}\) to the equation of interest, yielding
+
+\begin{aligned}
+    0 &= (1\otimes \partial_{b}) \sum_a (\theta_a X \otimes \partial_{a} X + \partial_{a} X\otimes \theta_a X) \\ 
+    &= \sum_a \theta_aX \otimes \partial_{ba}^2 X + \partial_{a} X \otimes (\delta_{ab}X - \theta_a \partial_{b} X) \\ 
+    &= \partial_{b} X \otimes X + \sum_a \theta_aX \otimes \partial_{ba}^2 X - \partial_{a} X \otimes \theta_a \partial_{b} X \\
+\end{aligned}
+
+Consider the weaker equation where we only look at the linear term in the second
+tensor component, then the last term above vanishes due to \(\theta_a\)
+and the equation simplifies to
+
+\begin{aligned}
+    0 &= \partial_{b} X \otimes C + \sum_a \theta_aX \otimes \dfrac{iC}{2}M_{ab} \implies 
+    0 = \partial_{b} X + \dfrac i 2 \sum_a M_{ab} \theta_a X 
+\end{aligned}
+
+This suffices to show that \(X\) must be Gaussian.
+
+\subsection{Even Gaussian linear maps}\label{even-gaussian-linear-maps}
+
+\begin{definition}[Gaussian linear map]
+\protect\hypertarget{def:gaussianMapDef}{}\label{def:gaussianMapDef}A linear map \(\mathcal E:\mathcal C_{2n}\to \mathcal C_{2n}\) is Gaussian if
+\[ 
+    \mathcal E(X)(\theta) = C\int D\eta\, D\mu\, 
+    \exp \left[S(\theta, \eta) + i \eta^T \mu\right] X(\mu), \quad 
+    S(\theta, \eta) = \dfrac i 2 \begin{pmatrix}
+        \theta \\ \eta
+    \end{pmatrix} ^T \begin{pmatrix}
+        A & B \\ -B^T & D 
+    \end{pmatrix} \begin{pmatrix}
+        \theta \\ \eta
+    \end{pmatrix}
+    \label{eq:gaussianLinearMap}
+\]
+Here \(A, D\) are antisymmetric and \(B\) arbitrary. All values are complex.
+\end{definition}
+
+\begin{example}[identity map]
+\protect\hypertarget{exm:identityExample}{}\label{exm:identityExample}Recalling the Grassmann dirac delta \ref{def:diracDelta}.
+\[ 
+    X(\theta) = \int D\eta\, D\mu\, \exp(i\theta^T\eta + i\eta^T\mu) X(\mu) 
+    \implies S = \begin{pmatrix}
+        0 & I \\ -I & 0
+    \end{pmatrix}
+\]
+\end{example}
+
+\begin{proposition}
+Gaussian linear maps are parity-preserving.
+\end{proposition}
+
+\emph{Proof:} Consider the automorphism \(\overline{(\cdot)}\)
+such that \(\overline X(\theta) = X(-\theta)\). It suffices to prove that
+\[ 
+    \overline{\mathcal E(X)} = \mathcal E(\overline X)
+\]
+Here \(\overline{\mathcal E(X)}(\theta)\) is equivalent to replacing
+\(\theta\mapsto -\theta\) in \eqref{eq:gaussianLinearMap}, while \(\mathcal E(\overline X)(\theta)\)
+is equivalent to replacing \(\mu\mapsto -\mu\).
+They yield the same expression upon substitution by virtue of \(S(\theta, -\eta) = S(-\theta, \eta)\)
+and \(D(-\mu) = D\mu, D(-\eta) = D\eta\).
+
+\begin{proposition}
+Gaussian linear maps map Gaussian operators into Gausian operators.
+\end{proposition}
+
+\emph{Proof:} Since \(\mathcal E\) is parity preserving, it suffices to apply
+\ref{thm:fourierEvenGaussianCharacterization} on \(\mathcal E(X)\), for \(X\) Gaussian.
+Note the following identity
+\begin{equation}
+    \sum_a (\theta_a\otimes \partial_{\theta_a} + \partial_{\theta_a}\otimes \theta_a) 
+        (e^{i\theta^TB\eta})^{\otimes 2}
+    = -\sum_a (\eta_a\otimes \partial_{\eta_a} + \partial_{\eta_a}\otimes \eta_a) 
+        (e^{i\theta^TB\eta})^{\otimes 2}
+    \label{eq:convenientIdentity}
+\end{equation}
+We also need the Leibniz rule \ref{prp:leibniz} and integration
+by part formula \ref{prp:integrationByPart}.
+
+\section{Lie algebra embedding}\label{lie-algebra-embedding}
+
+Results from (\citeproc{ref-knill2001fermionic}{Knill 2001}) provide the mathematical
+link between even and affine Gaussians.
+
+\begin{definition}[Gaussian Lie groups and algebras]
+\protect\hypertarget{def:gaussianLie}{}\label{def:gaussianLie}
+
+Fixing \(n\) fermionic modes
+
+\begin{itemize}
+\tightlist
+\item
+  Let \(\mathcal L_1, \mathcal L_2\) denote the linear and quadratic polynomials in \(2n\)
+  majorana operators, respectively.
+\item
+  Let \(\mathcal L_2'\) denote quadratic monomials.
+  Note that \(\dim \mathcal L_2=2n^2 + n + 1, \dim \mathcal L_2'=2n^2-n\).
+\item
+  Let \(\mathcal L_2^*\) denote the quadratic polynomials without constant terms, so
+  \(\dim \mathcal L_2^*=2n^2+n\).
+\end{itemize}
+
+\end{definition}
+
+\begin{theorem}[even Gaussian algebra reduction]
+\protect\hypertarget{thm:evenReduction}{}\label{thm:evenReduction}the affine Gaussian algebra \(\mathcal L_2^*\) is isomorphic to a subalgebra
+of the even Gaussian algebra \(\mathcal L_2'\) on one more mode.
+\end{theorem}
+
+\emph{Proof:} Let the new mode append majorana operators \(\gamma_{2n+1}, \gamma_{2n+2}\).
+Consider \(\iota:\mathcal L_2^*\to \mathcal L_2'\) defined by
+\[ 
+    \iota(\gamma_j) = i \gamma_j \gamma_{2n+1}, \quad 
+    \iota(\gamma_j\gamma_k) = \gamma_j\gamma_k
+\]
+In short, it appends \(i\gamma_{2n+1}\) to linear terms and
+leaves quadratic terms unchanged. This is manifestly and injection, to
+demonstrate embedding it then suffices to show that
+\(\iota\, [a, b] = [\iota\, a, \iota\, b]\). Consider the following representative
+cases with nonvanishing brackets
+
+\begin{aligned}
+    \iota\, [\gamma_1, \gamma_2] &= \iota(2\gamma_1\gamma_2) = 2\gamma_1\gamma_2 \\ 
+    [\iota\, \gamma_1, \iota\, \gamma_2] 
+    &= [i\gamma_1\gamma_{2n+1}, i\gamma_2\gamma_{2n+1}] = 2\gamma_1\gamma_2 \\ 
+    \iota[\gamma_1, \gamma_1\gamma_2] 
+    &= \iota(2\gamma_2) = 2i\gamma_2\gamma_{2n+1} \\ 
+    [\iota\, \gamma_1, \iota\, \gamma_1\gamma_2] 
+    &= [i\gamma_1\gamma_{2n+1}, \gamma_1\gamma_2] = 2i\gamma_2\gamma_{2n+1}
+\end{aligned}
+
+\begin{corollary}[even Gaussian unitary reduction]
+\protect\hypertarget{cor:evenReductionCor}{}\label{cor:evenReductionCor}The affine Gaussian unitary group on \(n\) fermionic modes is isomorphic to
+a subgroup of the even Gaussian unitary group on \(n+1\) fermionic modes.
+\end{corollary}
+
+\section{Affine Gaussian}\label{affine-gaussian}
+
+\chapter{Classical simulation results}\label{classical-simulation-results}
+
+The pioneering works by (\citeproc{ref-terhal2002classical}{Terhal and DiVincenzo 2002}) and
+(\citeproc{ref-jozsa2008matchgates}{Jozsa and Miyake 2008}) provide classical simulation
+methods for Gaussian circuits under two different conditions,
+which are subsequently unified and generalized by (\citeproc{ref-brod2016efficient}{Brod 2016}).
+
+\section{Computational-basis input and measurement}\label{computational-basis-input-and-measurement}
+
+This work (\citeproc{ref-terhal2002classical}{Terhal and DiVincenzo 2002}) is the first to draw the connection
+between Valiant's matchgates and noninteracting fermions.
+It is shown that Gaussian circuits
+with computational basis input and computational-basis von-Neumann measurements
+are both strongly and adaptively simulable.
+
+\subsection{Insightful special case}\label{insightful-special-case}
+
+Let us first consider a subclass of number-preserving Gaussian unitaries
+and projective measurements in the computational basis.
+This case suffices to show the main insight of the paper.
+
+\begin{definition}[number-preserving unitary]
+\protect\hypertarget{def:npunitary}{}\label{def:npunitary}A Gaussian unitary \(U\) is number-preserving if it does not mix annihilation
+and creation operators. The following operator \((V_{jk})\) is unitary
+\[ 
+    U a_j^\dagger U^\dagger= V_{jk} a_k^\dagger\implies 
+    U^\dagger a_j^\dagger U = V^\dagger_{jk} a_k^\dagger, \quad U^\dagger a_j 
+    U = (V_{jk}^\dagger)^* a_k = V_{kj} a_k
+\]
+Note that \(U\) preserves the hamming weights of computational basis states.
+In particular, \(U|0\rangle= |0\rangle\).
+\end{definition}
+
+\begin{proposition}[computational basis measurement]
+\protect\hypertarget{prp:compbasismeasurement}{}\label{prp:compbasismeasurement}Let \(|I\rangle, |K\rangle\) be computational basis states.
+\end{proposition}
+
+One can efficiently compute \(\langle K|U|I\rangle\) by the following procedure. Consider
+
+\begin{aligned} 
+    U|I\rangle
+    &= U a^\dagger_I |0\rangle= U a_I^\dagger U^\dagger(U|0\rangle) 
+    = \sum_{j_1\cdots j_i} V_{I_1j_1}\cdots V_{I_iJ_i} 
+    a_{j_1}^\dagger\cdots a_{j_i}^\dagger|0\rangle
+\end{aligned}
+
+When paired with \(\langle K|\), only when \((j_l)\) is a permutation of \(K\)
+will this be nonzero, then
+\[ 
+    \langle K|U|I\rangle= \sum_{J\in \pi(K)} \mathrm{sgn}(J) V_{IJ} = \det V_{|IK} 
+\]
+Here \(\pi(K)\) denotes permutations of \(K\) and
+\(V_{|IK}\) is the \(i\times i\) matrix which selects the \(I\) rows
+and \(K\) columns of \(V\).
+
+\subsection{Generalization}\label{generalization}
+
+\begin{theorem}[strong simulation]
+\protect\hypertarget{thm:cimoStrongSimulation}{}\label{thm:cimoStrongSimulation}Given a Gaussian unitary \(U\) acting on a computational basis \(|J\rangle\),
+the probability \(\Pr(K^*|J)\), where \(K^*\) of measuring any subset
+\(K\subset [2n]\) of the qubits and finding the bitstring \(K^*\in \{0, 1\}^k\),
+is efficiently classically computable.
+\end{theorem}
+
+The proof extends that of the special case \ref{prp:compbasismeasurement}.
+One generalizes computational-basis projective to
+von-Neumann measurement by applying Wick's theorem and
+recognizing the sum as a Pfaffian of a cleverly-constructed matrix
+(instead of the determinant).
+The generalization from number-preserving to parity-preserving Gaussian unitaries
+is done by using the majorana instead of the dirac operators.
+
+Constructing the matrix whose Pfaffian yield the desired quantity
+is quite technical.
+A much more insightful interpretation is that this problem reduces to computing
+the overlap between \(U|J\rangle\) and the binary Hermitian observable corresponding to \(K^*\).
+Both are Gaussian, so the Gaussian overlap formula
+\ref{thm:GaussianOverlap} applies. The next result follows.
+
+\begin{theorem}[adaptive simulation]
+\protect\hypertarget{thm:cimoAdaptiveSimulation}{}\label{thm:cimoAdaptiveSimulation}Adaptive Gaussian circuits with computational-basis input and computational-basis
+von-Neumann measurements are adaptively simulable.
+\end{theorem}
+
+\section{Bounded output support}\label{bounded-output-support}
+
+The main results of (\citeproc{ref-jozsa2008matchgates}{Jozsa and Miyake 2008}) are
+
+\begin{itemize}
+\tightlist
+\item
+  Decomposition of matchgates into \(2\)-qubit unitaries.
+\item
+  Strong simulation for Gaussian circuits with arbitrary product-state input
+  and measurement with bounded majorana support.
+\item
+  Proof that swap constitutes a resourceful operation.
+\end{itemize}
+
+\subsection{Matchgate decomposition and simulation}\label{matchgate-decomposition-and-simulation}
+
+\subsection{Resourcefulness of swap}\label{resourcefulness-of-swap}
+
+\section{Generalization}\label{generalization-1}
+
+Brod shows that Gaussian circuits
+with arbitrary product states input and arbitrary product-state
+intermediate measurements remain classically simulable (\citeproc{ref-brod2016efficient}{Brod 2016}).
+
+\subsection{Product input and measurement simulation}\label{product-input-and-measurement-simulation}
+
+First note three useful identities: for arbitrary single-qubit state \(|\phi\rangle\)
+
+\begin{itemize}
+\tightlist
+\item
+  \(G(H, H)|\phi\rangle|+\rangle= (H|\phi\rangle)|+\rangle\)
+\item
+  \(G(Z, X)|\phi\rangle|0\rangle= |0\rangle|\phi\rangle, \quad
+  G(Z, X)|0\rangle|\phi\rangle= |\phi\rangle|0\rangle\)
+\item
+  \(G(-Z, X)|\phi\rangle|1\rangle= |1\rangle|\phi\rangle, \quad
+  G(-Z, X)|1\rangle|\phi\rangle= |\phi\rangle|1\rangle\)
+\end{itemize}
+
+Recall that single-qubit \(Z\)-rotations and \(H\) generate all single-qubit gates.
+Therefore one may prepare arbitrary product state, using only Gaussian operations,
+using the help of a \(|+\rangle\) ancilla as follows:
+
+\begin{itemize}
+\tightlist
+\item
+  Prepare \(|0\rangle|+\rangle\mapsto |\psi_1\rangle|+\rangle\) on the last two qubits.
+\item
+  Swap the last of the \(n\) qubits to the first register using \(G(Z, X)\)s
+  to obtain \(|\psi_1\rangle\cdots |0\rangle|+\rangle\).
+\item
+  Prepare \(|0\rangle|+\rangle\mapsto |\psi_2\rangle|+\rangle\) on the last two qubits, and repeat.
+\end{itemize}
+
+This yields the following proposition.
+
+\begin{proposition}
+\protect\hypertarget{prp:freeEquivProductState}{}\label{prp:freeEquivProductState}Let \(|\psi\rangle\) be a product \(n\)-qubit state of single-qubit states, then
+\(|\psi\rangle|+\rangle\) is Gaussian-equivalent to \(|0\rangle^{\otimes n}|+\rangle\).
+\end{proposition}
+
+\begin{theorem}[product-input multiple-output strong simulation]
+\protect\hypertarget{thm:pimoSimulation}{}\label{thm:pimoSimulation}Let \(\{M_n\}\) be a uniform family of (possibly adaptive) quantum
+circuits with \(\mathrm{poly}(n)\) Gaussian unitaries over \(n\) qubits acting
+on an arbitrary \(n\)-qubit product state \(|\psi\rangle= \otimes |\psi_n\rangle\).
+The circuit is strongly, as well as adaptively simulable
+for von-Neumann computational-basis intermediate measurements.
+\end{theorem}
+
+\emph{Proof}: Let the measurement projector be \(P_{\tilde y}\). Note that
+\[ 
+    |+\rangle= \dfrac{1+a_{n+1}^\dagger} {\sqrt 2}|0\rangle
+\]
+The quantity of interest thus becomes
+\begin{equation}\begin{aligned}
+    \Pr(\tilde y|\psi) 
+    &= \dfrac 1 2 \langle 0_{n+1}|(1+a_{n+1})U^\dagger M_n^\dagger P_{\tilde y}M_n U(1+a_{n+1}^\dagger)|0_{n+1}\rangle\\ 
+    &= \dfrac 1 2 \langle 0_{n+1}|a_{n+1}U^\dagger M_n^\dagger P_{\tilde y}M_n Ua_{n+1}^\dagger|0_{n+1}\rangle
+    + \dfrac 1 2 \langle 0_{n+1}|U^\dagger M_n^\dagger P_{\tilde y}M_n U|0_{n+1}\rangle\\ 
+\end{aligned}\label{eq:simulationProb}\end{equation}
+Of the product \((1+a_{n+1})\cdots (1+a_{n+1}^\dagger)\), only the terms
+\((\cdots)+a_{n+1}\cdots a_{n+1}^\dagger\) yield nonzero matrix elements; this is
+by Wick's theorem, which states that creation and annihilation operators must be
+pairwise contracted to yield a scalar element (the only normal-ordered operator
+with nonvanishing vacuum matrix element).
+One may then recognize \(\Pr(\tilde y|\psi)\) as a sum of two Pfaffians via
+the construction of \ref{thm:cimoStrongSimulation}. Adaptive simulation follows
+from projective measurements \(P_j\) being parity-preserving.
+
+\begin{theorem}[product-input multiple-output weak simulation]
+\protect\hypertarget{thm:pimoweakSimulation}{}\label{thm:pimoweakSimulation}The circuit in \ref{thm:pimoSimulation}
+is weakly simulable for arbitrary product-state von-Neumann measurements.
+\end{theorem}
+
+\emph{Proof}: By use of an ancilla in \(|+\rangle\), we can perform arbitrary single-qubit
+gate on the last qubit and rotate the measurement basis to a \(Z\)-measurement.
+Doing this measurement collapses the last qubit to \(|0\rangle\) or \(|1\rangle\), upon which
+we can adaptively f-swap the last and second-last qubits using \(G(\pm Z, X)\)
+and repeat measurement of the second-last qubit, and so on.
+This provides weak simulation (sampling scheme) of
+rbitrary product-state input and measurement
+on the last \(k\) qubits. The proof concludes by
+the freedom to re-order fermionic modes.
+
+\subsection{Insightful perspective: affine Gaussian overlap}\label{insightful-perspective-affine-gaussian-overlap}
+
+One may see that the single-qubit product state \(|\psi\rangle\) is affine-Gaussian
+equivalent to \(|0\rangle^{\otimes n}\) using a similar protocol.
+Affine Gaussians include single-qubit unitaries on the first qubit, as well as all
+even Gaussian unitaries. One can prepare \(|\psi_n\rangle\cdots |\psi_1\rangle\) on the first
+qubit and f-swap them to their respective positions using \(G(Z, X)\).
+Then \(\Pr(\tilde y|\psi)\) as in \eqref{eq:simulationProb} is the tracial overlap
+between the even-Gaussian Hermitian \(P_{\tilde y}\) and the affine Gaussian
+\(U|0\rangle^{\otimes n}\), where \(U\) is an affine Gaussian unitary.
+
+We can extend the Gaussian overlap formula \ref{thm:GaussianOverlap} to the
+case when one of the two operators is not homogeneously even, since they will
+continue to commute. This constitutes another proof of theorem \ref{thm:pimoSimulation}.
+
+\begin{theorem}[affine-Gaussian operator overlap]
+\protect\hypertarget{thm:affGaussianOverlap}{}\label{thm:affGaussianOverlap}Given Gaussian operators \(X, Y\) and \(Y\) affine
+\[ 
+    X(\eta) = \exp\left(\dfrac i 2 \eta^T A\eta\right), \quad 
+    Y(\theta) = \exp\left(\dfrac i 2 \theta^T B\theta + b^T\theta\right)
+\]
+Using theorems \ref{thm:affGaussianIntegral} and \ref{thm:tracialOverlap}
+yields
+\[ 
+    \mathrm{tr}(XY) = (-2i)^n \mathrm{Pf}(A)\mathrm{Pf}(B - A^{-1})
+\]
+\end{theorem}
+
+\emph{Proof:} \(X(\eta)\) and \(Y(\theta)\) continue to commute, then
+
+\begin{aligned}
+    \mathrm{tr}(XY)
+    &= (-2)^n \int D\theta\, D\eta \, e^{\theta^T\eta} X(\eta) Y(\theta) \\ 
+    &= (-2)^n \int D\theta \exp\left(\dfrac i 2 \theta^T B\theta+b^T\theta\right) 
+    \int D\eta \, e^{\theta^T\eta} 
+    \exp\left(\dfrac i 2 \eta^T A\eta\right) \\ 
+    &= (-2)^n \int D\theta \exp\left(\dfrac i 2 \theta^T B\theta+b^T\theta\right) 
+    i^n \mathrm{Pf}(A) \exp\left(-\dfrac i 2 \theta^T A^{-1} \theta\right) \\ 
+    &= (-2i)^n\mathrm{Pf}(A) \int D\theta \exp\left[\dfrac i 2 \theta^T (B-A^{-1})\theta+b^T\theta\right] \\ 
+    &= (-2i)^n \mathrm{Pf}(A)\mathrm{Pf}(B - A^{-1})
+\end{aligned}
+
+Recall that affine terms of the Gaussian only affect odd moments
+so \(b^T\theta\) does not affect the final integral.
+
+\section{Magic states}\label{magic-states}
+
+Josza's work (\citeproc{ref-hebenstreit2019all}{Hebenstreit et al. 2019}) provides a characterization of
+resourceful states for Gaussian unitaries.
+
+\subsection{Measurement-based universal computation}\label{measurement-based-universal-computation}
+
+\begin{theorem}[swap gadget construction]
+\protect\hypertarget{thm:qchardSimulation}{}\label{thm:qchardSimulation}weak simulation of Gaussian circuits with magic-state input and
+adaptive measurements is QC-hard.
+\end{theorem}
+
+\emph{Proof:} It suffices to construct a protocol equivalent to universal
+quantum computation.
+
+\subsection{Characterization of magic states}\label{characterization-of-magic-states}
+
+\section{Complexity landscape}\label{complexity-landscape}
+
+The computational power of a circuit model depends on the following ingredients
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{Gate set:} here we always consider Gaussian unitaries.
+\item
+  \emph{Input states (IN):} computational basis (CB), general single-qubit product states (PROD),
+  magic states (MAGIC)
+\item
+  \emph{Intermediate measurements} (ADAPT)
+\item
+  \emph{Final measurement (M):} single-qubit (ONE) or multi-qubit product-state (PROD) measurements.
+\end{itemize}
+
+The following theorems, together with \ref{thm:pimoSimulation} and
+\#\#\# Non-adaptive single-qubit measurement
+
+\begin{theorem}
+\protect\hypertarget{thm:naOneSimulation}{}\label{thm:naOneSimulation}Strong simulation of
+non-adaptive Gaussian circuits with magic input
+and single-qubit measurement is poly-time.
+\end{theorem}
+
+\subsection{Adaptive single-qubit measurement}\label{adaptive-single-qubit-measurement}
+
+\begin{theorem}
+\protect\hypertarget{thm:aOneSimulation}{}\label{thm:aOneSimulation}Strong simulation of adaptive Gaussian circuits with product-state input
+and single-qubit measurement is \#P-hard.
+\end{theorem}
+
+\subsection{Non-adaptive product-state measurement}\label{non-adaptive-product-state-measurement}
+
+\begin{theorem}
+\protect\hypertarget{thm:naProdSimulation}{}\label{thm:naProdSimulation}Strong simulation of nonadaptive Gaussian circuits with
+magic input and product-state measurement is \#P-hard.
+\end{theorem}
+
+\begin{theorem}
+\protect\hypertarget{thm:naMagicSimulation}{}\label{thm:naMagicSimulation}Weak simulation of nonadaptive Gaussian circuits with
+magic input and product-state measurement implies polynomial-hierarchy collapse.
+\end{theorem}
+
+\chapter*{Bibliography}\label{bibliography}
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\phantomsection\label{refs}
+\begin{CSLReferences}{1}{0}
+\bibitem[\citeproctext]{ref-bravyi2004lagrangian}
+Bravyi, Sergey. 2004. {``Lagrangian Representation for Fermionic Linear Optics.''} \emph{arXiv Preprint Quant-Ph/0404180}.
+
+\bibitem[\citeproctext]{ref-bravyi2005classical}
+---------. 2005. {``Classical Capacity of Fermionic Product Channels.''} \emph{arXiv Preprint Quant-Ph/0507282}.
+
+\bibitem[\citeproctext]{ref-brod2016efficient}
+Brod, Daniel J. 2016. {``Efficient Classical Simulation of Matchgate Circuits with Generalized Inputs and Measurements.''} \emph{Physical Review A} 93 (6): 062332.
+
+\bibitem[\citeproctext]{ref-hebenstreit2019all}
+Hebenstreit, Martin, Richard Jozsa, Barbara Kraus, Sergii Strelchuk, and Mithuna Yoganathan. 2019. {``All Pure Fermionic Non-Gaussian States Are Magic States for Matchgate Computations.''} \emph{Physical Review Letters} 123 (8): 080503.
+
+\bibitem[\citeproctext]{ref-hudson1980translation}
+Hudson, RL, MD Wilkinson, and SN Peck. 1980. {``Translation-Invariant Integrals, and Fourier Analysis on Clifford and Grassmann Algebras.''} \emph{Journal of Functional Analysis} 37 (1): 68--87.
+
+\bibitem[\citeproctext]{ref-jozsa2008matchgates}
+Jozsa, Richard, and Akimasa Miyake. 2008. {``Matchgates and Classical Simulation of Quantum Circuits.''} \emph{Proceedings of the Royal Society A: Mathematical, Physical and Engineering Sciences} 464 (2100): 3089--3106.
+
+\bibitem[\citeproctext]{ref-knill2001fermionic}
+Knill, Emanuel. 2001. {``Fermionic Linear Optics and Matchgates.''} \emph{arXiv Preprint Quant-Ph/0108033}.
+
+\bibitem[\citeproctext]{ref-terhal2002classical}
+Terhal, Barbara M, and David P DiVincenzo. 2002. {``Classical Simulation of Noninteracting-Fermion Quantum Circuits.''} \emph{Physical Review A} 65 (3): 032325.
+
+\end{CSLReferences}
+
+\end{document}

@@ -1,0 +1,270 @@
+# Classical simulation results
+The pioneering works by [@terhal2002classical] and 
+[@jozsa2008matchgates] provide classical simulation 
+methods for Gaussian circuits under two different conditions, 
+which are subsequently unified and generalized by [@brod2016efficient]. 
+
+## Computational-basis input and measurement
+
+This work [@terhal2002classical] is the first to draw the connection 
+between Valiant's matchgates and noninteracting fermions. 
+It is shown that Gaussian circuits 
+with computational basis input and computational-basis von-Neumann measurements 
+are both strongly and adaptively simulable. 
+
+### Insightful special case 
+Let us first consider a subclass of number-preserving Gaussian unitaries 
+and projective measurements in the computational basis. 
+This case suffices to show the main insight of the paper. 
+
+::: {.definition #npunitary name="number-preserving unitary"}
+A Gaussian unitary $U$ is number-preserving if it does not mix annihilation 
+and creation operators. The following operator $(V_{jk})$ is unitary 
+\[ 
+    U a_j^\dag U^\dag = V_{jk} a_k^\dag\implies 
+    U^\dag a_j^\dag U = V^\dag_{jk} a_k^\dag, \quad U^\dag a_j 
+    U = (V_{jk}^\dag)^* a_k = V_{kj} a_k
+\] 
+Note that $U$ preserves the hamming weights of computational basis states. 
+In particular, $U|0\ra = |0\ra$. 
+:::
+
+::: {.proposition #compbasismeasurement name="computational basis measurement"} 
+Let $|I\ra, |K\ra$ be computational basis states. 
+:::
+One can efficiently compute $\la K|U|I\ra$ by the following procedure. Consider 
+\begin{aligned} 
+    U|I\ra 
+    &= U a^\dag_I |0\ra = U a_I^\dag U^\dag (U|0\ra) 
+    = \sum_{j_1\cdots j_i} V_{I_1j_1}\cdots V_{I_iJ_i} 
+    a_{j_1}^\dag \cdots a_{j_i}^\dag |0\ra 
+\end{aligned}
+When paired with $\la K|$, only when $(j_l)$ is a permutation of $K$ 
+will this be nonzero, then 
+\[ 
+    \la K|U|I\ra = \sum_{J\in \pi(K)} \mrm{sgn}(J) V_{IJ} = \det V_{|IK} 
+\] 
+Here $\pi(K)$ denotes permutations of $K$ and 
+$V_{|IK}$ is the $i\times i$ matrix which selects the $I$ rows 
+and $K$ columns of $V$.  
+
+
+### Generalization
+::: {.theorem #cimoStrongSimulation name="strong simulation"} 
+Given a Gaussian unitary $U$ acting on a computational basis $|J\ra$, 
+the probability $\Pr(K^*|J)$, where $K^*$ of measuring any subset 
+$K\subset [2n]$ of the qubits and finding the bitstring $K^*\in \{0, 1\}^k$, 
+is efficiently classically computable. 
+:::
+
+The proof extends that of the special case \@ref(prp:compbasismeasurement). 
+One generalizes computational-basis projective to 
+von-Neumann measurement by applying Wick's theorem and 
+recognizing the sum as a Pfaffian of a cleverly-constructed matrix 
+(instead of the determinant). 
+The generalization from number-preserving to parity-preserving Gaussian unitaries 
+is done by using the majorana instead of the dirac operators. 
+
+Constructing the matrix whose Pfaffian yield the desired quantity 
+is quite technical. 
+A much more insightful interpretation is that this problem reduces to computing 
+the overlap between $U|J\ra$ and the binary Hermitian observable corresponding to $K^*$. 
+Both are Gaussian, so the Gaussian overlap formula 
+\@ref(thm:GaussianOverlap) applies. The next result follows. 
+
+::: {.theorem #cimoAdaptiveSimulation name="adaptive simulation"} 
+Adaptive Gaussian circuits with computational-basis input and computational-basis 
+von-Neumann measurements are adaptively simulable. 
+:::
+
+
+
+## Bounded output support
+The main results of [@jozsa2008matchgates] are 
+
+- Decomposition of matchgates into $2$-qubit unitaries. 
+- Strong simulation for Gaussian circuits with arbitrary product-state input 
+and measurement with bounded majorana support. 
+- Proof that swap constitutes a resourceful operation. 
+
+### Matchgate decomposition and simulation
+
+### Resourcefulness of swap 
+
+
+## Generalization
+
+Brod shows that Gaussian circuits 
+with arbitrary product states input and arbitrary product-state 
+intermediate measurements remain classically simulable [@brod2016efficient]. 
+
+### Product input and measurement simulation 
+
+First note three useful identities: for arbitrary single-qubit state $|\phi\ra$ 
+
+- $G(H, H)|\phi\ra |+\ra = (H|\phi\ra)|+\ra$
+- $G(Z, X)|\phi\ra |0\ra = |0\ra|\phi\ra, \quad 
+G(Z, X)|0\ra|\phi\ra = |\phi\ra|0\ra$
+- $G(-Z, X)|\phi\ra |1\ra = |1\ra|\phi\ra, \quad 
+G(-Z, X)|1\ra|\phi\ra = |\phi\ra|1\ra$
+
+Recall that single-qubit $Z$-rotations and $H$ generate all single-qubit gates. 
+Therefore one may prepare arbitrary product state, using only Gaussian operations, 
+using the help of a $|+\ra$ ancilla as follows: 
+
+- Prepare $|0\ra |+\ra\mapsto |\psi_1\ra |+\ra$ on the last two qubits. 
+- Swap the last of the $n$ qubits to the first register using $G(Z, X)$s 
+to obtain $|\psi_1\ra \cdots |0\ra|+\ra$. 
+- Prepare $|0\ra|+\ra \mapsto |\psi_2\ra|+\ra$ on the last two qubits, and repeat. 
+
+This yields the following proposition. 
+
+::: {.proposition #freeEquivProductState} 
+Let $|\psi\ra$ be a product $n$-qubit state of single-qubit states, then 
+$|\psi\ra|+\ra$ is Gaussian-equivalent to $|0\ra^{\otimes n}|+\ra$. 
+:::
+
+
+::: {.theorem #pimoSimulation name="product-input multiple-output strong simulation"} 
+
+Let $\{M_n\}$ be a uniform family of (possibly adaptive) quantum 
+circuits with $\poly(n)$ Gaussian unitaries over $n$ qubits acting 
+on an arbitrary $n$-qubit product state $|\psi\ra = \otimes |\psi_n\ra$. 
+The circuit is strongly, as well as adaptively simulable 
+for von-Neumann computational-basis intermediate measurements. 
+:::
+
+_Proof_: Let the measurement projector be $P_{\tilde y}$. Note that 
+\[ 
+    |+\ra = \df {1+a_{n+1}^\dag} {\sqrt 2}|0\ra 
+\] 
+The quantity of interest thus becomes 
+\begin{equation}\begin{aligned}
+    \Pr(\tilde y|\psi) 
+    &= \df 1 2 \la 0_{n+1}|(1+a_{n+1})U^\dag M_n^\dag P_{\tilde y}M_n U(1+a_{n+1}^\dag)|0_{n+1}\ra \\ 
+    &= \df 1 2 \la 0_{n+1}|a_{n+1}U^\dag M_n^\dag P_{\tilde y}M_n Ua_{n+1}^\dag|0_{n+1}\ra 
+    + \df 1 2 \la 0_{n+1}|U^\dag M_n^\dag P_{\tilde y}M_n U|0_{n+1}\ra \\ 
+\end{aligned}(\#eq:simulationProb)\end{equation}
+Of the product $(1+a_{n+1})\cdots (1+a_{n+1}^\dag)$, only the terms 
+$(\cdots)+a_{n+1}\cdots a_{n+1}^\dag$ yield nonzero matrix elements; this is 
+by Wick's theorem, which states that creation and annihilation operators must be 
+pairwise contracted to yield a scalar element (the only normal-ordered operator 
+with nonvanishing vacuum matrix element). 
+One may then recognize $\Pr(\tilde y|\psi)$ as a sum of two Pfaffians via 
+the construction of \@ref(thm:cimoStrongSimulation). Adaptive simulation follows 
+from projective measurements $P_j$ being parity-preserving. 
+
+::: {.theorem #pimoweakSimulation name="product-input multiple-output weak simulation"} 
+
+The circuit in \@ref(thm:pimoSimulation) 
+is weakly simulable for arbitrary product-state von-Neumann measurements. 
+:::
+
+_Proof_: By use of an ancilla in $|+\ra$, we can perform arbitrary single-qubit 
+gate on the last qubit and rotate the measurement basis to a $Z$-measurement. 
+Doing this measurement collapses the last qubit to $|0\ra$ or $|1\ra$, upon which 
+we can adaptively f-swap the last and second-last qubits using $G(\pm Z, X)$ 
+and repeat measurement of the second-last qubit, and so on. 
+This provides weak simulation (sampling scheme) of 
+rbitrary product-state input and measurement 
+on the last $k$ qubits. The proof concludes by 
+the freedom to re-order fermionic modes.  
+
+
+### Insightful perspective: affine Gaussian overlap
+One may see that the single-qubit product state $|\psi\ra$ is affine-Gaussian 
+equivalent to $|0\ra^{\otimes n}$ using a similar protocol. 
+Affine Gaussians include single-qubit unitaries on the first qubit, as well as all 
+even Gaussian unitaries. One can prepare $|\psi_n\ra\cdots |\psi_1\ra$ on the first 
+qubit and f-swap them to their respective positions using $G(Z, X)$. 
+Then $\Pr(\tilde y|\psi)$ as in \@ref(eq:simulationProb) is the tracial overlap 
+between the even-Gaussian Hermitian $P_{\tilde y}$ and the affine Gaussian 
+$U|0\ra^{\otimes n}$, where $U$ is an affine Gaussian unitary. 
+
+We can extend the Gaussian overlap formula \@ref(thm:GaussianOverlap) to the 
+case when one of the two operators is not homogeneously even, since they will 
+continue to commute. This constitutes another proof of theorem \@ref(thm:pimoSimulation). 
+
+::: {.theorem #affGaussianOverlap name="affine-Gaussian operator overlap"}
+Given Gaussian operators $X, Y$ and $Y$ affine 
+\[ 
+    X(\eta) = \exp\left(\df i 2 \eta^T A\eta\right), \quad 
+    Y(\theta) = \exp\left(\df i 2 \theta^T B\theta + b^T\theta\right)
+\] 
+Using theorems \@ref(thm:affGaussianIntegral) and \@ref(thm:tracialOverlap) 
+yields 
+\[ 
+    \tr(XY) = (-2i)^n \Pf(A)\Pf(B - A^{-1})
+\] 
+:::
+
+_Proof:_ $X(\eta)$ and $Y(\theta)$ continue to commute, then 
+\begin{aligned}
+    \tr(XY)
+    &= (-2)^n \int D\theta\, D\eta \, e^{\theta^T\eta} X(\eta) Y(\theta) \\ 
+    &= (-2)^n \int D\theta \exp\left(\df i 2 \theta^T B\theta+b^T\theta\right) 
+    \int D\eta \, e^{\theta^T\eta} 
+    \exp\left(\df i 2 \eta^T A\eta\right) \\ 
+    &= (-2)^n \int D\theta \exp\left(\df i 2 \theta^T B\theta+b^T\theta\right) 
+    i^n \Pf(A) \exp\left(-\df i 2 \theta^T A^{-1} \theta\right) \\ 
+    &= (-2i)^n\Pf(A) \int D\theta \exp\left[\df i 2 \theta^T (B-A^{-1})\theta+b^T\theta\right] \\ 
+    &= (-2i)^n \Pf(A)\Pf(B - A^{-1})
+\end{aligned}
+Recall that affine terms of the Gaussian only affect odd moments 
+so $b^T\theta$ does not affect the final integral. 
+
+## Magic states
+
+Josza's work [@hebenstreit2019all] provides a characterization of 
+resourceful states for Gaussian unitaries. 
+
+### Measurement-based universal computation
+::: {.theorem #qchardSimulation name="swap gadget construction"} 
+
+weak simulation of Gaussian circuits with magic-state input and 
+adaptive measurements is QC-hard.
+:::
+_Proof:_ It suffices to construct a protocol equivalent to universal 
+quantum computation.
+
+### Characterization of magic states 
+
+
+## Complexity landscape
+The computational power of a circuit model depends on the following ingredients 
+
+- _Gate set:_ here we always consider Gaussian unitaries. 
+- _Input states (IN):_ computational basis (CB), general single-qubit product states (PROD), 
+magic states (MAGIC)
+- _Intermediate measurements_ (ADAPT)
+- _Final measurement (M):_ single-qubit (ONE) or multi-qubit product-state (PROD) measurements. 
+
+The following theorems, together with \@ref(thm:pimoSimulation) and 
+### Non-adaptive single-qubit measurement 
+
+::: {.theorem #naOneSimulation} 
+
+Strong simulation of 
+non-adaptive Gaussian circuits with magic input 
+and single-qubit measurement is poly-time. 
+:::
+
+### Adaptive single-qubit measurement 
+::: {.theorem #aOneSimulation} 
+
+Strong simulation of adaptive Gaussian circuits with product-state input 
+and single-qubit measurement is #P-hard.
+:::
+
+### Non-adaptive product-state measurement 
+::: {.theorem #naProdSimulation} 
+
+Strong simulation of nonadaptive Gaussian circuits with 
+magic input and product-state measurement is #P-hard.
+:::
+
+::: {.theorem #naMagicSimulation} 
+
+Weak simulation of nonadaptive Gaussian circuits with 
+magic input and product-state measurement implies polynomial-hierarchy collapse.
+:::

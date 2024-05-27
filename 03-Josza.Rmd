@@ -1,4 +1,0 @@
-# Bounded-output Gaussian circuits
-This work [@jozsa2008matchgates] provides strong simulation 
-for Gaussian circuits with arbitrary product-state input 
-and measurements with bounded majorana support. 
