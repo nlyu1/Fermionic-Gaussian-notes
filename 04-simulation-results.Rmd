@@ -150,6 +150,11 @@ is poly-computable.
 
 ### Resourcefulness of swap 
 
+::: {.theorem name="universality of "}
+Any Gaussian unitary over $n$ qubits is decomposable into $O(n^3)$ 
+n.n. Gaussian unitary. 
+::: 
+
 
 ## Generalization
 

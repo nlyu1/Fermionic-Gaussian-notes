@@ -10,10 +10,11 @@ An operator $A\in \Cl_{2n}$ with $\tr(A)\neq 0$ is affine Gaussian if
 for some antisymmetric $(M_{jk})\in \mbb C^{2n\times 2n}$ and 
 $d\in \mbb C^{2n}$. It is (even) Gaussian if $d$ vanishes, which is 
 equivalent to $X(\theta)$ being homogeneously even. 
-Traceless Gaussians are defined as limits.
+Traceless Gaussians are defined as limits. The _correlation matrix _
+of $X(\theta)$ as above is in fact $-iM$. 
 Two special cases
 
-- Affine Gaussian hermitian operator: 
+- Affine Gaussian hermitian operator: in this case the correlation matrix is just $h$ 
 \[ 
     H(\theta) = C\exp\left(\df i 2 \theta^T h\theta + d^T\theta\right), 
     \quad (h_{jk})\in \mfk{so}(2n, \mbb R), \quad (d_j)\in \mbb R^{2n}
@@ -31,9 +32,7 @@ We focus on even Gaussians first then extend known results, as possible,
 to affine Gaussians. 
 
 ## Even Gaussian
-### Even Gaussian operators
-
-### Characterization
+### Characterization {-}
 ::: {.theorem #evenGaussianEffect
 name="effect of Gaussian unitaries"}
 Consider a Gaussian unitary 
@@ -86,7 +85,7 @@ are equivalent.
 :::
  
 
-### Fourier perspective 
+### Fourier perspective {-}
 Bravyi's work [@bravyi2004lagrangian] provides many important 
 results about Gaussian operators and maps from the Fourier perspective.
 
@@ -150,7 +149,8 @@ $x$ (in this case $iM_{ab}\theta^TM\theta/2$) is even. Then
 \left[\hat \Lambda, X\otimes X\right](\theta)
 &= 2\sum_a \left(\theta_a \otimes \pd a + \pd a \otimes \theta_a \right)
 \exp\left(\df i 2 \theta^T M \theta\right)^{\otimes 2} \\ 
-&= 2\sum_{a, b} \theta_a X \otimes iM_{ab} \theta_b X + iM_{ab} \theta_b X \otimes \theta_a X  \\ 
+&= 2\sum_{a, b} \theta_a X \otimes iM_{ab} \theta_b X 
+    + iM_{ab} \theta_b X \otimes \theta_a X  \\ 
 &= 2 i \sum_{a, b} M_{ab} (\theta_a \otimes \theta_b) (X\otimes X) = 0
 \end{aligned}\end{equation}
 
@@ -168,8 +168,10 @@ Pin down the degree expansion of $X(\theta)$
 Apply $1\otimes \pd b$ to the equation of interest, yielding 
 \begin{aligned}
     0 &= (1\otimes \pd b) \sum_a (\theta_a X \otimes \pd a X + \pd a X\otimes \theta_a X) \\ 
-    &= \sum_a \theta_aX \otimes \pd {ba}^2 X + \pd a X \otimes (\delta_{ab}X - \theta_a \pd b X) \\ 
-    &= \pd b X \otimes X + \sum_a \theta_aX \otimes \pd {ba}^2 X - \pd a X \otimes \theta_a \pd b X \\
+    &= \sum_a \theta_aX \otimes \pd {ba}^2 X + \pd a X \otimes 
+        (\delta_{ab}X - \theta_a \pd b X) \\ 
+    &= \pd b X \otimes X + \sum_a \theta_aX \otimes \pd {ba}^2 X 
+        - \pd a X \otimes \theta_a \pd b X \\
 \end{aligned}
 Consider the weaker equation where we only look at the linear term in the second 
 tensor component, then the last term above vanishes due to $\theta_a$ 
@@ -181,7 +183,7 @@ and the equation simplifies to
 This suffices to show that $X$ must be Gaussian.
 
 
-### Even Gaussian linear maps
+### Gaussian linear maps {-}
 ::: {.definition #gaussianMapDef name="Gaussian linear map"}
 A linear map $\mca E:\Cl_{2n}\to \Cl_{2n}$ is Gaussian if 
 \[ 
@@ -197,6 +199,15 @@ A linear map $\mca E:\Cl_{2n}\to \Cl_{2n}$ is Gaussian if
     (\#eq:gaussianLinearMap)
 \] 
 Here $A, D$ are antisymmetric and $B$ arbitrary. All values are complex. 
+It's also insightful to expand the whole expression using 
+$\theta^TB\eta - \eta^TB^T\theta = 2\theta^T B \eta$ 
+\[ 
+    \mca E(X)(\theta) = C\exp\left(\df i 2 
+        \theta^TA\theta\right)\int D\eta\, 
+    \exp \left[(iB^T \theta)^T \eta + \df i 2 \eta^T D \eta
+    \right] \int D\mu\, \exp(i \eta^T \mu) X(\mu)
+    (\#eq:gaussianLinearMapExtended)
+\] 
 :::
 
 ::: {.example #identityExample name="identity map"}
@@ -218,9 +229,11 @@ such that $\overline X(\theta) = X(-\theta)$. It suffices to prove that
     \overline{\mca E(X)} = \mca E(\overline X)
 \] 
 Here $\overline{\mca E(X)}(\theta)$ is equivalent to replacing 
-$\theta\mapsto -\theta$ in \@ref(eq:gaussianLinearMap), while $\mca E(\overline X)(\theta)$ 
+$\theta\mapsto -\theta$ in \@ref(eq:gaussianLinearMap), while 
+$\mca E(\overline X)(\theta)$ 
 is equivalent to replacing $\mu\mapsto -\mu$. 
-They yield the same expression upon substitution by virtue of $S(\theta, -\eta) = S(-\theta, \eta)$ 
+They yield the same expression upon substitution by virtue of 
+$S(\theta, -\eta) = S(-\theta, \eta)$ 
 and $D(-\mu) = D\mu, D(-\eta) = D\eta$. 
 
 
@@ -251,21 +264,71 @@ One can show that $f(\eta)$ is even. One can go on to show that
     = \mca E\otimes \mca E(\Lambda_{\mrm{ad}}\, X\otimes X) = 0
 \] 
 
-::: {.proposition name="effect of Gaussian linear maps"}
+::: {.theorem name="effect of Gaussian linear maps"}
 Let $X$ be a Gaussian operator with correlation $M$ and pre-exponential 
 factor $C$, then $\mca E(X)$ as defined in \@ref(eq:gaussianLinearMap) 
 has correlation matrix 
-\[ 
+\begin{equation} 
     \mca E(M) = B(M^{-1}+D)^{-1}B^T + A 
-\] 
+(\#eq:linearMapCovGeneral)
+\end{equation}
 The pre-exponential factor is 
-\begin{aligned}
+\begin{equation} 
+\begin{split}
     \tr\, \mca E(X) &= C (-1)^n \Pf(M)\Pf(M^{-1}+D)\tr(X) \\ 
     \tr[\mca E(X)]^2 &= C^2 \det (I+MD)\tr(X)^2
-\end{aligned}
+\end{split}
+(\#eq:linearMapTrace)
+\end{equation} 
 :::
 
-_Proof:_ 
+_Proof:_ Picking up from \@ref(eq:gaussianLinearMapExtended)
+\begin{align}
+    \mca E(X)(\theta) 
+    &= C\, \tr(X)\, \exp\left(\df i 2 
+        \theta^TA\theta\right)\int D\eta\, 
+    \exp \left[(iB^T \theta)^T \eta + \df i 2 \eta^T D \eta
+    \right] \int D\mu\, \exp(i \eta^T \mu + \df i 2 \mu^T M \mu) X(\mu) \\ 
+    &= i^n C \, \Pf(M)\, \tr(X) \exp \left(\df i 2 
+        \theta^TA\theta \right) \int D\eta\, 
+    \exp \left[ (iB^T\theta)^T \eta + \df i 2 \eta^T (D+M^{-1}) \eta\right] \\ 
+    &= i^n C \, \Pf(M)\, \tr(X) \exp \left(\df i 2 
+        \theta^TA\theta \right) i^n \Pf(D+M^{-1}) 
+    \exp\left[\df i 2 \theta^T B (D+M^{-1})^{-1} B^T \theta\right] \\ 
+    &= (-1)^n C \, \Pf(M)\, \Pf(D+M^{-1}) \, \tr(X)
+    \exp\left[\df i 2 \theta^T (B (D+M^{-1})^{-1} B^T + A)\theta\right]
+\end{align}
+The $\tr[\mca E(X)]^2$ formula follows from $\Pf(A)^2=\det A$ and 
+$\det A\, \det B = \det(AB)$. 
+
+::: {.corollary name="trace-preserving bistochastic linear maps"}
+If $\mca E$ is trace-preserving (TP), then $D=0$ and $C=1$ in 
+\@ref(eq:gaussianLinearMap), in which case 
+\[ 
+    \mca E(M) = BMB^T + A 
+\] 
+If $\mca E$ is bistochastic (i.e. preserves the identity) 
+then $A=D=0$ and 
+\[ 
+    \mca E(M) = BMB^T 
+\] 
+:::
+
+### Complete-positive Gaussian linear maps {-}
+It turns out that, when interpreted as a Gaussian channel, the $4n\times 4n$ 
+block matrix in \@ref(eq:gaussianLinearMap) is the covariance matrix 
+of the corresponding Choi state. 
+
+::: {.theorem name="fourier characterization of CP Gaussian linear maps"}
+$\mca E$ is completely positive if $C\geq 0$ and 
+\[ 
+    E = \begin{pmatrix} 
+        A & B \\ -B^T & D 
+    \end{pmatrix}
+\] 
+satisfies $E^TE \leq I$. 
+:::
+
 
 ## Lie algebra embedding
 Results from [@knill2001fermionic] provide the mathematical 
