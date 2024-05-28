@@ -19,6 +19,8 @@ def:strongSimulation
 def:weakSimulation
 def:adaptiveSimulation
 def:gaussianDef
+thm:evenGaussianEffect
+thm:unifiedGaussian
 thm:fourierEvenGaussianCharacterization
 lem:adjointLambda
 lem:fourierEvenGaussianfwd
@@ -37,6 +39,9 @@ def:npunitary
 prp:compbasismeasurement
 thm:cimoStrongSimulation
 thm:cimoAdaptiveSimulation
+thm:unlabeled-div-5
+thm:unlabeled-div-6
+thm:unlabeled-div-7
 prp:freeEquivProductState
 thm:pimoSimulation
 eq:simulationProb
@@ -58,6 +63,8 @@ classical-simulatibility
 gaussian-operators
 even-gaussian
 even-gaussian-operators
+characterization
+fourier-perspective
 even-gaussian-linear-maps
 lie-algebra-embedding
 affine-gaussian

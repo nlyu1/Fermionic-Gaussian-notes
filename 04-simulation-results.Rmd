@@ -92,6 +92,61 @@ and measurement with bounded majorana support.
 - Proof that swap constitutes a resourceful operation. 
 
 ### Matchgate decomposition and simulation
+::: {.theorem name="nearest-neighbor (n.n.) matchgate"}
+Gaussian unitaries with support on nearest-neighbor (consecutive 
+two) qubits is of the form 
+\[ 
+    G(A, B) = \begin{pmatrix}
+        p &&& q \\  & w & x &  \\ & y & z & \\ r &&& s 
+    \end{pmatrix}, \quad A = \begin{pmatrix}
+    p & q \\ r & s\end{pmatrix}, \quad B = \begin{pmatrix}
+    w & x \\ y & z \end{pmatrix}
+\] 
+where $A, B$ are both unitary and $\det B = \det B$. 
+this amounts to $A, B$ acting on the even and odd subspaces, respectively. 
+:::
+
+_Proof:_ The hermitian quadratic majorana monomials on two qubits are 
+\[ 
+    \{-i\gamma_1\gamma_2, -i\gamma_2\gamma_3, i\gamma_3\gamma_3, -i\gamma_2\gamma_4, 
+    i\gamma_1\gamma_4, -i\gamma_3\gamma_4\} = \{ZI, XX, YX, XY, YY, IZ\}
+\] 
+They are all traceless and preserve the even and odd subspaces, so the 
+Lie group they generate must be $SU(2)\oplus SU(2)$ decomposed relative to the 
+two parity subspaces. Alternatively one may construct the Pauli $X, Y, Z$ 
+operators acting on the two subspaces and apply direct exponentiation. 
+
+::: {.theorem name="n.n. decomposition of Gaussian unitaries"}
+Any Gaussian unitary over $n$ qubits is decomposable into $O(n^3)$ 
+n.n. Gaussian unitary. 
+::: 
+
+_Proof:_ a Gaussian unitary $U$ affect rotation $R$ of the $2n$ operators. 
+Use Euler-angle decomposition to decompose $R$ into a composition of 
+$O(n^2)$ rotations, each only acting nontrivially on a two-dimensional subspace. 
+Each such rotation can then be implemented by $O(n)$ Gaussian unitaries using 
+the modified swap 
+\[ 
+    S_{12} = \exp\left(-\df \pi 4 (-\gamma_1\gamma_4 + \gamma_2\gamma_3 
+    + \gamma_1\gamma_2 + \gamma_3\gamma_4)\right) = -iG(Z, X), \quad 
+    S_{12}^\dag \begin{pmatrix}
+    \gamma_1 \\ \gamma_2\end{pmatrix}S_{12} = 
+    \begin{pmatrix} \gamma_3 \\ \gamma_4\end{pmatrix}
+\] 
+
+::: {.theorem name="strong simulation"} 
+strong simulation of non-adaptive Gaussian circuit with product state 
+input and single-qubit computational-basis output is poly-time. 
+:::
+
+_Proof:_ Let the input be $|\psi\ra = \otimes |\psi_j\ra$ and the 
+measurement $Z_1 = -i\gamma_1\gamma_2$, then 
+\[ 
+    \la Z_1\ra = (-i) \la \psi|U^\dag \gamma_1\gamma_2 U|\psi\ra 
+    = (-i) \sum_{j\neq k} R_{1,j}R_{2,k} \la \psi|\gamma_j\gamma_k|\psi\ra 
+\] 
+By virtue of $|\psi\ra$ being a product state, $\la \psi|\gamma_j\gamma_k|\psi\ra$ 
+is poly-computable.  
 
 ### Resourcefulness of swap 
 

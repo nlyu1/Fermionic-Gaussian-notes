@@ -113,7 +113,9 @@ div.csl-indent {
 <li class="chapter" data-level="2.1" data-path="gaussian-operators.html"><a href="gaussian-operators.html#even-gaussian"><i class="fa fa-check"></i><b>2.1</b> Even Gaussian</a>
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="gaussian-operators.html"><a href="gaussian-operators.html#even-gaussian-operators"><i class="fa fa-check"></i><b>2.1.1</b> Even Gaussian operators</a></li>
-<li class="chapter" data-level="2.1.2" data-path="gaussian-operators.html"><a href="gaussian-operators.html#even-gaussian-linear-maps"><i class="fa fa-check"></i><b>2.1.2</b> Even Gaussian linear maps</a></li>
+<li class="chapter" data-level="2.1.2" data-path="gaussian-operators.html"><a href="gaussian-operators.html#characterization"><i class="fa fa-check"></i><b>2.1.2</b> Characterization</a></li>
+<li class="chapter" data-level="2.1.3" data-path="gaussian-operators.html"><a href="gaussian-operators.html#fourier-perspective"><i class="fa fa-check"></i><b>2.1.3</b> Fourier perspective</a></li>
+<li class="chapter" data-level="2.1.4" data-path="gaussian-operators.html"><a href="gaussian-operators.html#even-gaussian-linear-maps"><i class="fa fa-check"></i><b>2.1.4</b> Even Gaussian linear maps</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="gaussian-operators.html"><a href="gaussian-operators.html#lie-algebra-embedding"><i class="fa fa-check"></i><b>2.2</b> Lie algebra embedding</a></li>
 <li class="chapter" data-level="2.3" data-path="gaussian-operators.html"><a href="gaussian-operators.html#affine-gaussian"><i class="fa fa-check"></i><b>2.3</b> Affine Gaussian</a></li>
@@ -172,7 +174,7 @@ Fourier property is made by <span class="citation">(<a href="#ref-bravyi2005clas
 <div class="definition">
 <p><span id="def:gaussianDef" class="definition"><strong>Definition 2.1  (Gaussian operator) </strong></span>An operator <span class="math inline">\(A\in \mathcal C_{2n}\)</span> with <span class="math inline">\(\mathrm{tr}(A)\neq 0\)</span> is affine Gaussian if
 <span class="math display">\[
-    X(\theta) = \exp\left(\dfrac 1 2 \theta^T M\theta + d^T\theta\right)
+    X(\theta) = C\exp\left(\dfrac 1 2 \theta^T M\theta + d^T\theta\right)
 \]</span>
 for some antisymmetric <span class="math inline">\((M_{jk})\in \mathbb C^{2n\times 2n}\)</span> and
 <span class="math inline">\(d\in \mathbb C^{2n}\)</span>. It is (even) Gaussian if <span class="math inline">\(d\)</span> vanishes, which is
@@ -182,12 +184,12 @@ Two special cases</p>
 <ul>
 <li>Affine Gaussian hermitian operator:
 <span class="math display">\[
-  H(\theta) = \exp\left(\dfrac i 2 \theta^T h\theta + d^T\theta\right),
+  H(\theta) = C\exp\left(\dfrac i 2 \theta^T h\theta + d^T\theta\right),
   \quad (h_{jk})\in \mathfrak{so}(2n, \mathbb R), \quad (d_j)\in \mathbb R^{2n}
 \]</span></li>
 <li>Affine Gaussian unitary:
 <span class="math display">\[
-  U(\theta) = \exp\left(\dfrac 1 2 \theta^T u\theta + id^T\theta\right),
+  U(\theta) = C\exp\left(\dfrac 1 2 \theta^T u\theta + id^T\theta\right),
   \quad (u_{jk})\in \mathfrak{so}(2n, \mathbb R), \quad (d_j)\in \mathbb R^{2n}
 \]</span></li>
 </ul>
@@ -201,10 +203,64 @@ to affine Gaussians.</p>
 <h2><span class="header-section-number">2.1</span> Even Gaussian<a href="gaussian-operators.html#even-gaussian" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <div id="even-gaussian-operators" class="section level3 hasAnchor" number="2.1.1">
 <h3><span class="header-section-number">2.1.1</span> Even Gaussian operators<a href="gaussian-operators.html#even-gaussian-operators" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+</div>
+<div id="characterization" class="section level3 hasAnchor" number="2.1.2">
+<h3><span class="header-section-number">2.1.2</span> Characterization<a href="gaussian-operators.html#characterization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="theorem">
+<p><span id="thm:evenGaussianEffect" class="theorem"><strong>Theorem 2.1  (effect of Gaussian unitaries) </strong></span>Consider a Gaussian unitary
+<span class="math display">\[
+    U = \exp\left(\dfrac 1 2 \gamma^T h \gamma\right), \quad h_{jk}=-h_{kj}\in \mathbb R
+\]</span>
+Then it affects rotation of the majorana operators
+<span class="math display">\[
+    U \gamma_j U^\dagger= R_{jk}\gamma_k, \quad R = e^{2h}
+\]</span></p>
+</div>
+<p><em>Proof:</em> Using standard Lie theory technique, define <span class="math inline">\(\gamma_j=\theta(0)\)</span> and
+<span class="math display">\[
+    \theta(t) = U(t) \theta(0) U(t)^\dagger
+    = \tilde \gamma_j(t)\gamma_j, \quad U(t) = \exp\left(\dfrac t 2 \gamma^T h \gamma \right)
+\]</span>
+Differentiation yields
+<span class="math display">\[
+    \partial_{t} \theta(t) =
+    \left[\dfrac 1 2 \gamma^T h \gamma, \theta(t) \right]
+\]</span>
+The key here is the commutator bracket.
+Using <span class="math inline">\([\gamma_a\gamma_b, \gamma_a]=-2\gamma_b\)</span> we obtain
+<span class="math display">\[\begin{align}
+    \partial_{t} \theta(t)
+    &amp;= \dfrac 1 2 \sum_{a, b, j} \tilde \gamma_j(t)h_{ab}[\gamma_a\gamma_b, \gamma_j]
+    = \dfrac 1 2 \sum_{b, j} \tilde \gamma_j(t)h_{jb}[\gamma_j\gamma_b, \gamma_j]
+    + \dfrac 1 2 \sum_{a, j} \tilde \gamma_j(t)h_{aj}[\gamma_a\gamma_j, \gamma_j] \\
+    &amp;= \sum_{j, b} -2 h_{jb} \tilde \gamma_j(t) \gamma_b
+    = \sum_b \partial_{t} \tilde \gamma_b(t)\gamma_b  \\
+    \partial_{t} \tilde \gamma_b(t) &amp;= -2 h_{jb} \gamma_j(t) = 2h_{bj}\gamma_j(t)
+\end{align}\]</span>
+The solution to this differential equation is
+<span class="math display">\[
+    \tilde \gamma(t) = R(t)\tilde \gamma(0), \quad R(t) = e^{2h} \in SO(2n)
+\]</span>
+It follows that <span class="math inline">\((UXU^\dagger)(\theta) = X(R\theta)\)</span>.</p>
+<div class="theorem">
+<p><span id="thm:unifiedGaussian" class="theorem"><strong>Theorem 2.2  (characterization of Gaussian states) </strong></span>The following three characterizations of Gaussian states <span class="math inline">\(\rho\)</span>
+are equivalent.</p>
+<ul>
+<li><span class="math inline">\(\rho(\theta) = 2^{-n} \exp(i \theta^T M \theta/2)\)</span>.</li>
+<li><span class="math inline">\(\rho(\theta) = U(|0\rangle\langle 0|)^{\otimes n}U^\dagger\)</span>, for some
+Gaussian unitary <span class="math inline">\(U\)</span>.</li>
+<li><span class="math inline">\(\rho = e^{H}/\mathrm{tr}(e^H)\)</span> for some <span class="math inline">\(H\)</span> which is homogeneously quadratic in
+majorana operators. Pure states are defined in the limit
+<span class="math inline">\(H\mapsto \lim_{t\to \infty} tH\)</span>.</li>
+</ul>
+</div>
+</div>
+<div id="fourier-perspective" class="section level3 hasAnchor" number="2.1.3">
+<h3><span class="header-section-number">2.1.3</span> Fourier perspective<a href="gaussian-operators.html#fourier-perspective" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Bravyi’s work <span class="citation">(<a href="#ref-bravyi2004lagrangian">Bravyi 2004</a>)</span> provides many important
 results about Gaussian operators and maps from the Fourier perspective.</p>
 <div class="theorem">
-<p><span id="thm:fourierEvenGaussianCharacterization" class="theorem"><strong>Theorem 2.1  (fourier characterization of Gaussian operators) </strong></span>An operator <span class="math inline">\(X\in \mathcal C_{2n}\)</span> is Gaussian iff it is even and satisfies
+<p><span id="thm:fourierEvenGaussianCharacterization" class="theorem"><strong>Theorem 2.3  (fourier characterization of Gaussian operators) </strong></span>An operator <span class="math inline">\(X\in \mathcal C_{2n}\)</span> is Gaussian iff it is even and satisfies
 <span class="math display">\[
     [\hat \Lambda, X\otimes X]=0, \quad \hat \Lambda = \gamma_a\otimes \gamma_a
 \]</span></p>
@@ -284,8 +340,8 @@ and the equation simplifies to
 \end{aligned}\]</span>
 <p>This suffices to show that <span class="math inline">\(X\)</span> must be Gaussian.</p>
 </div>
-<div id="even-gaussian-linear-maps" class="section level3 hasAnchor" number="2.1.2">
-<h3><span class="header-section-number">2.1.2</span> Even Gaussian linear maps<a href="gaussian-operators.html#even-gaussian-linear-maps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="even-gaussian-linear-maps" class="section level3 hasAnchor" number="2.1.4">
+<h3><span class="header-section-number">2.1.4</span> Even Gaussian linear maps<a href="gaussian-operators.html#even-gaussian-linear-maps" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="definition">
 <p><span id="def:gaussianMapDef" class="definition"><strong>Definition 2.2  (Gaussian linear map) </strong></span>A linear map <span class="math inline">\(\mathcal E:\mathcal C_{2n}\to \mathcal C_{2n}\)</span> is Gaussian if
 <span class="math display" id="eq:gaussianLinearMap">\[
@@ -328,7 +384,7 @@ and <span class="math inline">\(D(-\mu) = D\mu, D(-\eta) = D\eta\)</span>.</p>
 <p><span id="prp:unlabeled-div-3" class="proposition"><strong>Proposition 2.2  </strong></span>Gaussian linear maps map Gaussian operators into Gausian operators.</p>
 </div>
 <p><em>Proof:</em> Since <span class="math inline">\(\mathcal E\)</span> is parity preserving, it suffices to apply
-<a href="gaussian-operators.html#thm:fourierEvenGaussianCharacterization">2.1</a> on <span class="math inline">\(\mathcal E(X)\)</span>, for <span class="math inline">\(X\)</span> Gaussian.
+<a href="gaussian-operators.html#thm:fourierEvenGaussianCharacterization">2.3</a> on <span class="math inline">\(\mathcal E(X)\)</span>, for <span class="math inline">\(X\)</span> Gaussian.
 Note the following identity
 <span class="math display" id="eq:convenientIdentity">\[\begin{equation}
     \sum_a (\theta_a\otimes \partial_{\theta_a} + \partial_{\theta_a}\otimes \theta_a)
@@ -383,7 +439,7 @@ Note that <span class="math inline">\(\dim \mathcal L_2=2n^2 + n + 1, \dim \math
 </ul>
 </div>
 <div class="theorem">
-<p><span id="thm:evenReduction" class="theorem"><strong>Theorem 2.2  (even Gaussian algebra reduction) </strong></span>the affine Gaussian algebra <span class="math inline">\(\mathcal L_2^*\)</span> is isomorphic to a subalgebra
+<p><span id="thm:evenReduction" class="theorem"><strong>Theorem 2.4  (even Gaussian algebra reduction) </strong></span>the affine Gaussian algebra <span class="math inline">\(\mathcal L_2^*\)</span> is isomorphic to a subalgebra
 of the even Gaussian algebra <span class="math inline">\(\mathcal L_2&#39;\)</span> on one more mode.</p>
 </div>
 <em>Proof:</em> Let the new mode append majorana operators <span class="math inline">\(\gamma_{2n+1}, \gamma_{2n+2}\)</span>.

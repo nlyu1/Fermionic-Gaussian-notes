@@ -113,7 +113,9 @@ div.csl-indent {
 <li class="chapter" data-level="2.1" data-path="gaussian-operators.html"><a href="gaussian-operators.html#even-gaussian"><i class="fa fa-check"></i><b>2.1</b> Even Gaussian</a>
 <ul>
 <li class="chapter" data-level="2.1.1" data-path="gaussian-operators.html"><a href="gaussian-operators.html#even-gaussian-operators"><i class="fa fa-check"></i><b>2.1.1</b> Even Gaussian operators</a></li>
-<li class="chapter" data-level="2.1.2" data-path="gaussian-operators.html"><a href="gaussian-operators.html#even-gaussian-linear-maps"><i class="fa fa-check"></i><b>2.1.2</b> Even Gaussian linear maps</a></li>
+<li class="chapter" data-level="2.1.2" data-path="gaussian-operators.html"><a href="gaussian-operators.html#characterization"><i class="fa fa-check"></i><b>2.1.2</b> Characterization</a></li>
+<li class="chapter" data-level="2.1.3" data-path="gaussian-operators.html"><a href="gaussian-operators.html#fourier-perspective"><i class="fa fa-check"></i><b>2.1.3</b> Fourier perspective</a></li>
+<li class="chapter" data-level="2.1.4" data-path="gaussian-operators.html"><a href="gaussian-operators.html#even-gaussian-linear-maps"><i class="fa fa-check"></i><b>2.1.4</b> Even Gaussian linear maps</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="gaussian-operators.html"><a href="gaussian-operators.html#lie-algebra-embedding"><i class="fa fa-check"></i><b>2.2</b> Lie algebra embedding</a></li>
 <li class="chapter" data-level="2.3" data-path="gaussian-operators.html"><a href="gaussian-operators.html#affine-gaussian"><i class="fa fa-check"></i><b>2.3</b> Affine Gaussian</a></li>
@@ -254,6 +256,56 @@ and measurement with bounded majorana support.</li>
 </ul>
 <div id="matchgate-decomposition-and-simulation" class="section level3 hasAnchor" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Matchgate decomposition and simulation<a href="classical-simulation-results.html#matchgate-decomposition-and-simulation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-5" class="theorem"><strong>Theorem 3.3  (nearest-neighbor (n.n.) matchgate) </strong></span>Gaussian unitaries with support on nearest-neighbor (consecutive
+two) qubits is of the form
+<span class="math display">\[
+    G(A, B) = \begin{pmatrix}
+        p &amp;&amp;&amp; q \\  &amp; w &amp; x &amp;  \\ &amp; y &amp; z &amp; \\ r &amp;&amp;&amp; s
+    \end{pmatrix}, \quad A = \begin{pmatrix}
+    p &amp; q \\ r &amp; s\end{pmatrix}, \quad B = \begin{pmatrix}
+    w &amp; x \\ y &amp; z \end{pmatrix}
+\]</span>
+where <span class="math inline">\(A, B\)</span> are both unitary and <span class="math inline">\(\det B = \det B\)</span>.
+this amounts to <span class="math inline">\(A, B\)</span> acting on the even and odd subspaces, respectively.</p>
+</div>
+<p><em>Proof:</em> The hermitian quadratic majorana monomials on two qubits are
+<span class="math display">\[
+    \{-i\gamma_1\gamma_2, -i\gamma_2\gamma_3, i\gamma_3\gamma_3, -i\gamma_2\gamma_4,
+    i\gamma_1\gamma_4, -i\gamma_3\gamma_4\} = \{ZI, XX, YX, XY, YY, IZ\}
+\]</span>
+They are all traceless and preserve the even and odd subspaces, so the
+Lie group they generate must be <span class="math inline">\(SU(2)\oplus SU(2)\)</span> decomposed relative to the
+two parity subspaces. Alternatively one may construct the Pauli <span class="math inline">\(X, Y, Z\)</span>
+operators acting on the two subspaces and apply direct exponentiation.</p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-6" class="theorem"><strong>Theorem 3.4  (n.n. decomposition of Gaussian unitaries) </strong></span>Any Gaussian unitary over <span class="math inline">\(n\)</span> qubits is decomposable into <span class="math inline">\(O(n^3)\)</span>
+n.n. Gaussian unitary.</p>
+</div>
+<p><em>Proof:</em> a Gaussian unitary <span class="math inline">\(U\)</span> affect rotation <span class="math inline">\(R\)</span> of the <span class="math inline">\(2n\)</span> operators.
+Use Euler-angle decomposition to decompose <span class="math inline">\(R\)</span> into a composition of
+<span class="math inline">\(O(n^2)\)</span> rotations, each only acting nontrivially on a two-dimensional subspace.
+Each such rotation can then be implemented by <span class="math inline">\(O(n)\)</span> Gaussian unitaries using
+the modified swap
+<span class="math display">\[
+    S_{12} = \exp\left(-\dfrac\pi 4 (-\gamma_1\gamma_4 + \gamma_2\gamma_3
+    + \gamma_1\gamma_2 + \gamma_3\gamma_4)\right) = -iG(Z, X), \quad
+    S_{12}^\dagger\begin{pmatrix}
+    \gamma_1 \\ \gamma_2\end{pmatrix}S_{12} =
+    \begin{pmatrix} \gamma_3 \\ \gamma_4\end{pmatrix}
+\]</span></p>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-7" class="theorem"><strong>Theorem 3.5  (strong simulation) </strong></span>strong simulation of non-adaptive Gaussian circuit with product state
+input and single-qubit computational-basis output is poly-time.</p>
+</div>
+<p><em>Proof:</em> Let the input be <span class="math inline">\(|\psi\rangle= \otimes |\psi_j\rangle\)</span> and the
+measurement <span class="math inline">\(Z_1 = -i\gamma_1\gamma_2\)</span>, then
+<span class="math display">\[
+    \langle Z_1\rangle= (-i) \langle\psi|U^\dagger\gamma_1\gamma_2 U|\psi\rangle
+    = (-i) \sum_{j\neq k} R_{1,j}R_{2,k} \langle\psi|\gamma_j\gamma_k|\psi\rangle
+\]</span>
+By virtue of <span class="math inline">\(|\psi\rangle\)</span> being a product state, <span class="math inline">\(\langle\psi|\gamma_j\gamma_k|\psi\rangle\)</span>
+is poly-computable.</p>
 </div>
 <div id="resourcefulness-of-swap" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Resourcefulness of swap<a href="classical-simulation-results.html#resourcefulness-of-swap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -289,7 +341,7 @@ to obtain <span class="math inline">\(|\psi_1\rangle\cdots |0\rangle|+\rangle\)<
 <span class="math inline">\(|\psi\rangle|+\rangle\)</span> is Gaussian-equivalent to <span class="math inline">\(|0\rangle^{\otimes n}|+\rangle\)</span>.</p>
 </div>
 <div class="theorem">
-<p><span id="thm:pimoSimulation" class="theorem"><strong>Theorem 3.3  (product-input multiple-output strong simulation) </strong></span>Let <span class="math inline">\(\{M_n\}\)</span> be a uniform family of (possibly adaptive) quantum
+<p><span id="thm:pimoSimulation" class="theorem"><strong>Theorem 3.6  (product-input multiple-output strong simulation) </strong></span>Let <span class="math inline">\(\{M_n\}\)</span> be a uniform family of (possibly adaptive) quantum
 circuits with <span class="math inline">\(\mathrm{poly}(n)\)</span> Gaussian unitaries over <span class="math inline">\(n\)</span> qubits acting
 on an arbitrary <span class="math inline">\(n\)</span>-qubit product state <span class="math inline">\(|\psi\rangle= \otimes |\psi_n\rangle\)</span>.
 The circuit is strongly, as well as adaptively simulable
@@ -315,7 +367,7 @@ One may then recognize <span class="math inline">\(\Pr(\tilde y|\psi)\)</span> a
 the construction of <a href="classical-simulation-results.html#thm:cimoStrongSimulation">3.1</a>. Adaptive simulation follows
 from projective measurements <span class="math inline">\(P_j\)</span> being parity-preserving.</p>
 <div class="theorem">
-<p><span id="thm:pimoweakSimulation" class="theorem"><strong>Theorem 3.4  (product-input multiple-output weak simulation) </strong></span>The circuit in <a href="classical-simulation-results.html#thm:pimoSimulation">3.3</a>
+<p><span id="thm:pimoweakSimulation" class="theorem"><strong>Theorem 3.7  (product-input multiple-output weak simulation) </strong></span>The circuit in <a href="classical-simulation-results.html#thm:pimoSimulation">3.6</a>
 is weakly simulable for arbitrary product-state von-Neumann measurements.</p>
 </div>
 <p><em>Proof</em>: By use of an ancilla in <span class="math inline">\(|+\rangle\)</span>, we can perform arbitrary single-qubit
@@ -343,9 +395,9 @@ between the even-Gaussian Hermitian <span class="math inline">\(P_{\tilde y}\)</
 <span class="math inline">\(U|0\rangle^{\otimes n}\)</span>, where <span class="math inline">\(U\)</span> is an affine Gaussian unitary.</p>
 <p>We can extend the Gaussian overlap formula <a href="preliminaries.html#thm:GaussianOverlap">1.4</a> to the
 case when one of the two operators is not homogeneously even, since they will
-continue to commute. This constitutes another proof of theorem <a href="classical-simulation-results.html#thm:pimoSimulation">3.3</a>.</p>
+continue to commute. This constitutes another proof of theorem <a href="classical-simulation-results.html#thm:pimoSimulation">3.6</a>.</p>
 <div class="theorem">
-<p><span id="thm:affGaussianOverlap" class="theorem"><strong>Theorem 3.5  (affine-Gaussian operator overlap) </strong></span>Given Gaussian operators <span class="math inline">\(X, Y\)</span> and <span class="math inline">\(Y\)</span> affine
+<p><span id="thm:affGaussianOverlap" class="theorem"><strong>Theorem 3.8  (affine-Gaussian operator overlap) </strong></span>Given Gaussian operators <span class="math inline">\(X, Y\)</span> and <span class="math inline">\(Y\)</span> affine
 <span class="math display">\[
     X(\eta) = \exp\left(\dfrac i 2 \eta^T A\eta\right), \quad
     Y(\theta) = \exp\left(\dfrac i 2 \theta^T B\theta + b^T\theta\right)
@@ -379,7 +431,7 @@ resourceful states for Gaussian unitaries.</p>
 <div id="measurement-based-universal-computation" class="section level3 hasAnchor" number="3.4.1">
 <h3><span class="header-section-number">3.4.1</span> Measurement-based universal computation<a href="classical-simulation-results.html#measurement-based-universal-computation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="theorem">
-<p><span id="thm:qchardSimulation" class="theorem"><strong>Theorem 3.6  (swap gadget construction) </strong></span>weak simulation of Gaussian circuits with magic-state input and
+<p><span id="thm:qchardSimulation" class="theorem"><strong>Theorem 3.9  (swap gadget construction) </strong></span>weak simulation of Gaussian circuits with magic-state input and
 adaptive measurements is QC-hard.</p>
 </div>
 <p><em>Proof:</em> It suffices to construct a protocol equivalent to universal
@@ -406,7 +458,7 @@ output (single-qubit or multiple), and weak or strong simulation.</p>
 <div id="non-adaptive-single-qubit-measurement" class="section level3 hasAnchor" number="3.5.1">
 <h3><span class="header-section-number">3.5.1</span> Non-adaptive single-qubit measurement<a href="classical-simulation-results.html#non-adaptive-single-qubit-measurement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="theorem">
-<p><span id="thm:naOneSimulation" class="theorem"><strong>Theorem 3.7  </strong></span>Strong simulation of
+<p><span id="thm:naOneSimulation" class="theorem"><strong>Theorem 3.10  </strong></span>Strong simulation of
 non-adaptive Gaussian circuits with magic input
 and single-qubit measurement is poly-time.</p>
 </div>
@@ -414,18 +466,18 @@ and single-qubit measurement is poly-time.</p>
 <div id="adaptive-single-qubit-measurement" class="section level3 hasAnchor" number="3.5.2">
 <h3><span class="header-section-number">3.5.2</span> Adaptive single-qubit measurement<a href="classical-simulation-results.html#adaptive-single-qubit-measurement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="theorem">
-<p><span id="thm:aOneSimulation" class="theorem"><strong>Theorem 3.8  </strong></span>Strong simulation of adaptive Gaussian circuits with product-state input
+<p><span id="thm:aOneSimulation" class="theorem"><strong>Theorem 3.11  </strong></span>Strong simulation of adaptive Gaussian circuits with product-state input
 and single-qubit measurement is #P-hard.</p>
 </div>
 </div>
 <div id="non-adaptive-product-state-measurement" class="section level3 hasAnchor" number="3.5.3">
 <h3><span class="header-section-number">3.5.3</span> Non-adaptive product-state measurement<a href="classical-simulation-results.html#non-adaptive-product-state-measurement" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="theorem">
-<p><span id="thm:naProdSimulation" class="theorem"><strong>Theorem 3.9  </strong></span>Strong simulation of nonadaptive Gaussian circuits with
+<p><span id="thm:naProdSimulation" class="theorem"><strong>Theorem 3.12  </strong></span>Strong simulation of nonadaptive Gaussian circuits with
 magic input and product-state measurement is #P-hard.</p>
 </div>
 <div class="theorem">
-<p><span id="thm:naMagicSimulation" class="theorem"><strong>Theorem 3.10  </strong></span>Weak simulation of nonadaptive Gaussian circuits with
+<p><span id="thm:naMagicSimulation" class="theorem"><strong>Theorem 3.13  </strong></span>Weak simulation of nonadaptive Gaussian circuits with
 magic input and product-state measurement implies polynomial-hierarchy collapse.</p>
 </div>
 

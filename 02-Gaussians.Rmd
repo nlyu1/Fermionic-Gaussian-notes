@@ -5,7 +5,7 @@ Fourier property is made by [@bravyi2005classical].
 ::: {.definition #gaussianDef name="Gaussian operator"}
 An operator $A\in \Cl_{2n}$ with $\tr(A)\neq 0$ is affine Gaussian if 
 \[ 
-    X(\theta) = \exp\left(\df 1 2 \theta^T M\theta + d^T\theta\right)
+    X(\theta) = C\exp\left(\df 1 2 \theta^T M\theta + d^T\theta\right)
 \] 
 for some antisymmetric $(M_{jk})\in \mbb C^{2n\times 2n}$ and 
 $d\in \mbb C^{2n}$. It is (even) Gaussian if $d$ vanishes, which is 
@@ -15,12 +15,12 @@ Two special cases
 
 - Affine Gaussian hermitian operator: 
 \[ 
-    H(\theta) = \exp\left(\df i 2 \theta^T h\theta + d^T\theta\right), 
+    H(\theta) = C\exp\left(\df i 2 \theta^T h\theta + d^T\theta\right), 
     \quad (h_{jk})\in \mfk{so}(2n, \mbb R), \quad (d_j)\in \mbb R^{2n}
 \] 
 - Affine Gaussian unitary: 
 \[ 
-    U(\theta) = \exp\left(\df 1 2 \theta^T u\theta + id^T\theta\right), 
+    U(\theta) = C\exp\left(\df 1 2 \theta^T u\theta + id^T\theta\right), 
     \quad (u_{jk})\in \mfk{so}(2n, \mbb R), \quad (d_j)\in \mbb R^{2n}
 \] 
 :::
@@ -32,8 +32,63 @@ to affine Gaussians.
 
 ## Even Gaussian
 ### Even Gaussian operators
+
+### Characterization
+::: {.theorem #evenGaussianEffect
+name="effect of Gaussian unitaries"}
+Consider a Gaussian unitary 
+\[ 
+    U = \exp\left(\df 1 2 \gamma^T h \gamma\right), \quad h_{jk}=-h_{kj}\in \mbb R 
+\] 
+Then it affects rotation of the majorana operators 
+\[ 
+    U \gamma_j U^\dag = R_{jk}\gamma_k, \quad R = e^{2h}
+\] 
+:::
+_Proof:_ Using standard Lie theory technique, define $\gamma_j=\theta(0)$ and 
+\[ 
+    \theta(t) = U(t) \theta(0) U(t)^\dag
+    = \tilde \gamma_j(t)\gamma_j, \quad U(t) = \exp\left(\df t 2 \gamma^T h \gamma \right)
+\] 
+Differentiation yields 
+\[ 
+    \pd t \theta(t) = 
+    \left[\df 1 2 \gamma^T h \gamma, \theta(t) \right]
+\] 
+The key here is the commutator bracket. 
+Using $[\gamma_a\gamma_b, \gamma_a]=-2\gamma_b$ we obtain 
+\begin{align}
+    \pd t \theta(t) 
+    &= \df 1 2 \sum_{a, b, j} \tilde \gamma_j(t)h_{ab}[\gamma_a\gamma_b, \gamma_j]
+    = \df 1 2 \sum_{b, j} \tilde \gamma_j(t)h_{jb}[\gamma_j\gamma_b, \gamma_j]
+    + \df 1 2 \sum_{a, j} \tilde \gamma_j(t)h_{aj}[\gamma_a\gamma_j, \gamma_j] \\ 
+    &= \sum_{j, b} -2 h_{jb} \tilde \gamma_j(t) \gamma_b
+    = \sum_b \pd t \tilde \gamma_b(t)\gamma_b  \\ 
+    \pd t \tilde \gamma_b(t) &= -2 h_{jb} \gamma_j(t) = 2h_{bj}\gamma_j(t)
+\end{align}
+The solution to this differential equation is 
+\[ 
+    \tilde \gamma(t) = R(t)\tilde \gamma(0), \quad R(t) = e^{2h} \in SO(2n)
+\] 
+It follows that $(UXU^\dag)(\theta) = X(R\theta)$. 
+
+::: {.theorem #unifiedGaussian
+name="characterization of Gaussian states"}
+The following three characterizations of Gaussian states $\rho$ 
+are equivalent. 
+
+- $\rho(\theta) = 2^{-n} \exp(i \theta^T M \theta/2)$. 
+- $\rho(\theta) = U(|0\ra \la 0|)^{\otimes n}U^\dag$, for some 
+    Gaussian unitary $U$. 
+- $\rho = e^{H}/\tr(e^H)$ for some $H$ which is homogeneously quadratic in 
+    majorana operators. Pure states are defined in the limit 
+    $H\mapsto \lim_{t\to \infty} tH$. 
+:::
+ 
+
+### Fourier perspective 
 Bravyi's work [@bravyi2004lagrangian] provides many important 
-results about Gaussian operators and maps from the Fourier perspective. 
+results about Gaussian operators and maps from the Fourier perspective.
 
 ::: {.theorem #fourierEvenGaussianCharacterization 
 name="fourier characterization of Gaussian operators"}
