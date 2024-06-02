@@ -407,7 +407,7 @@ This underpins the construction in lemma \@ref(lem:dgEmbedding).
 ## Displaced Gaussian
 
 ::: {.proposition name="displaced Gaussian unitary action"}
-Consider a displaced Gaussian unitary and an arbitrary displaced quadratic operator 
+Consider a displaced Gaussian unitary and a quadratic operator 
 \begin{equation} 
     U = \exp\left(\df 1 2 \gamma^T h \gamma + id^T \gamma\right), \quad 
     A = \df 1 2 \sum_{a, b}\Gamma_{ab}\gamma_a \gamma_b + \sum_j \Gamma_j \gamma_j, 
@@ -502,8 +502,8 @@ The image of matchgates under $\varphi$. generate rotations on all subspaces but
 Now $R_x(\theta)$ first line correspond to zero $h$ and 
 nonzero $d_j=-\delta_{1j}\theta/2$. Explicilty, 
 \begin{align}
-    \varphi (E_x(\theta)) 
-    &= \varphi\circ\psi(e^{-i \theta \gamma_1/2}) = \varphi \begin{pmatrix}
+    \varphi\circ\psi(e^{-i \theta \gamma_1/2}) 
+    &= \varphi \begin{pmatrix}
         0 & i\theta/2 & \cdots \\ 
         i\theta/2 \\ 
         \vdots && \ddots \\ 
