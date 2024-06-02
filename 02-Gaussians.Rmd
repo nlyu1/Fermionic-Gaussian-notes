@@ -456,7 +456,7 @@ _Proof:_ Define the embedding $\varphi:\mfk{dg}(n)\to \mfk{so}(2n+1)$ by
 \] 
 The map $\varphi$ is obviously bijective. Showing 
 $[\varphi(E_1), \varphi(E_2)] = \varphi[E_1, E_2]$ establishes 
-that this is an embedding 
+that this is a bijection
 \begin{align}
     [\varphi(E_1), \varphi(E_2)] &= \left[\begin{pmatrix}
         0 & d_1^T \\ -d_1 & h_1
