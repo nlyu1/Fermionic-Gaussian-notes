@@ -112,9 +112,11 @@ $X(\theta)\in \Gr_{2n}$ defined by
     X(\theta) = X_J \theta_J 
 \] 
 Given the JW-transform, this takes on the more inspiring form 
-\[ 
-    X(\theta) = \df 1 {2^n} \tr_{\Cl_{2n}}(e^{\gamma_j\theta_j} X)
-\] 
+\begin{align}
+    X(\theta) &= \mca F[X](\theta) = \df 1 {2^n} \tr_{\Cl_{2n}}(e^{\gamma_j\theta_j} X) \\ 
+    \mca F^{-1}[X(\theta)](\gamma) &= 2^n \tr_{\Gr_{2n}}(-e^{\gamma_j\theta_j} X)
+\end{align}
+The constant $2^n=\tr(1_{\Gr_{2n}})/\tr(1_{\Cl_{2n}})$ specific to our representations. 
 When $X$ is a density operator, $X(\theta)$ is its moment-generating 
 function. The classical analogue is the moment-generating function 
 \[ 

@@ -23,7 +23,7 @@
 <meta name="author" content="Nicholas Lyu" />
 
 
-<meta name="date" content="2024-05-28" />
+<meta name="date" content="2024-06-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -118,7 +118,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="gaussian-operators.html"><a href="gaussian-operators.html#complete-positive-gaussian-linear-maps"><i class="fa fa-check"></i>Complete-positive Gaussian linear maps</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="gaussian-operators.html"><a href="gaussian-operators.html#lie-algebra-embedding"><i class="fa fa-check"></i><b>2.2</b> Lie algebra embedding</a></li>
-<li class="chapter" data-level="2.3" data-path="gaussian-operators.html"><a href="gaussian-operators.html#affine-gaussian"><i class="fa fa-check"></i><b>2.3</b> Affine Gaussian</a></li>
+<li class="chapter" data-level="2.3" data-path="gaussian-operators.html"><a href="gaussian-operators.html#displaced-gaussian"><i class="fa fa-check"></i><b>2.3</b> Displaced Gaussian</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html"><i class="fa fa-check"></i><b>3</b> Classical simulation results</a>
 <ul>
@@ -257,7 +257,7 @@ and measurement with bounded majorana support.</li>
 <div id="matchgate-decomposition-and-simulation" class="section level3 hasAnchor" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Matchgate decomposition and simulation<a href="classical-simulation-results.html#matchgate-decomposition-and-simulation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-7" class="theorem"><strong>Theorem 3.3  (nearest-neighbor (n.n.) matchgate) </strong></span>Gaussian unitaries with support on nearest-neighbor (consecutive
+<p><span id="thm:unlabeled-div-11" class="theorem"><strong>Theorem 3.3  (nearest-neighbor (n.n.) matchgate) </strong></span>Gaussian unitaries with support on nearest-neighbor (consecutive
 two) qubits is of the form
 <span class="math display">\[
     G(A, B) = \begin{pmatrix}
@@ -279,7 +279,7 @@ Lie group they generate must be <span class="math inline">\(SU(2)\oplus SU(2)\)<
 two parity subspaces. Alternatively one may construct the Pauli <span class="math inline">\(X, Y, Z\)</span>
 operators acting on the two subspaces and apply direct exponentiation.</p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-8" class="theorem"><strong>Theorem 3.4  (n.n. decomposition of Gaussian unitaries) </strong></span>Any Gaussian unitary over <span class="math inline">\(n\)</span> qubits is decomposable into <span class="math inline">\(O(n^3)\)</span>
+<p><span id="thm:unlabeled-div-12" class="theorem"><strong>Theorem 3.4  (n.n. decomposition of Gaussian unitaries) </strong></span>Any Gaussian unitary over <span class="math inline">\(n\)</span> qubits is decomposable into <span class="math inline">\(O(n^3)\)</span>
 n.n. Gaussian unitary.</p>
 </div>
 <p><em>Proof:</em> a Gaussian unitary <span class="math inline">\(U\)</span> affect rotation <span class="math inline">\(R\)</span> of the <span class="math inline">\(2n\)</span> operators.
@@ -295,7 +295,7 @@ the modified swap
     \begin{pmatrix} \gamma_3 \\ \gamma_4\end{pmatrix}
 \]</span></p>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-9" class="theorem"><strong>Theorem 3.5  (strong simulation) </strong></span>strong simulation of non-adaptive Gaussian circuit with product state
+<p><span id="thm:unlabeled-div-13" class="theorem"><strong>Theorem 3.5  (strong simulation) </strong></span>strong simulation of non-adaptive Gaussian circuit with product state
 input and single-qubit computational-basis output is poly-time.</p>
 </div>
 <p><em>Proof:</em> Let the input be <span class="math inline">\(|\psi\rangle= \otimes |\psi_j\rangle\)</span> and the
@@ -310,9 +310,9 @@ is poly-computable.</p>
 <div id="resourcefulness-of-swap" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Resourcefulness of swap<a href="classical-simulation-results.html#resourcefulness-of-swap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="theorem">
-<p><span id="thm:unlabeled-div-10" class="theorem"><strong>Theorem 3.6  (universality of ) </strong></span>Any Gaussian unitary over <span class="math inline">\(n\)</span> qubits is decomposable into <span class="math inline">\(O(n^3)\)</span>
-n.n. Gaussian unitary.</p>
+<p><span id="thm:unlabeled-div-14" class="theorem"><strong>Theorem 3.6  (universality of matchgate with swap) </strong></span>Matchgate with swap is sufficient to achieve universal quantum computation.</p>
 </div>
+<p><em>Proof:</em></p>
 </div>
 </div>
 <div id="generalization-1" class="section level2 hasAnchor" number="3.3">

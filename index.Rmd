@@ -41,3 +41,33 @@ in physics and matchgate computation in computer science.
 
 It is a rich area of research lying at the intersection of 
 physics, computer science, and statistics. 
+
+The main results of this work are: 
+
+- We show that matchgate circuits remain classically simulable 
+    (in the sense of both DiVincenzo 2002, Josza 2008) even when 
+    allowing arbitrary single-qubit unitaries on a chosen line, 
+    We also show that universality is recovered upon extending this condition 
+    to two contiguous lines. 
+- The simulable gate-set above correspond to 
+    fermionic Gaussian unitaries with 
+    possibly non-zero mean （displaced Gaussian, or DG). 
+- By deriving a transformation rule for the 
+    effect of DG unitaries with explicit affine structure, 
+    we demonstrate equivalence between circuit, Hamiltonian ground state, 
+    and fourier characterizations of pure DG states; this generalizes the structure 
+    theorem for zero-mean Gaussian states and 
+    provides a natural framework to interpret 
+    Brod's generalization of zero-mean Gaussian simulation with arbitrary 
+    product-state input (Brod 2016). 
+- Possibly to-do: map out whole complexity landspace like (Hebenstreit 2020) for 
+    DG circuits. 
+    
+Continuing the line of Fourier results (or do another work):
+
+- Even convolution and CLT, swap test. 
+- Magic cumulant provides an tensor-product additive resource measure. 
+- Hypothesis: magic cumulant (or some cumulant statistic) is related to 
+    the average number of copies required to implement a resourceful 
+    state (or the success probability of achieving a resourceful state). 
+    Generalize Josza result. 

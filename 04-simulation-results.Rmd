@@ -150,11 +150,10 @@ is poly-computable.
 
 ### Resourcefulness of swap 
 
-::: {.theorem name="universality of "}
-Any Gaussian unitary over $n$ qubits is decomposable into $O(n^3)$ 
-n.n. Gaussian unitary. 
+::: {.theorem name="universality of matchgate with swap"}
+Matchgate with swap is sufficient to achieve universal quantum computation. 
 ::: 
-
+_Proof:_ 
 
 ## Generalization
 

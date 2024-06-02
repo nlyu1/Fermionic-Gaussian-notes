@@ -23,7 +23,7 @@
 <meta name="author" content="Nicholas Lyu" />
 
 
-<meta name="date" content="2024-05-28" />
+<meta name="date" content="2024-06-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -118,7 +118,7 @@ div.csl-indent {
 <li class="chapter" data-level="" data-path="gaussian-operators.html"><a href="gaussian-operators.html#complete-positive-gaussian-linear-maps"><i class="fa fa-check"></i>Complete-positive Gaussian linear maps</a></li>
 </ul></li>
 <li class="chapter" data-level="2.2" data-path="gaussian-operators.html"><a href="gaussian-operators.html#lie-algebra-embedding"><i class="fa fa-check"></i><b>2.2</b> Lie algebra embedding</a></li>
-<li class="chapter" data-level="2.3" data-path="gaussian-operators.html"><a href="gaussian-operators.html#affine-gaussian"><i class="fa fa-check"></i><b>2.3</b> Affine Gaussian</a></li>
+<li class="chapter" data-level="2.3" data-path="gaussian-operators.html"><a href="gaussian-operators.html#displaced-gaussian"><i class="fa fa-check"></i><b>2.3</b> Displaced Gaussian</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html"><i class="fa fa-check"></i><b>3</b> Classical simulation results</a>
 <ul>
@@ -172,14 +172,15 @@ div.csl-indent {
 <p>The following definition Gaussian operators in terms of their
 Fourier property is made by <span class="citation">(<a href="#ref-bravyi2005classical">Bravyi 2005</a>)</span>.</p>
 <div class="definition">
-<p><span id="def:gaussianDef" class="definition"><strong>Definition 2.1  (Gaussian operator) </strong></span>An operator <span class="math inline">\(A\in \mathcal C_{2n}\)</span> with <span class="math inline">\(\mathrm{tr}(A)\neq 0\)</span> is affine Gaussian if
+<p><span id="def:gaussianDef" class="definition"><strong>Definition 2.1  (Gaussian operator) </strong></span>An operator <span class="math inline">\(A\in \mathcal C_{2n}\)</span> with <span class="math inline">\(\mathrm{tr}(A)\neq 0\)</span> is Gaussian if
 <span class="math display">\[
     X(\theta) = C\exp\left(\dfrac 1 2 \theta^T M\theta + d^T\theta\right)
 \]</span>
 for some antisymmetric <span class="math inline">\((M_{jk})\in \mathbb C^{2n\times 2n}\)</span> and
-<span class="math inline">\(d\in \mathbb C^{2n}\)</span>. It is (even) Gaussian if <span class="math inline">\(d\)</span> vanishes, which is
-equivalent to <span class="math inline">\(X(\theta)\)</span> being homogeneously even.
-Traceless Gaussians are defined as limits. The <em>correlation matrix </em>
+<span class="math inline">\(d\in \mathbb C^{2n}\)</span>. We usually mean <span class="math inline">\(d=0\)</span> by default
+when we talk about Gaussian operators,
+and we use ``displaced Gaussian’’ to explicitly include the possibility that <span class="math inline">\(d\neq 0\)</span>.
+Traceless Gaussian operators are defined as limits. The <em>correlation matrix </em>
 of <span class="math inline">\(X(\theta)\)</span> as above is in fact <span class="math inline">\(-iM\)</span>.
 Two special cases</p>
 <ul>
@@ -480,6 +481,36 @@ of the corresponding Choi state.</p>
 \]</span>
 satisfies <span class="math inline">\(E^TE \leq I\)</span>.</p>
 </div>
+<p>To prove this, we need a notion of fermionic tensor product of linear maps.</p>
+<div class="definition">
+<p><span id="def:unlabeled-div-7" class="definition"><strong>Definition 2.3  (fermionic tensor product map) </strong></span>Given <span class="math inline">\(\mathcal E_1, \mathcal E_2:\mathcal C_{2n}\to \mathcal C_{2n}\)</span>, define
+<span class="math inline">\(\mathcal E_1\otimes_f \mathcal E_2:\mathcal C_{4n}\to \mathcal C_{4n}\)</span> by
+<span class="math display">\[
+    (\mathcal E_1\otimes_f\mathcal E_2)(\gamma_J\gamma_K) = \mathcal E_1(\gamma_J)\mathcal E_2(\gamma_K)
+\]</span>
+where <span class="math inline">\(\gamma_J\)</span> is supported on the first <span class="math inline">\(n\)</span> modes and <span class="math inline">\(\gamma_K\)</span> is supported on the last <span class="math inline">\(n\)</span> modes.</p>
+</div>
+<div class="lemma">
+<p><span id="lem:unlabeled-div-8" class="lemma"><strong>Lemma 2.4  </strong></span>Given a parity preserving linear map <span class="math inline">\(\mathcal E\)</span>, <span class="math inline">\(\mathcal E\otimes 1\)</span> is positive if and only
+if <span class="math inline">\(\mathcal E\otimes_f 1\)</span> is positive.</p>
+</div>
+<p><em>Proof:</em> Let <span class="math inline">\(\iota:\mathcal C_{2n}\otimes \mathcal C_{2n}\to \mathcal C_{4n}\)</span> be the natural unitary
+isomorphism which converts between the natural (commuting) and fermionic (anti-commuting) tensor
+products of majorana operators.
+<span class="math display">\[
+    \iota(\gamma_J\otimes \gamma_K) = \gamma_J \hat P_2^{j} \gamma_{2n+K}
+\]</span>
+With a slight overload of notation above, the <span class="math inline">\(\gamma\)</span> on the RHS are elements of <span class="math inline">\(\mathcal C_{4n}\)</span> while those
+on the LHS are elements of <span class="math inline">\(\mathcal C_{2n}\)</span>, and <span class="math inline">\(2n+K\)</span> denotes the multi-index with each element shifted by <span class="math inline">\(2n\)</span>.
+Here <span class="math inline">\(\hat P_2\)</span> is the parity operator of <span class="math inline">\(1\otimes \mathcal Cl_{2n}\subset \mathcal C_{4n}\)</span>, in the JW representation
+simply <span class="math inline">\(I^{\otimes n}\otimes Z^{\otimes n}\)</span>. Then by parity preserving, the parity of <span class="math inline">\(\mathcal E(\gamma_J)\)</span>
+is the same as that of <span class="math inline">\(\gamma_J\)</span>, so
+<span class="math display">\[\begin{align}
+    [\iota^{-1}\circ (\mathcal E\otimes_f 1)\circ \iota] (\gamma_J\otimes \gamma_K)
+    = [\iota^{-1}\circ (\mathcal E\otimes_f 1)] (\gamma_J \hat P_1^j \gamma_{2n+K})
+    = \iota^{-1}(\mathcal E(\gamma_J) \hat P_1^j \gamma_{2n+K}) = \mathcal E(\gamma_J)\otimes \gamma_K
+\end{align}\]</span>
+Now <span class="math inline">\(\iota\)</span></p>
 </div>
 </div>
 <div id="lie-algebra-embedding" class="section level2 hasAnchor" number="2.2">
@@ -487,7 +518,7 @@ satisfies <span class="math inline">\(E^TE \leq I\)</span>.</p>
 <p>Results from <span class="citation">(<a href="#ref-knill2001fermionic">Knill 2001</a>)</span> provide the mathematical
 link between even and affine Gaussians.</p>
 <div class="definition">
-<p><span id="def:gaussianLie" class="definition"><strong>Definition 2.3  (Gaussian Lie groups and algebras) </strong></span>Fixing <span class="math inline">\(n\)</span> fermionic modes</p>
+<p><span id="def:gaussianLie" class="definition"><strong>Definition 2.4  (Gaussian Lie groups and algebras) </strong></span>Fixing <span class="math inline">\(n\)</span> fermionic modes</p>
 <ul>
 <li>Let <span class="math inline">\(\mathcal L_1, \mathcal L_2\)</span> denote the linear and quadratic polynomials in <span class="math inline">\(2n\)</span>
 majorana operators, respectively.</li>
@@ -502,12 +533,12 @@ Note that <span class="math inline">\(\dim \mathcal L_2=2n^2 + n + 1, \dim \math
 of the even Gaussian algebra <span class="math inline">\(\mathcal L_2&#39;\)</span> on one more mode.</p>
 </div>
 <em>Proof:</em> Let the new mode append majorana operators <span class="math inline">\(\gamma_{2n+1}, \gamma_{2n+2}\)</span>.
-Consider <span class="math inline">\(\iota:\mathcal L_2^*\to \mathcal L_2&#39;\)</span> defined by
+Consider <span class="math inline">\(\iota:\mathcal L_2^*\to \mathcal L_2&#39;\)</span> acting on generators and extending multiplicatively
 <span class="math display">\[
-    \iota(\gamma_j) = i \gamma_j \gamma_{2n+1}, \quad
-    \iota(\gamma_j\gamma_k) = \gamma_j\gamma_k
+    \iota(\gamma_j) = -i \gamma_j \gamma_{2n+1}\implies
+    \iota(\gamma_j\gamma_k) = \iota(\gamma_j)\iota(\gamma_k) = \gamma_j\gamma_k
 \]</span>
-In short, it appends <span class="math inline">\(i\gamma_{2n+1}\)</span> to linear terms and
+It appends <span class="math inline">\(-i\gamma_{2n+1}\)</span> to linear terms and
 leaves quadratic terms unchanged. This is manifestly and injection, to
 demonstrate embedding it then suffices to show that
 <span class="math inline">\(\iota\, [a, b] = [\iota\, a, \iota\, b]\)</span>. Consider the following representative
@@ -521,13 +552,127 @@ cases with nonvanishing brackets
     [\iota\, \gamma_1, \iota\, \gamma_1\gamma_2]
     &amp;= [i\gamma_1\gamma_{2n+1}, \gamma_1\gamma_2] = 2i\gamma_2\gamma_{2n+1}
 \end{aligned}\]</span>
-<div class="corollary">
-<p><span id="cor:evenReductionCor" class="corollary"><strong>Corollary 2.2  (even Gaussian unitary reduction) </strong></span>The affine Gaussian unitary group on <span class="math inline">\(n\)</span> fermionic modes is isomorphic to
-a subgroup of the even Gaussian unitary group on <span class="math inline">\(n+1\)</span> fermionic modes.</p>
+<p>This underpins the construction in lemma <a href="gaussian-operators.html#lem:dgEmbedding">2.5</a>.</p>
 </div>
+<div id="displaced-gaussian" class="section level2 hasAnchor" number="2.3">
+<h2><span class="header-section-number">2.3</span> Displaced Gaussian<a href="gaussian-operators.html#displaced-gaussian" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-9" class="proposition"><strong>Proposition 2.3  (displaced Gaussian unitary action) </strong></span>Consider a displaced Gaussian unitary and an arbitrary displaced quadratic operator
+<span class="math display" id="eq:dispGaussianUnitary">\[\begin{equation}
+    U = \exp\left(\dfrac 1 2 \gamma^T h \gamma + id^T \gamma\right), \quad
+    A = \dfrac 1 2 \sum_{a, b}\Gamma_{ab}\gamma_a \gamma_b + \sum_j \Gamma_j \gamma_j,
+    \quad \Gamma_{ab}=-\Gamma_{ba}
+    \tag{2.6}
+\end{equation}\]</span>
+Define the affine encodings <span class="math inline">\(\psi, \iota\)</span> of the coefficients
+<span class="math display" id="eq:affEncoding">\[\begin{equation}
+\begin{split}
+    E &amp;= \psi(U) = \begin{pmatrix}
+        0 &amp; \cdots &amp; -id_k &amp; \cdots \\
+        \vdots &amp; \ddots &amp;&amp; \\
+        -id_j &amp;&amp; h_{jk} &amp; \\
+        \vdots  &amp;&amp;&amp; \ddots
+    \end{pmatrix}, \quad
+    \iota\left(A\right) =
+    \begin{pmatrix}
+        0 &amp; \cdots &amp; -\Gamma_k &amp; \cdots \\
+        \vdots &amp; \ddots &amp;&amp; \\
+        \Gamma_j &amp; &amp; \Gamma_{jk} &amp; \\
+        \vdots &amp;&amp;&amp; \ddots \\
+    \end{pmatrix}
+\end{split}
+\tag{2.7}
+\end{equation}\]</span>
+Note that the encoding <span class="math inline">\(\psi\)</span> of unitary is anti-Hermitian
+while the encoding <span class="math inline">\(\iota\)</span> of <span class="math inline">\(A\)</span> is antisymmetric.
+The displaced Gaussian unitary effects <a href="gaussian-operators.html#eq:dispGaussianUnitary">(2.6)</a>
+<span class="math display">\[
+    \iota(UAU^\dagger) = V\, \iota(A) \, V^T, \quad V = \exp(2E)
+\]</span>
+Denote the Gaussian unitary group by <span class="math inline">\(DG(n)\subset U(2^n)\)</span> and
+its algebra <span class="math inline">\(\mathfrak{dg}(n)\)</span>.</p>
 </div>
-<div id="affine-gaussian" class="section level2 hasAnchor" number="2.3">
-<h2><span class="header-section-number">2.3</span> Affine Gaussian<a href="gaussian-operators.html#affine-gaussian" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="lemma">
+<p><span id="lem:dgEmbedding" class="lemma"><strong>Lemma 2.5  </strong></span>The DG algebra <span class="math inline">\(\mathfrak{dg}(n)\)</span> is isomorphic to <span class="math inline">\(\mathfrak{so}(2n+1)\)</span>.
+As a corollary, <span class="math inline">\(DG(n)\)</span> is isomorphic to <span class="math inline">\(SO(2n+1)\)</span>.</p>
+</div>
+<p><em>Proof:</em> Define the embedding <span class="math inline">\(\varphi:\mathfrak{dg}(n)\to \mathfrak{so}(2n+1)\)</span> by
+<span class="math display">\[
+    \varphi \begin{pmatrix} 0 &amp; -id^T \\ -id &amp; h
+    \end{pmatrix} = \begin{pmatrix}
+        0 &amp; d^T \\ -d &amp; h
+    \end{pmatrix}
+\]</span>
+The map <span class="math inline">\(\varphi\)</span> is obviously bijective. Showing
+<span class="math inline">\([\varphi(E_1), \varphi(E_2)] = \varphi[E_1, E_2]\)</span> establishes
+that this is an embedding
+<span class="math display">\[\begin{align}
+    [\varphi(E_1), \varphi(E_2)] &amp;= \left[\begin{pmatrix}
+        0 &amp; d_1^T \\ -d_1 &amp; h_1
+    \end{pmatrix}, \begin{pmatrix}
+        0 &amp; d_2^T \\ -d_2 &amp; h_2
+    \end{pmatrix}\right] = \begin{pmatrix}
+        - d_1^T d_2 + d_2^Td_1 &amp; d_1^T h_2 - d_2^T h_1 \\
+        -h_1 d_2 + h_2 d_1 &amp; h_1h_2 - d_1d_2^T - h_2h_1+ d_2d_1^T
+    \end{pmatrix} \\
+    &amp;= \begin{pmatrix}
+        0 &amp; -(h_2d_1 - h_1d_2)^T \\
+        h_2d_1 - h_1d_2 &amp; [h_1, h_2] + d_2d_1^T - d_1d_2^T
+    \end{pmatrix} \\
+    \varphi [E_1, E_2]
+    &amp;= \varphi \left[
+        \begin{pmatrix} 0 &amp; -id_1^T \\ -id_1 &amp; h_1\end{pmatrix}
+        ,
+        \begin{pmatrix} 0 &amp; -id_2^T \\ -id_2 &amp; h_2\end{pmatrix}
+    \right]
+    = \varphi \begin{pmatrix}
+        -id_1^T d_2 + id_2^T d_1 &amp; -id_1^T h_2 + id_2^Th_1 \\
+        -ih_1d_2 + ih_2d_1 &amp; h_1h_2 -d_1d_2^T - h_2h_1 + d_2 d_1^T
+    \end{pmatrix} \\
+    &amp;= \varphi \begin{pmatrix}
+        0 &amp; -i (d_1^Th_2 - d_2^Th_1)\\
+        i(h_2d_1 - h_1d_2) &amp; [h_1, h_2] + d_2d_1^T - d_1d_2^T
+    \end{pmatrix} = \begin{pmatrix}
+        0 &amp; -(h_2d_1 - h_1d_2)^T \\
+        h_2d_1 - h_1d_2 &amp; [h_1, h_2] + d_2d_1^T - d_1d_2^T
+    \end{pmatrix}
+\end{align}\]</span></p>
+<div class="theorem">
+<p><span id="thm:dispGsDecomp" class="theorem"><strong>Theorem 2.7  (local decomposition of displaced Gaussian) </strong></span>Displaced Gaussian unitaries are generated by nearest-neighbor even Gaussian
+and arbitrary single-qubit unitary on a special line.</p>
+</div>
+<p><em>Proof:</em> Let the first line be special without loss of generality.
+As per the previous lemma <a href="gaussian-operators.html#lem:dgEmbedding">2.5</a> it suffices to show that
+the rotations generated by the image of matchgates and <span class="math inline">\(R_x\)</span> under <span class="math inline">\(\varphi\)</span>
+generate <span class="math inline">\(SO(2n+1)\)</span>.
+The image of matchgates under <span class="math inline">\(\varphi\)</span>. generate rotations on all subspaces but the first.</p>
+<p>Now <span class="math inline">\(R_x(\theta)\)</span> first line correspond to zero <span class="math inline">\(h\)</span> and
+nonzero <span class="math inline">\(d_j=-\delta_{1j}\theta/2\)</span>. Explicilty,
+<span class="math display">\[\begin{align}
+    \varphi (E_x(\theta))
+    &amp;= \varphi\circ\psi(e^{-i \theta \gamma_1/2}) = \varphi \begin{pmatrix}
+        0 &amp; i\theta/2 &amp; \cdots \\
+        i\theta/2 \\
+        \vdots &amp;&amp; \ddots \\
+    \end{pmatrix} = \begin{pmatrix}
+        0 &amp; -\theta/2 \\
+        \theta/2 &amp; 0 \\
+        &amp;&amp;&amp; \ddots
+    \end{pmatrix}
+\end{align}\]</span>
+Thus <span class="math inline">\(R_x(\theta)\)</span> generates rotation between the first and second subspaces.
+This suffices to generate <span class="math inline">\(SO(2n+1)\)</span> together with arbitrary rotation in all subspaces but the first.</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-10" class="proposition"><strong>Proposition 2.4  (decomposition of GHZ state) </strong></span>Let <span class="math inline">\(|GHZ_4\rangle= |0000\rangle+ |1111\rangle\)</span> denote the <span class="math inline">\(4\)</span>-qubit GHZ state. Consider the unitaries
+<span class="math display">\[\begin{align}
+    U_1 &amp;= \exp\left[\dfrac\pi 4 (3\gamma_1\gamma_7 + \gamma_3\gamma_5 - 4\gamma_4\gamma_8)\right] \\
+    U_2 &amp;= \exp\left[\dfrac\pi 4 (3\gamma_2\gamma_8 + 4\gamma_5\gamma_6)\right]
+\end{align}\]</span>
+Let <span class="math inline">\(U_Z\)</span> denote controlled-<span class="math inline">\(Z\)</span> on the first and second qubits, then
+<span class="math display">\[
+    |GHZ_4\rangle= U_2U_ZU_1|0\rangle^{\otimes 4}
+\]</span></p>
+</div>
 
 </div>
 </div>

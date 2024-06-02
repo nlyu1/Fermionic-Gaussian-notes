@@ -4,18 +4,18 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Fermionic Gaussian Computation</title>
-  <meta name="description" content="Fermionic Gaussian Computation" />
+  <title>4 Betas | Fermionic Gaussian Computation</title>
+  <meta name="description" content="4 Betas | Fermionic Gaussian Computation" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Fermionic Gaussian Computation" />
+  <meta property="og:title" content="4 Betas | Fermionic Gaussian Computation" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Fermionic Gaussian Computation" />
+  <meta name="twitter:title" content="4 Betas | Fermionic Gaussian Computation" />
   
   
   
@@ -30,8 +30,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-
-<link rel="next" href="preliminaries.html"/>
+<link rel="prev" href="classical-simulation-results.html"/>
+<link rel="next" href="bibliography.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -149,6 +149,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.5.3" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#non-adaptive-product-state-measurement"><i class="fa fa-check"></i><b>3.5.3</b> Non-adaptive product-state measurement</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="4" data-path="betas.html"><a href="betas.html"><i class="fa fa-check"></i><b>4</b> Betas</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
 </ul>
 
@@ -167,48 +168,17 @@ div.csl-indent {
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Fermionic Gaussian Computation</h1>
-<p class="author"><em>Nicholas Lyu</em></p>
-<p class="date"><em>2024-06-01</em></p>
+<div id="betas" class="section level1 hasAnchor" number="4">
+<h1><span class="header-section-number">4</span> Betas<a href="betas.html#betas" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<div class="definition" namne="Beta">
+<p><span id="def:unlabeled-div-15" class="definition"><strong>Definition 4.1  </strong></span>Given two instruments <span class="math inline">\(X, Y\)</span> the following definitions of <span class="math inline">\(\beta_{X\to Y}\)</span>
+are equivalent:</p>
+<ul>
+<li>The variance of the portfolio <span class="math inline">\(Y-\beta X\)</span> is minimized.</li>
+<li>If I know that the return of <span class="math inline">\(X\)</span> today is <span class="math inline">\(p\)</span>, then my best linear guess to the
+return of <span class="math inline">\(Y\)</span> is <span class="math inline">\(\beta_{X\to Y} p\)</span>.</li>
+</ul>
 </div>
-<div id="preface" class="section level1 unnumbered hasAnchor">
-<h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This set of notes document existing and ongoing research efforts
-for fermionic Gaussian computation, also known as fermionic linear optics
-in physics and matchgate computation in computer science.</p>
-<p>It is a rich area of research lying at the intersection of
-physics, computer science, and statistics.</p>
-<p>The main results of this work are:</p>
-<ul>
-<li>We show that matchgate circuits remain classically simulable
-(in the sense of both DiVincenzo 2002, Josza 2008) even when
-allowing arbitrary single-qubit unitaries on a chosen line,
-We also show that universality is recovered upon extending this condition
-to two contiguous lines.</li>
-<li>The simulable gate-set above correspond to
-fermionic Gaussian unitaries with
-possibly non-zero mean （displaced Gaussian, or DG).</li>
-<li>By deriving a transformation rule for the
-effect of DG unitaries with explicit affine structure,
-we demonstrate equivalence between circuit, Hamiltonian ground state,
-and fourier characterizations of pure DG states; this generalizes the structure
-theorem for zero-mean Gaussian states and
-provides a natural framework to interpret
-Brod’s generalization of zero-mean Gaussian simulation with arbitrary
-product-state input (Brod 2016).</li>
-<li>Possibly to-do: map out whole complexity landspace like (Hebenstreit 2020) for
-DG circuits.</li>
-</ul>
-<p>Continuing the line of Fourier results (or do another work):</p>
-<ul>
-<li>Even convolution and CLT, swap test.</li>
-<li>Magic cumulant provides an tensor-product additive resource measure.</li>
-<li>Hypothesis: magic cumulant (or some cumulant statistic) is related to
-the average number of copies required to implement a resourceful
-state (or the success probability of achieving a resourceful state).
-Generalize Josza result.</li>
-</ul>
 
 </div>
             </section>
@@ -216,8 +186,8 @@ Generalize Josza result.</li>
           </div>
         </div>
       </div>
-
-<a href="preliminaries.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="classical-simulation-results.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="bibliography.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
