@@ -523,8 +523,8 @@ Let $|GHZ_4\ra = |0000\ra + |1111\ra$ denote the $4$-qubit GHZ state. Consider t
     U_1 &= \exp\left[\df \pi 4 (3\gamma_1\gamma_7 + \gamma_3\gamma_5 - 4\gamma_4\gamma_8)\right] \\ 
     U_2 &= \exp\left[\df \pi 4 (3\gamma_2\gamma_8 + 4\gamma_5\gamma_6)\right]
 \end{align}
-Let $U_Z$ denote controlled-$Z$ on the first and second qubits, then 
+Let $CZ_{12}$ denote controlled-$Z$ on the first and second qubits, then 
 \[ 
-    |GHZ_4\ra = U_2U_ZU_1|0\ra^{\otimes 4}
+    |GHZ_4\ra = U_2CZ_{12}U_1|0\ra^{\otimes 4}
 \] 
 :::
