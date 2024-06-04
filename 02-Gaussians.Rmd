@@ -447,12 +447,13 @@ its algebra $\mfk{dg}(n)$.
 The DG algebra $\mfk{dg}(n)$ is isomorphic to $\mfk{so}(2n+1)$. 
 As a corollary, $DG(n)$ is isomorphic to $SO(2n+1)$. 
 :::
-_Proof:_ Define the embedding $\varphi:\mfk{dg}(n)\to \mfk{so}(2n+1)$ by 
+_Proof:_ Define the isomorphism $\varphi:\mfk{dg}(n)\to \mfk{so}(2n+1)$ by 
 \[ 
     \varphi \begin{pmatrix} 0 & -id^T \\ -id & h 
     \end{pmatrix} = \begin{pmatrix}
         0 & d^T \\ -d & h
     \end{pmatrix}
+    (\#eq:dgLieIsomorphism)
 \] 
 The map $\varphi$ is obviously bijective. Showing 
 $[\varphi(E_1), \varphi(E_2)] = \varphi[E_1, E_2]$ establishes 
@@ -500,7 +501,8 @@ generate $SO(2n+1)$.
 The image of matchgates under $\varphi$. generate rotations on all subspaces but the first. 
 
 Now $R_x(\theta)$ first line correspond to zero $h$ and 
-nonzero $d_j=-\delta_{1j}\theta/2$. Explicilty, 
+nonzero $d_j=-\delta_{1j}\theta/2$: using the Lie algebra 
+representation \@ref(eq:affEncoding) and isomorphism \@ref(eq:dgLieIsomorphism)
 \begin{align}
     \varphi\circ\psi(e^{-i \theta \gamma_1/2}) 
     &= \varphi \begin{pmatrix}
@@ -514,7 +516,8 @@ nonzero $d_j=-\delta_{1j}\theta/2$. Explicilty,
     \end{pmatrix} 
 \end{align}
 Thus $R_x(\theta)$ generates rotation between the first and second subspaces. 
-This suffices to generate $SO(2n+1)$ together with arbitrary rotation in all subspaces but the first. 
+This suffices to generate $SO(2n+1)$ together with arbitrary 
+rotation in all subspaces but the first. 
 
 
 ::: {.proposition name="decomposition of GHZ state"}

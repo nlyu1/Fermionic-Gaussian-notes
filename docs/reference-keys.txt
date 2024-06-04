@@ -45,6 +45,7 @@ prp:unlabeled-div-9
 eq:dispGaussianUnitary
 eq:affEncoding
 lem:dgEmbedding
+eq:dgLieIsomorphism
 thm:dispGsDecomp
 prp:unlabeled-div-10
 def:npunitary

@@ -281,8 +281,19 @@ so $b^T\theta$ does not affect the final integral.
 
 ## Magic states
 
-Josza's work [@hebenstreit2019all] provides a characterization of 
+Hebenstreit's work [@hebenstreit2019all] provides a characterization of 
 resourceful states for Gaussian unitaries. 
+
+The $4$-qubit magic state $|M\ra$ is the Choi state of the swap unitary 
+acting on the first and last qubits 
+\[ 
+    |M\ra = \mrm{SWAP}_{14} (|0000\ra + |0011\ra + |1100\ra + |1111\ra) 
+    = |0000\ra + |1010\ra + |0101\ra + |1111\ra 
+\] 
+<center>
+<img src="figures/swapGadget.png" alt="Caption" width="70%" />
+<figcaption>This figure is from [@hebenstreit2019all]</figcaption>
+</center>
 
 ### Measurement-based universal computation
 ::: {.theorem #qchardSimulation name="swap gadget construction"} 

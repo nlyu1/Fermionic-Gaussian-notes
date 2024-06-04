@@ -23,7 +23,7 @@
 <meta name="author" content="Nicholas Lyu" />
 
 
-<meta name="date" content="2024-06-01" />
+<meta name="date" content="2024-06-04" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -430,8 +430,20 @@ so <span class="math inline">\(b^T\theta\)</span> does not affect the final inte
 </div>
 <div id="magic-states" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> Magic states<a href="classical-simulation-results.html#magic-states" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>Josza’s work <span class="citation">(<a href="#ref-hebenstreit2019all">Hebenstreit et al. 2019</a>)</span> provides a characterization of
+<p>Hebenstreit’s work <span class="citation">(<a href="#ref-hebenstreit2019all">Hebenstreit et al. 2019</a>)</span> provides a characterization of
 resourceful states for Gaussian unitaries.</p>
+The <span class="math inline">\(4\)</span>-qubit magic state <span class="math inline">\(|M\rangle\)</span> is the Choi state of the swap unitary
+acting on the first and last qubits
+<span class="math display">\[
+    |M\rangle= \mathrm{SWAP}_{14} (|0000\rangle+ |0011\rangle+ |1100\rangle+ |1111\rangle)
+    = |0000\rangle+ |1010\rangle+ |0101\rangle+ |1111\rangle
+\]</span>
+<center>
+<img src="figures/swapGadget.png" alt="Caption" width="70%" />
+<figcaption>
+This figure is from <span class="citation">(<a href="#ref-hebenstreit2019all">Hebenstreit et al. 2019</a>)</span>
+</figcaption>
+</center>
 <div id="measurement-based-universal-computation" class="section level3 hasAnchor" number="3.4.1">
 <h3><span class="header-section-number">3.4.1</span> Measurement-based universal computation<a href="classical-simulation-results.html#measurement-based-universal-computation" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <div class="theorem">
