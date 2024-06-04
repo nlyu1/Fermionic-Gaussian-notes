@@ -135,7 +135,7 @@ div.csl-indent {
 <li class="chapter" data-level="3.3" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#generalization-1"><i class="fa fa-check"></i><b>3.3</b> Generalization</a>
 <ul>
 <li class="chapter" data-level="3.3.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#product-input-and-measurement-simulation"><i class="fa fa-check"></i><b>3.3.1</b> Product input and measurement simulation</a></li>
-<li class="chapter" data-level="3.3.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#insightful-perspective-affine-gaussian-overlap"><i class="fa fa-check"></i><b>3.3.2</b> Insightful perspective: affine Gaussian overlap</a></li>
+<li class="chapter" data-level="3.3.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#insightful-perspective-displaced-gaussian-overlap"><i class="fa fa-check"></i><b>3.3.2</b> Insightful perspective: displaced Gaussian overlap</a></li>
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#magic-states"><i class="fa fa-check"></i><b>3.4</b> Magic states</a>
 <ul>
@@ -384,19 +384,19 @@ rbitrary product-state input and measurement
 on the last <span class="math inline">\(k\)</span> qubits. The proof concludes by
 the freedom to re-order fermionic modes.</p>
 </div>
-<div id="insightful-perspective-affine-gaussian-overlap" class="section level3 hasAnchor" number="3.3.2">
-<h3><span class="header-section-number">3.3.2</span> Insightful perspective: affine Gaussian overlap<a href="classical-simulation-results.html#insightful-perspective-affine-gaussian-overlap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
+<div id="insightful-perspective-displaced-gaussian-overlap" class="section level3 hasAnchor" number="3.3.2">
+<h3><span class="header-section-number">3.3.2</span> Insightful perspective: displaced Gaussian overlap<a href="classical-simulation-results.html#insightful-perspective-displaced-gaussian-overlap" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>One may see that the single-qubit product state <span class="math inline">\(|\psi\rangle\)</span> is affine-Gaussian
 equivalent to <span class="math inline">\(|0\rangle^{\otimes n}\)</span> using a similar protocol.
-Affine Gaussians include single-qubit unitaries on the first qubit
+Displaced Gaussians include single-qubit unitaries on the first qubit
 in addition to even Gaussian unitaries.
 One can prepare <span class="math inline">\(|\psi_n\rangle\cdots |\psi_1\rangle\)</span> on the first
 qubit and f-swap them to their respective positions using <span class="math inline">\(G(Z, X)\)</span>;
-in other words, every single-qubit product state is affine-Gaussian equivalent
+in other words, every single-qubit product state is displaced-Gaussian equivalent
 to <span class="math inline">\(|0\rangle^{\otimes n}\)</span>.
 Then <span class="math inline">\(\Pr(\tilde y|\psi)\)</span> as in <a href="classical-simulation-results.html#eq:simulationProb">(3.1)</a> is the tracial overlap
-between the even-Gaussian Hermitian <span class="math inline">\(P_{\tilde y}\)</span> and the affine Gaussian
-<span class="math inline">\(U|0\rangle^{\otimes n}\)</span>, where <span class="math inline">\(U\)</span> is an affine Gaussian unitary.</p>
+between the even-Gaussian Hermitian <span class="math inline">\(P_{\tilde y}\)</span> and the displaced Gaussian state
+<span class="math inline">\(U|0\rangle^{\otimes n}\)</span>, where <span class="math inline">\(U\)</span> is an displaced Gaussian unitary.</p>
 <p>We can extend the Gaussian overlap formula <a href="preliminaries.html#thm:GaussianOverlap">1.4</a> to the
 case when one of the two operators is not homogeneously even, since they will
 continue to commute. This constitutes another proof of theorem <a href="classical-simulation-results.html#thm:pimoSimulation">3.7</a>.</p>

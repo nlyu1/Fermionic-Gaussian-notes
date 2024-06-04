@@ -87,7 +87,7 @@ matchgate-decomposition-and-simulation
 resourcefulness-of-swap
 generalization-1
 product-input-and-measurement-simulation
-insightful-perspective-affine-gaussian-overlap
+insightful-perspective-displaced-gaussian-overlap
 magic-states
 measurement-based-universal-computation
 characterization-of-magic-states

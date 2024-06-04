@@ -234,18 +234,18 @@ on the last $k$ qubits. The proof concludes by
 the freedom to re-order fermionic modes.  
 
 
-### Insightful perspective: affine Gaussian overlap
+### Insightful perspective: displaced Gaussian overlap
 One may see that the single-qubit product state $|\psi\ra$ is affine-Gaussian 
 equivalent to $|0\ra^{\otimes n}$ using a similar protocol. 
-Affine Gaussians include single-qubit unitaries on the first qubit 
+Displaced Gaussians include single-qubit unitaries on the first qubit 
 in addition to even Gaussian unitaries. 
 One can prepare $|\psi_n\ra\cdots |\psi_1\ra$ on the first 
 qubit and f-swap them to their respective positions using $G(Z, X)$; 
-in other words, every single-qubit product state is affine-Gaussian equivalent 
+in other words, every single-qubit product state is displaced-Gaussian equivalent 
 to $|0\ra^{\otimes n}$. 
 Then $\Pr(\tilde y|\psi)$ as in \@ref(eq:simulationProb) is the tracial overlap 
-between the even-Gaussian Hermitian $P_{\tilde y}$ and the affine Gaussian 
-$U|0\ra^{\otimes n}$, where $U$ is an affine Gaussian unitary. 
+between the even-Gaussian Hermitian $P_{\tilde y}$ and the displaced Gaussian state 
+$U|0\ra^{\otimes n}$, where $U$ is an displaced Gaussian unitary. 
 
 We can extend the Gaussian overlap formula \@ref(thm:GaussianOverlap) to the 
 case when one of the two operators is not homogeneously even, since they will 
