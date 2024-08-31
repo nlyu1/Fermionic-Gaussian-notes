@@ -4,26 +4,26 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Fermionic Gaussian Computation</title>
-  <meta name="description" content="Fermionic Gaussian Computation" />
+  <title>Physics 151 Section Notes</title>
+  <meta name="description" content="Physics 151 Section Notes" />
   <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Fermionic Gaussian Computation" />
+  <meta property="og:title" content="Physics 151 Section Notes" />
   <meta property="og:type" content="book" />
   
   
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Fermionic Gaussian Computation" />
+  <meta name="twitter:title" content="Physics 151 Section Notes" />
   
   
   
 
-<meta name="author" content="Nicholas Lyu" />
+<meta name="author" content="Nicholas Lyu, Arthur Jaffe" />
 
 
-<meta name="date" content="2024-06-04" />
+<meta name="date" content="2024-09-01" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -31,7 +31,7 @@
   
   
 
-<link rel="next" href="preliminaries.html"/>
+<link rel="next" href="two-body-problem.html"/>
 <script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -59,29 +59,6 @@
   
   div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 </style>
-<style type="text/css">
-/* Used with Pandoc 2.11+ new --citeproc when CSL is used */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}
-</style>
 
 </head>
 
@@ -95,60 +72,19 @@ div.csl-indent {
       <nav role="navigation">
 
 <ul class="summary">
-<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a></li>
-<li class="chapter" data-level="1" data-path="preliminaries.html"><a href="preliminaries.html"><i class="fa fa-check"></i><b>1</b> Preliminaries</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
 <ul>
-<li class="chapter" data-level="1.1" data-path="preliminaries.html"><a href="preliminaries.html#notation"><i class="fa fa-check"></i><b>1.1</b> Notation</a></li>
-<li class="chapter" data-level="1.2" data-path="preliminaries.html"><a href="preliminaries.html#fermionic-operators"><i class="fa fa-check"></i><b>1.2</b> Fermionic operators</a></li>
-<li class="chapter" data-level="1.3" data-path="preliminaries.html"><a href="preliminaries.html#clifford-grassmann-fourier-transform"><i class="fa fa-check"></i><b>1.3</b> Clifford-Grassmann Fourier transform</a></li>
-<li class="chapter" data-level="1.4" data-path="preliminaries.html"><a href="preliminaries.html#grassmann-calculus"><i class="fa fa-check"></i><b>1.4</b> Grassmann calculus</a>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#introduction-to-the-course"><i class="fa fa-check"></i>Introduction to the course</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#using-these-notes"><i class="fa fa-check"></i>Using these notes</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="two-body-problem.html"><a href="two-body-problem.html"><i class="fa fa-check"></i><b>1</b> Two-body problem</a>
 <ul>
-<li class="chapter" data-level="1.4.1" data-path="preliminaries.html"><a href="preliminaries.html#grassmann-fourier-identities"><i class="fa fa-check"></i><b>1.4.1</b> Grassmann fourier identities</a></li>
-<li class="chapter" data-level="1.4.2" data-path="preliminaries.html"><a href="preliminaries.html#gaussian-integrals"><i class="fa fa-check"></i><b>1.4.2</b> Gaussian integrals</a></li>
+<li class="chapter" data-level="" data-path="two-body-problem.html"><a href="two-body-problem.html#problem-setup"><i class="fa fa-check"></i>Problem setup</a></li>
+<li class="chapter" data-level="" data-path="two-body-problem.html"><a href="two-body-problem.html#three-conserved-quantities"><i class="fa fa-check"></i>Three conserved quantities</a></li>
+<li class="chapter" data-level="" data-path="two-body-problem.html"><a href="two-body-problem.html#orbits-effective-potential"><i class="fa fa-check"></i>Orbits, effective potential</a></li>
+<li class="chapter" data-level="" data-path="two-body-problem.html"><a href="two-body-problem.html#scattering"><i class="fa fa-check"></i>Scattering</a></li>
 </ul></li>
-<li class="chapter" data-level="1.5" data-path="preliminaries.html"><a href="preliminaries.html#classical-simulatibility"><i class="fa fa-check"></i><b>1.5</b> Classical simulatibility</a></li>
-</ul></li>
-<li class="chapter" data-level="2" data-path="gaussian-operators.html"><a href="gaussian-operators.html"><i class="fa fa-check"></i><b>2</b> Gaussian Operators</a>
-<ul>
-<li class="chapter" data-level="2.1" data-path="gaussian-operators.html"><a href="gaussian-operators.html#even-gaussian"><i class="fa fa-check"></i><b>2.1</b> Even Gaussian</a>
-<ul>
-<li class="chapter" data-level="" data-path="gaussian-operators.html"><a href="gaussian-operators.html#characterization"><i class="fa fa-check"></i>Characterization</a></li>
-<li class="chapter" data-level="" data-path="gaussian-operators.html"><a href="gaussian-operators.html#fourier-perspective"><i class="fa fa-check"></i>Fourier perspective</a></li>
-<li class="chapter" data-level="" data-path="gaussian-operators.html"><a href="gaussian-operators.html#gaussian-linear-maps"><i class="fa fa-check"></i>Gaussian linear maps</a></li>
-<li class="chapter" data-level="" data-path="gaussian-operators.html"><a href="gaussian-operators.html#complete-positive-gaussian-linear-maps"><i class="fa fa-check"></i>Complete-positive Gaussian linear maps</a></li>
-</ul></li>
-<li class="chapter" data-level="2.2" data-path="gaussian-operators.html"><a href="gaussian-operators.html#lie-algebra-embedding"><i class="fa fa-check"></i><b>2.2</b> Lie algebra embedding</a></li>
-<li class="chapter" data-level="2.3" data-path="gaussian-operators.html"><a href="gaussian-operators.html#displaced-gaussian"><i class="fa fa-check"></i><b>2.3</b> Displaced Gaussian</a></li>
-</ul></li>
-<li class="chapter" data-level="3" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html"><i class="fa fa-check"></i><b>3</b> Classical simulation results</a>
-<ul>
-<li class="chapter" data-level="3.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#computational-basis-input-and-measurement"><i class="fa fa-check"></i><b>3.1</b> Computational-basis input and measurement</a>
-<ul>
-<li class="chapter" data-level="3.1.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#insightful-special-case"><i class="fa fa-check"></i><b>3.1.1</b> Insightful special case</a></li>
-<li class="chapter" data-level="3.1.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#generalization"><i class="fa fa-check"></i><b>3.1.2</b> Generalization</a></li>
-</ul></li>
-<li class="chapter" data-level="3.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#bounded-output-support"><i class="fa fa-check"></i><b>3.2</b> Bounded output support</a>
-<ul>
-<li class="chapter" data-level="3.2.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#matchgate-decomposition-and-simulation"><i class="fa fa-check"></i><b>3.2.1</b> Matchgate decomposition and simulation</a></li>
-<li class="chapter" data-level="3.2.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#resourcefulness-of-swap"><i class="fa fa-check"></i><b>3.2.2</b> Resourcefulness of swap</a></li>
-</ul></li>
-<li class="chapter" data-level="3.3" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#generalization-1"><i class="fa fa-check"></i><b>3.3</b> Generalization</a>
-<ul>
-<li class="chapter" data-level="3.3.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#product-input-and-measurement-simulation"><i class="fa fa-check"></i><b>3.3.1</b> Product input and measurement simulation</a></li>
-<li class="chapter" data-level="3.3.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#insightful-perspective-displaced-gaussian-overlap"><i class="fa fa-check"></i><b>3.3.2</b> Insightful perspective: displaced Gaussian overlap</a></li>
-</ul></li>
-<li class="chapter" data-level="3.4" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#magic-states"><i class="fa fa-check"></i><b>3.4</b> Magic states</a>
-<ul>
-<li class="chapter" data-level="3.4.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#measurement-based-universal-computation"><i class="fa fa-check"></i><b>3.4.1</b> Measurement-based universal computation</a></li>
-<li class="chapter" data-level="3.4.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#characterization-of-magic-states"><i class="fa fa-check"></i><b>3.4.2</b> Characterization of magic states</a></li>
-</ul></li>
-<li class="chapter" data-level="3.5" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#complexity-landscape"><i class="fa fa-check"></i><b>3.5</b> Complexity landscape</a>
-<ul>
-<li class="chapter" data-level="3.5.1" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#non-adaptive-single-qubit-measurement"><i class="fa fa-check"></i><b>3.5.1</b> Non-adaptive single-qubit measurement</a></li>
-<li class="chapter" data-level="3.5.2" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#adaptive-single-qubit-measurement"><i class="fa fa-check"></i><b>3.5.2</b> Adaptive single-qubit measurement</a></li>
-<li class="chapter" data-level="3.5.3" data-path="classical-simulation-results.html"><a href="classical-simulation-results.html#non-adaptive-product-state-measurement"><i class="fa fa-check"></i><b>3.5.3</b> Non-adaptive product-state measurement</a></li>
-</ul></li>
-</ul></li>
+<li class="chapter" data-level="2" data-path="lagranges-equations.html"><a href="lagranges-equations.html"><i class="fa fa-check"></i><b>2</b> Lagrange’s Equations</a></li>
 <li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
 </ul>
 
@@ -159,7 +95,7 @@ div.csl-indent {
       <div class="body-inner">
         <div class="book-header" role="navigation">
           <h1>
-            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Fermionic Gaussian Computation</a>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Physics 151 Section Notes</a>
           </h1>
         </div>
 
@@ -168,48 +104,40 @@ div.csl-indent {
 
             <section class="normal" id="section-">
 <div id="header">
-<h1 class="title">Fermionic Gaussian Computation</h1>
-<p class="author"><em>Nicholas Lyu</em></p>
-<p class="date"><em>2024-06-04</em></p>
+<h1 class="title">Physics 151 Section Notes</h1>
+<p class="author"><em>Nicholas Lyu, Arthur Jaffe</em></p>
+<p class="date"><em>2024-09-01</em></p>
 </div>
 <div id="preface" class="section level1 unnumbered hasAnchor">
 <h1>Preface<a href="index.html#preface" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<p>This set of notes document existing and ongoing research efforts
-for fermionic Gaussian computation, also known as fermionic linear optics
-in physics and matchgate computation in computer science.</p>
-<p>It is a rich area of research lying at the intersection of
-physics, computer science, and statistics.</p>
-<p>The main results of this work are:</p>
-<ul>
-<li>We show that matchgate circuits remain classically simulable
-(in the sense of both DiVincenzo 2002, Josza 2008) even when
-allowing arbitrary single-qubit unitaries on a chosen line,
-We also show that universality is recovered upon extending this condition
-to two contiguous lines.</li>
-<li>The simulable gate-set above correspond to
-fermionic Gaussian unitaries with
-possibly non-zero mean （displaced Gaussian, or DG).</li>
-<li>By deriving a transformation rule for the
-effect of DG unitaries with explicit affine structure,
-we demonstrate equivalence between circuit, Hamiltonian ground state,
-and fourier characterizations of pure DG states; this generalizes the structure
-theorem for zero-mean Gaussian states and
-provides a natural framework to interpret
-Brod’s generalization of zero-mean Gaussian simulation with arbitrary
-product-state input (Brod 2016).</li>
-<li>Possibly to-do: map out whole complexity landspace like (Hebenstreit 2020) for
-DG circuits.</li>
-</ul>
-<p>Continuing the line of Fourier results (or do another work):</p>
-<ul>
-<li>Even convolution and CLT, swap test.</li>
-<li>Magic cumulant provides an tensor-product additive resource measure.</li>
-<li>Hypothesis: magic cumulant (or some cumulant statistic) is related to
-the average number of copies required to implement a resourceful
-state (or the success probability of achieving a resourceful state).
-Generalize Josza result.</li>
-</ul>
+<p>These notes accompany the Fall 2024
+iteration of Arthur Jaffe’s <em>Mechanics</em> course at
+Harvard (Physics, 151).</p>
+<div id="introduction-to-the-course" class="section level2 unnumbered hasAnchor">
+<h2>Introduction to the course<a href="index.html#introduction-to-the-course" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>For those who learn math, at some point
+(late into high school or in college) there is a
+change of perspective from <em>computation</em> to <em>proof</em>-based math.
+One stops viewing matrices as large blobs of numbers but
+as coordinate representations of abstract linear transformations.</p>
+<p>There is a similar shift in perspective in physics, when
+the emphasis changes from solving equations of motion to
+understanding the fundamental reasons they’re there in
+the first place. Key to navigating this change is understanding
+the role of ‘’symmetry and conservation laws.’’</p>
+<p>This course does not discuss quantum theory
+(maybe at the end, time permitting), but the
+classical treatment of symmetry and conservation
+will help motivate much of quantum theory’s constructions.</p>
+</div>
+<div id="using-these-notes" class="section level2 unnumbered hasAnchor">
+<h2>Using these notes<a href="index.html#using-these-notes" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>These notes summarize and, occasionally,
+supplement Prof. Jaffe’s lecture notes on canvas.
+They are meant as a concise reminder of the main
+results in lecture.</p>
 
+</div>
 </div>
             </section>
 
@@ -217,7 +145,7 @@ Generalize Josza result.</li>
         </div>
       </div>
 
-<a href="preliminaries.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="two-body-problem.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

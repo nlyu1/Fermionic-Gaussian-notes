@@ -1,6 +1,6 @@
 ---
-title: "Fermionic Gaussian Computation"
-author: "Nicholas Lyu"
+title: "Physics 151 Section Notes"
+author: "Nicholas Lyu, Arthur Jaffe"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -11,14 +11,16 @@ link-citations: true
 ---
 
 \usepackage{cancel}
+\usepackage{amsmath}
+\usepackage{bm}
 \newcommand{\pd}[1]{\partial_{#1}}
 
 \newcommand{\mbb}{\mathbb}
 \newcommand{\mbf}{\mathbf}
+\newcommand{\mb}{\boldsymbol}
 \newcommand{\mrm}{\mathrm}
 \newcommand{\mca}{\mathcal}
 \newcommand{\mfk}{\mathfrak}
-
 \newcommand{\tr}{\mrm{tr}} 
 \newcommand{\df}{\dfrac}
 \newcommand{\la}{\langle}
@@ -29,45 +31,40 @@ link-citations: true
 \newcommand{\Gr}{\mca G}
 \newcommand{\Pf}{\mrm{Pf}}
 \newcommand{\Pa}{\mca P}
+\newcommand{\R}{\mbb R}
 
 \newcommand{\poly}{\mrm{poly}}
 
 
 
 # Preface {-}
-This set of notes document existing and ongoing research efforts 
-for fermionic Gaussian computation, also known as fermionic linear optics 
-in physics and matchgate computation in computer science. 
+These notes accompany the Fall 2024 
+iteration of Arthur Jaffe's _Mechanics_ course at 
+Harvard (Physics, 151). 
 
-It is a rich area of research lying at the intersection of 
-physics, computer science, and statistics. 
 
-The main results of this work are: 
+## Introduction to the course {-}
 
-- We show that matchgate circuits remain classically simulable 
-    (in the sense of both DiVincenzo 2002, Josza 2008) even when 
-    allowing arbitrary single-qubit unitaries on a chosen line, 
-    We also show that universality is recovered upon extending this condition 
-    to two contiguous lines. 
-- The simulable gate-set above correspond to 
-    fermionic Gaussian unitaries with 
-    possibly non-zero mean （displaced Gaussian, or DG). 
-- By deriving a transformation rule for the 
-    effect of DG unitaries with explicit affine structure, 
-    we demonstrate equivalence between circuit, Hamiltonian ground state, 
-    and fourier characterizations of pure DG states; this generalizes the structure 
-    theorem for zero-mean Gaussian states and 
-    provides a natural framework to interpret 
-    Brod's generalization of zero-mean Gaussian simulation with arbitrary 
-    product-state input (Brod 2016). 
-- Possibly to-do: map out whole complexity landspace like (Hebenstreit 2020) for 
-    DG circuits. 
-    
-Continuing the line of Fourier results (or do another work):
+For those who learn math, at some point 
+(late into high school or in college) there is a 
+change of perspective from _computation_ to _proof_-based math. 
+One stops viewing matrices as large blobs of numbers but 
+as coordinate representations of abstract linear transformations. 
 
-- Even convolution and CLT, swap test. 
-- Magic cumulant provides an tensor-product additive resource measure. 
-- Hypothesis: magic cumulant (or some cumulant statistic) is related to 
-    the average number of copies required to implement a resourceful 
-    state (or the success probability of achieving a resourceful state). 
-    Generalize Josza result. 
+There is a similar shift in perspective in physics, when
+the emphasis changes from solving equations of motion to 
+understanding the fundamental reasons they're there in 
+the first place. Key to navigating this change is understanding 
+the role of ''symmetry and conservation laws.'' 
+
+This course does not discuss quantum theory 
+(maybe at the end, time permitting), but the 
+classical treatment of symmetry and conservation 
+will help motivate much of quantum theory's constructions. 
+
+
+## Using these notes {-}
+These notes summarize and, occasionally, 
+supplement Prof. Jaffe's lecture notes on canvas. 
+They are meant as a concise reminder of the main 
+results in lecture. 

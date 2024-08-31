@@ -1,0 +1,389 @@
+# Two-body problem
+Corrections: 
+
+1. Lecture notes missing \\vec on $F_2$ before section 2.
+2. $\dot {\vec r}$ mis-typed after eq 28 in "angular momentum". 
+
+
+We start with this problem to: 
+
+1. Warm up the physics brain
+    if you haven't solved a mechanicss problem in a while :) 
+2. Present one of the _few_ solvable physics problems 
+    (another being the harmonic oscillator). 
+3. Exemplify how a problem can be solved by analyzing 
+    its **symmetries and conserved quantities**. 
+4. Introduce the Runge-Lenz vector 
+    (hydrogen atom, Physics 143a), effective radial potential 
+    (Physics 143a, 210), and the basics of scattering (Physics 143b). 
+
+We approach the two-body problem in the following steps: 
+
+1. Reduce to one-body motion. 
+2. Identify the conserved quantities: energy $E$, 
+angular-momentum $\mbf L$, and Runge-Lenz vector $\mb \epsilon$.
+    - $E$ is conserved when the potential $V$ is time-invariant. 
+    - $\mbf L$ is conserved when $V$ is central. 
+    - $\mb \epsilon$ is conserved when $V\propto r^{-2}$. 
+    Orbits of such potentials have conserved eccentricity. 
+3. Reduce to planar motion using conservation of $\mbf L$. 
+4. Derive the orbit equations from conserved quantities. 
+5. Analyze the different kinds of orbits by 
+    looking at the one-dimensional effective potential $V_{\mrm{eff}}$. 
+6. Analyze scattering. 
+
+
+## Problem setup {-}
+::: {.definition #twoBodyProblem name="two-body problem"}
+Consider two particles with mass $m_1, m_2$ 
+at locations $\mbf x_1, \mbf x_2 \in \R^3$. 
+Their potential is 
+\[ 
+    V(\mbf x_1, \mbf x_2) = -\df{k}{|\mbf x_1-\mbf x_2|}
+\] 
+Here $k\in \R$ is a constant. The interaction is attractive 
+when $k>0$ and repulsive when $k<0$. 
+:::
+Computing the force based on the potential: 
+\[ 
+    \mbf F_j 
+    = -\nabla_{\mbf x_j}V(\mbf x_1, \mbf x_2)
+    = \df{k}{|\mbf x_1 - \mbf x_2|^2} 
+    \nabla_{\mbf x_j}|\mbf x_1 - \mbf x_2|
+    = \df{k}{|\mbf x_1-\mbf x_2|^2} 
+    \begin{cases}
+        (\mbf x_1 - \mbf x_2) & j = 1 \\ 
+        (\mbf x_2 - \mbf x_1) & j = 2 
+    \end{cases}
+    (\#eq:twoBodyForce)
+\] 
+Note that $\mbf F_1 + \mbf F_2 = 0$. 
+Recalling Newton's second law, the equations of motion are 
+\[ 
+    \ddot {\mbf x}_j = \mbf F_j / m_j 
+\] 
+
+Instead of solving for $\mbf x_1, \mbf x_2$, one 
+can solve instead for the motion of the center of mass 
+$\mbf R$ and displacement $\mbf r$. The motion of $\mbf R$ 
+will be trivial. 
+
+::: {.proposition name="center of mass motion"}
+Define the center of mass 
+\[ 
+    \mbf R = \df{m_1}{m_1+m_2} \mbf x_1 + \df{m_2}{m_1+m_2}\mbf x_2 
+\] 
+The equation for the center of mass is 
+\[ 
+    (m_1+m_2)\ddot {\mbf R} = m_1\ddot{\mbf r}_1 + m_2\ddot{\mbf r}_2 
+    = \mbf F_1 + \mbf F_2 = 0 
+\] 
+The motion of the center of mass is thus completely determined by the 
+initial conditions of the problem. 
+:::
+
+::: {.definition name="relative coordinates, displacement"}
+Define the relative coordinates $\mbf r_j = \mbf x_j - \mbf R$ 
+and displacement $\mbf r = \mbf x_2 - \mbf x_1$. 
+Denote by $r=|\mbf r|, \mbf n = \mbf r / r$. 
+Note that $\mbf n$ points in the direction $1\to 2$. 
+:::
+
+::: {.proposition name="one-body equation"}
+The coordinates $\mbf r$ obeys 
+\[ 
+    \ddot {\mbf r} = \mbf F/\mu, 
+    \quad \mbf F = -\nabla_{\mbf r} V(r) = -\df{k}{r^3} \mbf r
+    \quad \mu = \df{m_1m_2}{m_1+m_2}
+\] 
+Here $\mu$ is the reduced mass which satisfies $1/m_1 + 1/m_2 = 1/\mu$. 
+It is the "effective" mass of the one-body "particle" 
+corresponding to the two-body problem. 
+Additionally define the one-body momentum 
+\[ 
+    \mbf p = \mu \dot {\mbf r}, \quad \dot {\mbf p} = \mbf F 
+\] 
+
+_Proof:_ Rewriting \@ref(eq:twoBodyForce) in terms of the 
+newly defined quantities: 
+\begin{align} 
+    m_1 \ddot {\mbf x}_1 
+    &= \df{k}{r^2}\mbf n 
+    = -m_2 \ddot {\mbf x}_2 \\ 
+    \ddot {\mbf r} 
+    &= \ddot {\mbf x}_2 - \ddot {\mbf x}_1
+    = -\left(\df 1 {m_2} + \df 1 {m_1}\right)\df{k}{r^2} \mbf n 
+    = - \df{k}{\mu r^2}\mbf n 
+\end{align}
+:::
+
+## Three conserved quantities {-}
+::: {.definition name="conserved quantity (non-relativistic)"}
+In Newtonian mechanics, a quantity is ''conserved'' if 
+it remains constant under time-evolution. 
+:::
+
+::: {.proposition name="conservation of energy"}
+The energy scalar 
+\[ 
+    E = T + V = \df{\mbf p^2}{2\mu} + V 
+\] 
+is conserved by Newton's equation of motion 
+$\mu \ddot {\mbf r} = \mbf F = -\nabla_{\mbf r} V(r)$ 
+
+_Proof:_ Direct computation 
+\[ 
+    d_t E = d_t \left(
+        \df{\mu^2 \dot {\mbf r} \cdot \dot {\mbf r}}{2\mu} + V
+    \right) 
+    = \mu \dot {\mbf r}\cdot \ddot {\mbf r} 
+    - (\nabla_{\mbf r} V) \cdot \mbf r = 0 
+\] 
+Note that $d_tV$ is computed according to 
+the dependence $V\leftarrow \mbf r\leftarrow t$. 
+:::
+
+::: {.proposition name="conservation of angular momentum"}
+The angular momentum vector 
+\[ 
+    \mbf L = \mbf r\times \mbf p 
+\] 
+Is conserved for any _central force problem_: one in which 
+$V(\mbf r)=V(r, \mbf n) = V(r)$ is only dependent on the 
+magnitude, but not direction, of $r$. 
+
+_Proof:_ Direct computation 
+\[ 
+    d_t \mbf L 
+    = d_t(\mbf r\times \mbf p)
+    = \dot {\mbf r}\times \mbf p + \mbf r \times \mbf F
+    = 0 + 0 
+\] 
+The first term vanishes by 
+$\mbf p \parallel \dot {\mbf r}$ and the second by 
+the definition of central potential. 
+:::
+
+::: {.remark}
+This is our first example of symmetry-conservation. 
+A central force problem demonstrates **spherical symmetry**. 
+A rigorous definition of "symmetry" will be given soon. 
+:::
+
+::: {.proposition name="planar reduction"}
+The trajectory $\mbf r$ lie in the plane 
+orthogonal to $\mbf L$. Given this, let $\mbf n =\mbf r/r$ 
+be the first unit component of the plane and the second 
+\[ 
+    \mbf l = (\mbf L \times \mbf r) / |\mbf L\times \mbf r| 
+\] 
+In polar coordinates, 
+\[ 
+    \dot {\mbf r} = \dot r \mbf n + r\dot \theta \mbf l 
+    \implies \mbf L = \mu r^2 \dot \theta (\mbf n\times \mbf l)
+\] 
+
+_Proof:_ $\mbf L = \mu \, \mbf r \times \dot {\mbf r}$ 
+is orthogonal to both $\mbf r$ and $\dot {\mbf r}$, and 
+$\mbf L$ is conserved. 
+:::
+
+::: {.proposition #rungeLenzDefinition name="conservation of the Runge-Lenz vector"}
+The Runge-Lenz vector $\mb \epsilon$ is defined as 
+\[ 
+    \mb \epsilon 
+    = \df 1 {\mu k} \mbf p \times \mbf L - \mbf n 
+    = \df 1 {\mu k} [\mbf p \times (\mbf r\times \mbf p)] - \mbf n 
+    = \df 1 {\mu k} [\mbf p \times (\mbf r\times \mbf p)] - \mbf n 
+    = \df {pL} {\mu k} \mbf n - \mbf n 
+\] 
+The vector is conserved. 
+
+_Proof:_ Direct computation. 
+\begin{align}
+    \dot {\mb \epsilon} 
+    &= \df 1 {\mu k} \mbf F \times \mbf L - \dot {\mbf n} 
+    = \df 1 {\mu k} \left(-\df{k}{r^2} \mbf n\right) \times 
+    [\mu r^2 \dot \theta (\mbf n \times \mbf l)] - \dot {\mbf n} \\ 
+    &= -\dot \theta [\mbf n\times (\mbf n \times \mbf l)] - \dot {\mbf n}
+    = \dot \theta \mbf l - \dot {\mbf n} = 0 
+\end{align}
+:::
+
+::: {.proposition #rungeLenzMagnitude name="magnitude of the Runge-Lenz vector"}
+The magnitude $\epsilon = |\mb \epsilon|$ is 
+\[ 
+    \epsilon^2 = 1 + \df{2EL^2}{\mu k^2}
+\] 
+_Proof:_ First compute 
+$\mbf p\times \mbf L = \mbf p \times (\mbf r \times \mbf p) = Lp\mbf n$. 
+Then $\mbf n \cdot (\mbf p\times \mbf L) = Lp$ and 
+$|\mbf p\times \mbf L|^2 = p^2L^2$ since $\mbf p \perp \mbf L$. 
+Also note that $p/L = 1/r$, then 
+then 
+\begin{align}
+    \epsilon^2 
+    &= \mbf n\cdot \mbf n  + \df{1}{\mu^2 k^2}
+    [(\mbf p\times \mbf L)\cdot (\mbf p\times \mbf L)]
+    - \df{2}{\mu k} \mbf n \cdot (\mbf p\times \mbf L) \\ 
+    &= 1 + \df{p^2 L^2}{\mu^2k^2} - 2 \df{pL}{\mu k} 
+    = 1 + \df{2L^2}{\mu k^2}\left(\df{p^2}{2\mu} - \df{pk}{L}\right)
+    = 1 + \df{2EL^2}{\mu k^2}
+\end{align}
+:::
+
+## Orbits, effective potential {-}
+We can obtain an implicit equation of motion using the conservation equations. 
+By definition of $\mb \epsilon$ \@ref(prp:rungeLenzDefinition)
+\[ 
+    \mbf r\cdot \mb \epsilon 
+    = \df{rpL}{\mu k} - r = \df{L^2}{\mu k} - r
+\] 
+Let $\mbf r\cdot \mb \epsilon = r\epsilon \cos\theta$, 
+then the orbit equation reads 
+\[ 
+    r(1+\cos\theta) = \df{L^2}{\mu k}
+     (\#eq:orbitEquation)
+\] 
+
+::: {.remark}
+Here the orientation is such that $\theta=0$ points along $\mb \epsilon$. 
+This is also an _implicit_ orbit equation since time is not an explicit 
+variable.  
+:::
+The lecture note appendix works out the conic section 
+trajectories corresponding to different ranges of $\epsilon$. 
+
+::: {.definition #effectivePotential name="effective radial potential"}
+So far, the kinetic energy is computed according to the vector derivative 
+$\dot {\mbf r}$ 
+\[ 
+    E = T + V = \df 1 2 \mu \dot {\mbf r}^2 - \df{k}{r}
+\] 
+In our case, we can reduce this to a scalar problem 
+by introducing the effective potential. 
+Recall $\dot {\mbf r} = \dot (r\mbf n) 
+= \dot r\mbf n + r\dot {\mbf n} = \dot r\mbf n + r\dot \theta \mbf l 
+\implies \dot {\mbf r}^2 = \dot r^2 + r^2\dot \theta^2 = \dot r^2 + L^2/\mu^2 r^2$ 
+\[ 
+    E = \df 1 2 \mu \dot{\mbf r}^2 - \df k r 
+    = \df 1 2 \mu \dot r^2 + \left(\df {L^2}{2\mu r^2} - \df k r \right)
+\] 
+The last term in paranthesis is called the "effective potential $V_{\mrm{eff}}$. 
+:::
+
+::: {.remark}
+Recall that $L$ is conserved when the potential displays spherical symmetry. 
+The effective potential conveniently reduces a _vector problem_ 
+into a _scalar problem_ at the cost of introducing a "centrifugal" term. 
+This is a prime example of symmetry helping simplify analysis. 
+The effective potential reduction will show up again in the 
+QM treatment of the hydrogen atom (Physics 143a) and spherical gravity 
+correction (Physics 210). 
+:::
+Energy is conserved along orbits, and we can easily identify the 
+bound, unbound, and spherical orbits from the effective-potential graph. 
+
+::: {.exercise name="relativistic gravitational effective-potential"}
+Identify the effective potential for Newtonian gravity, where $k=GM$. 
+What is the radius of the circular orbit? 
+
+The effective radial potential from a spherical mass according to 
+general relativity is 
+\[ 
+    V_{\mrm{eff}} = -\sigma \df{GM}{r} + \df{L^2}{2r^2} - \df{GML^2}{r^3}
+\] 
+Where $\sigma=0$ if the particle is massless else $1$. 
+What are the behaviors for massive and massless particles? 
+:::
+
+
+## Scattering {-}
+In scattering problems, we assume a spatially and temporally uniform distribution 
+of incoming beams of particles along the incident $z$-axis. 
+We use cylindrical coordinates $(z, b, \phi)$ denoting 
+height, radius, and the azimuthal angle, respectively. The main quantities are: 
+
+1. Impact parameter $b$, scattering angle $\theta$. 
+2. Particles are incident within an infinitesimal patch with cross-sectional 
+    area $d\sigma(b, \phi) = b\, db\, d\phi$. 
+3. Particle emission are considered according to a solid angle 
+    $d\Omega(\theta, \phi) = \sin\theta \, d\theta\, d\varphi$. 
+4. The differential cross-section $d_\Omega\sigma \equiv \df{b}{\sin\theta}|d_\theta b|$. 
+    Usually, the greater $\theta$ (heavier scattering effect), the smaller $b$, since 
+    incident particles shoot closer to the scattering source -- thus the absolute sign. 
+5. The total cross-section $\sigma = \int (d_\Omega \sigma)\, d\Omega$. This is the total 
+    cross-sectional area which encounters scattering. For classical hard-sphere scattering, 
+    this is $\pi R^2$. 
+
+```{r echo=FALSE}
+knitr::include_graphics(rep("images/scattering.jpeg", 1))
+```
+
+::: {.remark}
+When the scattering source is spherically symmetric, 
+all dependences on $\phi$ can be dropped. 
+
+The differential cross-section $d_\Omega \sigma$ asks: 
+at angle $\theta$ from scattering center, what is the 
+impact parameter $b$ and how much unit increase in 
+output solid angle will be able to account for unit 
+area increase in the incident beams? 
+:::
+
+To compute the two-body scattering differential cross-section, 
+the first step is deriving the relation between the impact 
+parameter $b$ and scattering angle $\theta$. 
+
+::: {.proposition #scatteringRelation name="scattering relation"}
+$b(\theta) = \df{|k|}{2E} \cot(\theta/2)$
+
+_Proof:_ Recall the orbit equation \@ref(eq:orbitEquation): 
+denote the planar angle $\phi$, 
+let $D = \df{L^2}{\mu k}$, and expand in terms of $x, y$
+\[ 
+    r(1 + \epsilon \cos\phi) = r + \epsilon x = D
+\] 
+Expanding in terms of $x, y$ 
+\begin{align}
+    r^2 &= x^2 + y^2 = (D - \epsilon x)^2 \\ 
+    y^2 &= (\epsilon^2 - 1)x^2 - 2D\epsilon x + D^2
+\end{align}
+For repulsive orbits, $\epsilon>1$ and the orbits asymptote to 
+\[ 
+    y \sim \pm \sqrt{\epsilon^2 - 1} x, \quad |x|\to \infty 
+\] 
+The scattering angle $\theta$ in the scattering diagram thus satisfy 
+\begin{align}
+    \tan\theta_{\mrm{max}} = \sqrt{\epsilon^2 - 1}, 
+    \quad \tan(\theta/2) = \tan(\pi/2 - \theta_{\mrm{max}}) 
+    = \cot(\theta_{\mrm{max}})
+\end{align}
+```{r echo=FALSE}
+knitr::include_graphics(rep("images/rutherford_scattering.jpeg", 1))
+```
+The angular momentum $L$ of the incoming particle can be 
+computed at the incident limit: 
+\begin{align}
+    L &= |\mbf r\times \mbf p| = b p = b\sqrt{2\mu E} \\ 
+    \cot(\theta/2) &= \tan(\theta_{\mrm{max}}) 
+    = \sqrt{\df{2EL^2}{\mu k^2}} = \df{2bE}{|k|}
+\end{align}
+:::
+
+::: {.theorem name="Rutherford cross-section formula"}
+For repulsive two-body scattering, the cross-section is dependent upon $\theta$ as 
+\[ 
+    (d_\Omega \sigma)(\theta) = \left(\df{k}{4E}\right)^2 \sin^{-4}\df{\theta}{2}
+\] 
+
+_Proof:_ The first step is elucidating the dependence 
+$d_\Omega \sigma \leftarrow b,\, d_\theta b \leftarrow \theta$. 
+From \@ref(prp:scatteringRelation) we have 
+\begin{align}
+    b(\theta) &= \df{|k|}{2E}\cot(\theta/2)  \\ 
+    d_\theta b &= -\df{|k|}{4E} \mrm{csc}^2(\theta/2)
+\end{align}
+Substituting into the relation $d_\Omega \sigma = b|d_\theta b|/\sin\theta$ yields 
+formula as claimed. 
+:::

@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>1 Two-body problem | Physics 151 Section Notes</title>
+  <meta name="description" content="1 Two-body problem | Physics 151 Section Notes" />
+  <meta name="generator" content="bookdown 0.39 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="1 Two-body problem | Physics 151 Section Notes" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="1 Two-body problem | Physics 151 Section Notes" />
+  
+  
+  
+
+<meta name="author" content="Nicholas Lyu, Arthur Jaffe" />
+
+
+<meta name="date" content="2024-09-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="index.html"/>
+<link rel="next" href="lagranges-equations.html"/>
+<script src="libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fuse.js@6.4.6/dist/fuse.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+<link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
+<link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
+
+
+
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i>Preface</a>
+<ul>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#introduction-to-the-course"><i class="fa fa-check"></i>Introduction to the course</a></li>
+<li class="chapter" data-level="" data-path="index.html"><a href="index.html#using-these-notes"><i class="fa fa-check"></i>Using these notes</a></li>
+</ul></li>
+<li class="chapter" data-level="1" data-path="two-body-problem.html"><a href="two-body-problem.html"><i class="fa fa-check"></i><b>1</b> Two-body problem</a>
+<ul>
+<li class="chapter" data-level="" data-path="two-body-problem.html"><a href="two-body-problem.html#problem-setup"><i class="fa fa-check"></i>Problem setup</a></li>
+<li class="chapter" data-level="" data-path="two-body-problem.html"><a href="two-body-problem.html#three-conserved-quantities"><i class="fa fa-check"></i>Three conserved quantities</a></li>
+<li class="chapter" data-level="" data-path="two-body-problem.html"><a href="two-body-problem.html#orbits-effective-potential"><i class="fa fa-check"></i>Orbits, effective potential</a></li>
+<li class="chapter" data-level="" data-path="two-body-problem.html"><a href="two-body-problem.html#scattering"><i class="fa fa-check"></i>Scattering</a></li>
+</ul></li>
+<li class="chapter" data-level="2" data-path="lagranges-equations.html"><a href="lagranges-equations.html"><i class="fa fa-check"></i><b>2</b> Lagrange’s Equations</a></li>
+<li class="chapter" data-level="" data-path="bibliography.html"><a href="bibliography.html"><i class="fa fa-check"></i>Bibliography</a></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Physics 151 Section Notes</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="two-body-problem" class="section level1 hasAnchor" number="1">
+<h1><span class="header-section-number">1</span> Two-body problem<a href="two-body-problem.html#two-body-problem" class="anchor-section" aria-label="Anchor link to header"></a></h1>
+<p>Corrections:</p>
+<ol style="list-style-type: decimal">
+<li>Lecture notes missing \vec on <span class="math inline">\(F_2\)</span> before section 2.</li>
+<li><span class="math inline">\(\dot {\vec r}\)</span> mis-typed after eq 28 in “angular momentum”.</li>
+</ol>
+<p>We start with this problem to:</p>
+<ol style="list-style-type: decimal">
+<li>Warm up the physics brain
+if you haven’t solved a mechanicss problem in a while :)</li>
+<li>Present one of the <em>few</em> solvable physics problems
+(another being the harmonic oscillator).</li>
+<li>Exemplify how a problem can be solved by analyzing
+its <strong>symmetries and conserved quantities</strong>.</li>
+<li>Introduce the Runge-Lenz vector
+(hydrogen atom, Physics 143a), effective radial potential
+(Physics 143a, 210), and the basics of scattering (Physics 143b).</li>
+</ol>
+<p>We approach the two-body problem in the following steps:</p>
+<ol style="list-style-type: decimal">
+<li>Reduce to one-body motion.</li>
+<li>Identify the conserved quantities: energy <span class="math inline">\(E\)</span>,
+angular-momentum <span class="math inline">\(\mathbf L\)</span>, and Runge-Lenz vector <span class="math inline">\(\boldsymbol\epsilon\)</span>.
+<ul>
+<li><span class="math inline">\(E\)</span> is conserved when the potential <span class="math inline">\(V\)</span> is time-invariant.</li>
+<li><span class="math inline">\(\mathbf L\)</span> is conserved when <span class="math inline">\(V\)</span> is central.</li>
+<li><span class="math inline">\(\boldsymbol\epsilon\)</span> is conserved when <span class="math inline">\(V\propto r^{-2}\)</span>.
+Orbits of such potentials have conserved eccentricity.</li>
+</ul></li>
+<li>Reduce to planar motion using conservation of <span class="math inline">\(\mathbf L\)</span>.</li>
+<li>Derive the orbit equations from conserved quantities.</li>
+<li>Analyze the different kinds of orbits by
+looking at the one-dimensional effective potential <span class="math inline">\(V_{\mathrm{eff}}\)</span>.</li>
+<li>Analyze scattering.</li>
+</ol>
+<div id="problem-setup" class="section level2 unnumbered hasAnchor">
+<h2>Problem setup<a href="two-body-problem.html#problem-setup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="definition">
+<p><span id="def:twoBodyProblem" class="definition"><strong>Definition 1.1  (two-body problem) </strong></span>Consider two particles with mass <span class="math inline">\(m_1, m_2\)</span>
+at locations <span class="math inline">\(\mathbf x_1, \mathbf x_2 \in \mathbb R^3\)</span>.
+Their potential is
+<span class="math display">\[
+    V(\mathbf x_1, \mathbf x_2) = -\dfrac{k}{|\mathbf x_1-\mathbf x_2|}
+\]</span>
+Here <span class="math inline">\(k\in \mathbb R\)</span> is a constant. The interaction is attractive
+when <span class="math inline">\(k&gt;0\)</span> and repulsive when <span class="math inline">\(k&lt;0\)</span>.</p>
+</div>
+<p>Computing the force based on the potential:
+<span class="math display" id="eq:twoBodyForce">\[
+    \mathbf F_j
+    = -\nabla_{\mathbf x_j}V(\mathbf x_1, \mathbf x_2)
+    = \dfrac{k}{|\mathbf x_1 - \mathbf x_2|^2}
+    \nabla_{\mathbf x_j}|\mathbf x_1 - \mathbf x_2|
+    = \dfrac{k}{|\mathbf x_1-\mathbf x_2|^2}
+    \begin{cases}
+        (\mathbf x_1 - \mathbf x_2) &amp; j = 1 \\
+        (\mathbf x_2 - \mathbf x_1) &amp; j = 2
+    \end{cases}
+    \tag{1.1}
+\]</span>
+Note that <span class="math inline">\(\mathbf F_1 + \mathbf F_2 = 0\)</span>.
+Recalling Newton’s second law, the equations of motion are
+<span class="math display">\[
+    \ddot {\mathbf x}_j = \mathbf F_j / m_j
+\]</span></p>
+<p>Instead of solving for <span class="math inline">\(\mathbf x_1, \mathbf x_2\)</span>, one
+can solve instead for the motion of the center of mass
+<span class="math inline">\(\mathbf R\)</span> and displacement <span class="math inline">\(\mathbf r\)</span>. The motion of <span class="math inline">\(\mathbf R\)</span>
+will be trivial.</p>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-1" class="proposition"><strong>Proposition 1.1  (center of mass motion) </strong></span>Define the center of mass
+<span class="math display">\[
+    \mathbf R = \dfrac{m_1}{m_1+m_2} \mathbf x_1 + \dfrac{m_2}{m_1+m_2}\mathbf x_2
+\]</span>
+The equation for the center of mass is
+<span class="math display">\[
+    (m_1+m_2)\ddot {\mathbf R} = m_1\ddot{\mathbf r}_1 + m_2\ddot{\mathbf r}_2
+    = \mathbf F_1 + \mathbf F_2 = 0
+\]</span>
+The motion of the center of mass is thus completely determined by the
+initial conditions of the problem.</p>
+</div>
+<div class="definition">
+<p><span id="def:unlabeled-div-2" class="definition"><strong>Definition 1.2  (relative coordinates, displacement) </strong></span>Define the relative coordinates <span class="math inline">\(\mathbf r_j = \mathbf x_j - \mathbf R\)</span>
+and displacement <span class="math inline">\(\mathbf r = \mathbf x_2 - \mathbf x_1\)</span>.
+Denote by <span class="math inline">\(r=|\mathbf r|, \mathbf n = \mathbf r / r\)</span>.
+Note that <span class="math inline">\(\mathbf n\)</span> points in the direction <span class="math inline">\(1\to 2\)</span>.</p>
+</div>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-3" class="proposition"><strong>Proposition 1.2  (one-body equation) </strong></span>The coordinates <span class="math inline">\(\mathbf r\)</span> obeys
+<span class="math display">\[
+    \ddot {\mathbf r} = \mathbf F/\mu,
+    \quad \mathbf F = -\nabla_{\mathbf r} V(r) = -\dfrac{k}{r^3} \mathbf r
+    \quad \mu = \dfrac{m_1m_2}{m_1+m_2}
+\]</span>
+Here <span class="math inline">\(\mu\)</span> is the reduced mass which satisfies <span class="math inline">\(1/m_1 + 1/m_2 = 1/\mu\)</span>.
+It is the “effective” mass of the one-body “particle”
+corresponding to the two-body problem.
+Additionally define the one-body momentum
+<span class="math display">\[
+    \mathbf p = \mu \dot {\mathbf r}, \quad \dot {\mathbf p} = \mathbf F
+\]</span></p>
+<p><em>Proof:</em> Rewriting <a href="two-body-problem.html#eq:twoBodyForce">(1.1)</a> in terms of the
+newly defined quantities:
+<span class="math display">\[\begin{align}
+    m_1 \ddot {\mathbf x}_1
+    &amp;= \dfrac{k}{r^2}\mathbf n
+    = -m_2 \ddot {\mathbf x}_2 \\
+    \ddot {\mathbf r}
+    &amp;= \ddot {\mathbf x}_2 - \ddot {\mathbf x}_1
+    = -\left(\dfrac 1 {m_2} + \dfrac 1 {m_1}\right)\dfrac{k}{r^2} \mathbf n
+    = - \dfrac{k}{\mu r^2}\mathbf n
+\end{align}\]</span></p>
+</div>
+</div>
+<div id="three-conserved-quantities" class="section level2 unnumbered hasAnchor">
+<h2>Three conserved quantities<a href="two-body-problem.html#three-conserved-quantities" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<div class="definition">
+<p><span id="def:unlabeled-div-4" class="definition"><strong>Definition 1.3  (conserved quantity (non-relativistic)) </strong></span>In Newtonian mechanics, a quantity is ‘’conserved’’ if
+it remains constant under time-evolution.</p>
+</div>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-5" class="proposition"><strong>Proposition 1.3  (conservation of energy) </strong></span>The energy scalar
+<span class="math display">\[
+    E = T + V = \dfrac{\mathbf p^2}{2\mu} + V
+\]</span>
+is conserved by Newton’s equation of motion
+<span class="math inline">\(\mu \ddot {\mathbf r} = \mathbf F = -\nabla_{\mathbf r} V(r)\)</span></p>
+<p><em>Proof:</em> Direct computation
+<span class="math display">\[
+    d_t E = d_t \left(
+        \dfrac{\mu^2 \dot {\mathbf r} \cdot \dot {\mathbf r}}{2\mu} + V
+    \right)
+    = \mu \dot {\mathbf r}\cdot \ddot {\mathbf r}
+    - (\nabla_{\mathbf r} V) \cdot \mathbf r = 0
+\]</span>
+Note that <span class="math inline">\(d_tV\)</span> is computed according to
+the dependence <span class="math inline">\(V\leftarrow \mathbf r\leftarrow t\)</span>.</p>
+</div>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-6" class="proposition"><strong>Proposition 1.4  (conservation of angular momentum) </strong></span>The angular momentum vector
+<span class="math display">\[
+    \mathbf L = \mathbf r\times \mathbf p
+\]</span>
+Is conserved for any <em>central force problem</em>: one in which
+<span class="math inline">\(V(\mathbf r)=V(r, \mathbf n) = V(r)\)</span> is only dependent on the
+magnitude, but not direction, of <span class="math inline">\(r\)</span>.</p>
+<p><em>Proof:</em> Direct computation
+<span class="math display">\[
+    d_t \mathbf L
+    = d_t(\mathbf r\times \mathbf p)
+    = \dot {\mathbf r}\times \mathbf p + \mathbf r \times \mathbf F
+    = 0 + 0
+\]</span>
+The first term vanishes by
+<span class="math inline">\(\mathbf p \parallel \dot {\mathbf r}\)</span> and the second by
+the definition of central potential.</p>
+</div>
+<div class="remark">
+<p><span id="unlabeled-div-7" class="remark"><em>Remark</em>. </span>This is our first example of symmetry-conservation.
+A central force problem demonstrates <strong>spherical symmetry</strong>.
+A rigorous definition of “symmetry” will be given soon.</p>
+</div>
+<div class="proposition">
+<p><span id="prp:unlabeled-div-8" class="proposition"><strong>Proposition 1.5  (planar reduction) </strong></span>The trajectory <span class="math inline">\(\mathbf r\)</span> lie in the plane
+orthogonal to <span class="math inline">\(\mathbf L\)</span>. Given this, let <span class="math inline">\(\mathbf n =\mathbf r/r\)</span>
+be the first unit component of the plane and the second
+<span class="math display">\[
+    \mathbf l = (\mathbf L \times \mathbf r) / |\mathbf L\times \mathbf r|
+\]</span>
+In polar coordinates,
+<span class="math display">\[
+    \dot {\mathbf r} = \dot r \mathbf n + r\dot \theta \mathbf l
+    \implies \mathbf L = \mu r^2 \dot \theta (\mathbf n\times \mathbf l)
+\]</span></p>
+<p><em>Proof:</em> <span class="math inline">\(\mathbf L = \mu \, \mathbf r \times \dot {\mathbf r}\)</span>
+is orthogonal to both <span class="math inline">\(\mathbf r\)</span> and <span class="math inline">\(\dot {\mathbf r}\)</span>, and
+<span class="math inline">\(\mathbf L\)</span> is conserved.</p>
+</div>
+<div class="proposition">
+<p><span id="prp:rungeLenzDefinition" class="proposition"><strong>Proposition 1.6  (conservation of the Runge-Lenz vector) </strong></span>The Runge-Lenz vector <span class="math inline">\(\boldsymbol\epsilon\)</span> is defined as
+<span class="math display">\[
+    \boldsymbol\epsilon
+    = \dfrac 1 {\mu k} \mathbf p \times \mathbf L - \mathbf n
+    = \dfrac 1 {\mu k} [\mathbf p \times (\mathbf r\times \mathbf p)] - \mathbf n
+    = \dfrac 1 {\mu k} [\mathbf p \times (\mathbf r\times \mathbf p)] - \mathbf n
+    = \dfrac{pL} {\mu k} \mathbf n - \mathbf n
+\]</span>
+The vector is conserved.</p>
+<p><em>Proof:</em> Direct computation.
+<span class="math display">\[\begin{align}
+    \dot {\boldsymbol\epsilon}
+    &amp;= \dfrac 1 {\mu k} \mathbf F \times \mathbf L - \dot {\mathbf n}
+    = \dfrac 1 {\mu k} \left(-\dfrac{k}{r^2} \mathbf n\right) \times
+    [\mu r^2 \dot \theta (\mathbf n \times \mathbf l)] - \dot {\mathbf n} \\
+    &amp;= -\dot \theta [\mathbf n\times (\mathbf n \times \mathbf l)] - \dot {\mathbf n}
+    = \dot \theta \mathbf l - \dot {\mathbf n} = 0
+\end{align}\]</span></p>
+</div>
+<div class="proposition">
+<p><span id="prp:rungeLenzMagnitude" class="proposition"><strong>Proposition 1.7  (magnitude of the Runge-Lenz vector) </strong></span>The magnitude <span class="math inline">\(\epsilon = |\boldsymbol\epsilon|\)</span> is
+<span class="math display">\[
+    \epsilon^2 = 1 + \dfrac{2EL^2}{\mu k^2}
+\]</span>
+<em>Proof:</em> First compute
+<span class="math inline">\(\mathbf p\times \mathbf L = \mathbf p \times (\mathbf r \times \mathbf p) = Lp\mathbf n\)</span>.
+Then <span class="math inline">\(\mathbf n \cdot (\mathbf p\times \mathbf L) = Lp\)</span> and
+<span class="math inline">\(|\mathbf p\times \mathbf L|^2 = p^2L^2\)</span> since <span class="math inline">\(\mathbf p \perp \mathbf L\)</span>.
+Also note that <span class="math inline">\(p/L = 1/r\)</span>, then
+then
+<span class="math display">\[\begin{align}
+    \epsilon^2
+    &amp;= \mathbf n\cdot \mathbf n  + \dfrac{1}{\mu^2 k^2}
+    [(\mathbf p\times \mathbf L)\cdot (\mathbf p\times \mathbf L)]
+    - \dfrac{2}{\mu k} \mathbf n \cdot (\mathbf p\times \mathbf L) \\
+    &amp;= 1 + \dfrac{p^2 L^2}{\mu^2k^2} - 2 \dfrac{pL}{\mu k}
+    = 1 + \dfrac{2L^2}{\mu k^2}\left(\dfrac{p^2}{2\mu} - \dfrac{pk}{L}\right)
+    = 1 + \dfrac{2EL^2}{\mu k^2}
+\end{align}\]</span></p>
+</div>
+</div>
+<div id="orbits-effective-potential" class="section level2 unnumbered hasAnchor">
+<h2>Orbits, effective potential<a href="two-body-problem.html#orbits-effective-potential" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>We can obtain an implicit equation of motion using the conservation equations.
+By definition of <span class="math inline">\(\boldsymbol\epsilon\)</span> <a href="two-body-problem.html#prp:rungeLenzDefinition">1.6</a>
+<span class="math display">\[
+    \mathbf r\cdot \boldsymbol\epsilon
+    = \dfrac{rpL}{\mu k} - r = \dfrac{L^2}{\mu k} - r
+\]</span>
+Let <span class="math inline">\(\mathbf r\cdot \boldsymbol\epsilon = r\epsilon \cos\theta\)</span>,
+then the orbit equation reads
+<span class="math display" id="eq:orbitEquation">\[
+    r(1+\cos\theta) = \dfrac{L^2}{\mu k}
+     \tag{1.2}
+\]</span></p>
+<div class="remark">
+<p><span id="unlabeled-div-9" class="remark"><em>Remark</em>. </span>Here the orientation is such that <span class="math inline">\(\theta=0\)</span> points along <span class="math inline">\(\boldsymbol\epsilon\)</span>.
+This is also an <em>implicit</em> orbit equation since time is not an explicit
+variable.</p>
+</div>
+<p>The lecture note appendix works out the conic section
+trajectories corresponding to different ranges of <span class="math inline">\(\epsilon\)</span>.</p>
+<div class="definition">
+<p><span id="def:effectivePotential" class="definition"><strong>Definition 1.4  (effective radial potential) </strong></span>So far, the kinetic energy is computed according to the vector derivative
+<span class="math inline">\(\dot {\mathbf r}\)</span>
+<span class="math display">\[
+    E = T + V = \dfrac 1 2 \mu \dot {\mathbf r}^2 - \dfrac{k}{r}
+\]</span>
+In our case, we can reduce this to a scalar problem
+by introducing the effective potential.
+Recall <span class="math inline">\(\dot {\mathbf r} = \dot (r\mathbf n)
+= \dot r\mathbf n + r\dot {\mathbf n} = \dot r\mathbf n + r\dot \theta \mathbf l
+\implies \dot {\mathbf r}^2 = \dot r^2 + r^2\dot \theta^2 = \dot r^2 + L^2/\mu^2 r^2\)</span>
+<span class="math display">\[
+    E = \dfrac 1 2 \mu \dot{\mathbf r}^2 - \dfrac k r
+    = \dfrac 1 2 \mu \dot r^2 + \left(\dfrac{L^2}{2\mu r^2} - \dfrac k r \right)
+\]</span>
+The last term in paranthesis is called the “effective potential <span class="math inline">\(V_{\mathrm{eff}}\)</span>.</p>
+</div>
+<div class="remark">
+<p><span id="unlabeled-div-10" class="remark"><em>Remark</em>. </span>Recall that <span class="math inline">\(L\)</span> is conserved when the potential displays spherical symmetry.
+The effective potential conveniently reduces a <em>vector problem</em>
+into a <em>scalar problem</em> at the cost of introducing a “centrifugal” term.
+This is a prime example of symmetry helping simplify analysis.
+The effective potential reduction will show up again in the
+QM treatment of the hydrogen atom (Physics 143a) and spherical gravity
+correction (Physics 210).</p>
+</div>
+<p>Energy is conserved along orbits, and we can easily identify the
+bound, unbound, and spherical orbits from the effective-potential graph.</p>
+<div class="exercise">
+<p><span id="exr:unlabeled-div-11" class="exercise"><strong>Exercise 1.1  (relativistic gravitational effective-potential) </strong></span>Identify the effective potential for Newtonian gravity, where <span class="math inline">\(k=GM\)</span>.
+What is the radius of the circular orbit?</p>
+<p>The effective radial potential from a spherical mass according to
+general relativity is
+<span class="math display">\[
+    V_{\mathrm{eff}} = -\sigma \dfrac{GM}{r} + \dfrac{L^2}{2r^2} - \dfrac{GML^2}{r^3}
+\]</span>
+Where <span class="math inline">\(\sigma=0\)</span> if the particle is massless else <span class="math inline">\(1\)</span>.
+What are the behaviors for massive and massless particles?</p>
+</div>
+</div>
+<div id="scattering" class="section level2 unnumbered hasAnchor">
+<h2>Scattering<a href="two-body-problem.html#scattering" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>In scattering problems, we assume a spatially and temporally uniform distribution
+of incoming beams of particles along the incident <span class="math inline">\(z\)</span>-axis.
+We use cylindrical coordinates <span class="math inline">\((z, b, \phi)\)</span> denoting
+height, radius, and the azimuthal angle, respectively. The main quantities are:</p>
+<ol style="list-style-type: decimal">
+<li>Impact parameter <span class="math inline">\(b\)</span>, scattering angle <span class="math inline">\(\theta\)</span>.</li>
+<li>Particles are incident within an infinitesimal patch with cross-sectional
+area <span class="math inline">\(d\sigma(b, \phi) = b\, db\, d\phi\)</span>.</li>
+<li>Particle emission are considered according to a solid angle
+<span class="math inline">\(d\Omega(\theta, \phi) = \sin\theta \, d\theta\, d\varphi\)</span>.</li>
+<li>The differential cross-section <span class="math inline">\(d_\Omega\sigma \equiv \dfrac{b}{\sin\theta}|d_\theta b|\)</span>.
+Usually, the greater <span class="math inline">\(\theta\)</span> (heavier scattering effect), the smaller <span class="math inline">\(b\)</span>, since
+incident particles shoot closer to the scattering source – thus the absolute sign.</li>
+<li>The total cross-section <span class="math inline">\(\sigma = \int (d_\Omega \sigma)\, d\Omega\)</span>. This is the total
+cross-sectional area which encounters scattering. For classical hard-sphere scattering,
+this is <span class="math inline">\(\pi R^2\)</span>.</li>
+</ol>
+<p><img src="images/scattering.jpeg" /><!-- --></p>
+<div class="remark">
+<p><span id="unlabeled-div-12" class="remark"><em>Remark</em>. </span>When the scattering source is spherically symmetric,
+all dependences on <span class="math inline">\(\phi\)</span> can be dropped.</p>
+<p>The differential cross-section <span class="math inline">\(d_\Omega \sigma\)</span> asks:
+at angle <span class="math inline">\(\theta\)</span> from scattering center, what is the
+impact parameter <span class="math inline">\(b\)</span> and how much unit increase in
+output solid angle will be able to account for unit
+area increase in the incident beams?</p>
+</div>
+<p>To compute the two-body scattering differential cross-section,
+the first step is deriving the relation between the impact
+parameter <span class="math inline">\(b\)</span> and scattering angle <span class="math inline">\(\theta\)</span>.</p>
+<div class="proposition">
+<p><span id="prp:scatteringRelation" class="proposition"><strong>Proposition 1.8  (scattering relation) </strong></span><span class="math inline">\(b(\theta) = \dfrac{|k|}{2E} \cot(\theta/2)\)</span></p>
+<p><em>Proof:</em> Recall the orbit equation <a href="two-body-problem.html#eq:orbitEquation">(1.2)</a>:
+denote the planar angle <span class="math inline">\(\phi\)</span>,
+let <span class="math inline">\(D = \dfrac{L^2}{\mu k}\)</span>, and expand in terms of <span class="math inline">\(x, y\)</span>
+<span class="math display">\[
+    r(1 + \epsilon \cos\phi) = r + \epsilon x = D
+\]</span>
+Expanding in terms of <span class="math inline">\(x, y\)</span>
+<span class="math display">\[\begin{align}
+    r^2 &amp;= x^2 + y^2 = (D - \epsilon x)^2 \\
+    y^2 &amp;= (\epsilon^2 - 1)x^2 - 2D\epsilon x + D^2
+\end{align}\]</span>
+For repulsive orbits, <span class="math inline">\(\epsilon&gt;1\)</span> and the orbits asymptote to
+<span class="math display">\[
+    y \sim \pm \sqrt{\epsilon^2 - 1} x, \quad |x|\to \infty
+\]</span>
+The scattering angle <span class="math inline">\(\theta\)</span> in the scattering diagram thus satisfy
+<span class="math display">\[\begin{align}
+    \tan\theta_{\mathrm{max}} = \sqrt{\epsilon^2 - 1},
+    \quad \tan(\theta/2) = \tan(\pi/2 - \theta_{\mathrm{max}})
+    = \cot(\theta_{\mathrm{max}})
+\end{align}\]</span>
+<img src="images/rutherford_scattering.jpeg" /><!-- -->
+The angular momentum <span class="math inline">\(L\)</span> of the incoming particle can be
+computed at the incident limit:
+<span class="math display">\[\begin{align}
+    L &amp;= |\mathbf r\times \mathbf p| = b p = b\sqrt{2\mu E} \\
+    \cot(\theta/2) &amp;= \tan(\theta_{\mathrm{max}})
+    = \sqrt{\dfrac{2EL^2}{\mu k^2}} = \dfrac{2bE}{|k|}
+\end{align}\]</span></p>
+</div>
+<div class="theorem">
+<p><span id="thm:unlabeled-div-13" class="theorem"><strong>Theorem 1.1  (Rutherford cross-section formula) </strong></span>For repulsive two-body scattering, the cross-section is dependent upon <span class="math inline">\(\theta\)</span> as
+<span class="math display">\[
+    (d_\Omega \sigma)(\theta) = \left(\dfrac{k}{4E}\right)^2 \sin^{-4}\dfrac{\theta}{2}
+\]</span></p>
+<p><em>Proof:</em> The first step is elucidating the dependence
+<span class="math inline">\(d_\Omega \sigma \leftarrow b,\, d_\theta b \leftarrow \theta\)</span>.
+From <a href="two-body-problem.html#prp:scatteringRelation">1.8</a> we have
+<span class="math display">\[\begin{align}
+    b(\theta) &amp;= \dfrac{|k|}{2E}\cot(\theta/2)  \\
+    d_\theta b &amp;= -\dfrac{|k|}{4E} \mathrm{csc}^2(\theta/2)
+\end{align}\]</span>
+Substituting into the relation <span class="math inline">\(d_\Omega \sigma = b|d_\theta b|/\sin\theta\)</span> yields
+formula as claimed.</p>
+</div>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="lagranges-equations.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"whatsapp": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"search": {
+"engine": "fuse",
+"options": null
+},
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.9/latest.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

@@ -1,0 +1,1285 @@
+# Preliminaries 
+
+## Notation
+::: {.definition #vecmatnot name="vector and matrix notation"}
+We sometimes denote a vector $\mbf v$ with components $v_j$ by $(v_j)$ or, 
+when it is clear from context, simply $v$. 
+Similarly, paranthesis around matrix components $(h_{jk})$ denote 
+the matrix $\mbf h$. 
+:::
+::: {.definition #multiindex name="multi-index notation"}
+We often work with multi-indices, which are ordered subsets of an index set 
+$[N]=\{1, \cdots, N\}$. The index set should be clear from context. 
+Single indices are denoted by lower-case 
+$a, b, c, d, j, k, l, \cdots$, while upper-case $I, J, K, \cdots$ 
+denote multi-indices. 
+
+For example, when $J=\{1, 2, 4\}$, the expression (here $a_j$ is often an operator) 
+\[ 
+    a_J = a_1a_2a_4 
+\] 
+Given a defined-multi-index $J$, we use $|J|$, or sometimes simply $j$, to 
+denote its order. For our example, $|J|=j=3$. 
+:::
+
+::: {.definition #implicitsum name="summation notation"}
+A free index which appears twice in an expression is summed over. 
+Single-indices sum over the index set, while multi-indices sum over the 
+power-set of the index set. 
+:::
+
+## Fermionic operators 
+
+::: {.definition #car name="creation and annihilation operators"}
+The annihilation operators $a_j^\dag$ and 
+creation operators $a_j$ satisfy the _canonical anti-commutation relations_
+\[ 
+    \{a_i, a_j^\dag\} = \delta_{ij}, \quad \{a_i, a_j\} = 0
+\] 
+We use $\mbf a$, or sometimes just $a$ (when clear from context), 
+to denote the vector of $2n$ operators 
+\[ 
+    \mbf a = (a_1, a_1^\dag, a_2, a_2^\dag, \cdots)
+\] 
+:::
+::: {.definition #maj name="majorana operators"}
+The $2n$ majorana operators over $n$ fermionic modes is given by 
+\[ 
+\begin{pmatrix}
+        q_j \\ p_j 
+    \end{pmatrix} = \Omega \begin{pmatrix}
+        a_j \\ a_j^\dag 
+    \end{pmatrix} = \begin{pmatrix}
+    a_j + a_j^\dag \\ 
+    (a_j^\dag - a_j)i
+    \end{pmatrix}, \quad 
+    \Omega 
+    = \begin{pmatrix}
+        1 & 1 \\ -i & i
+    \end{pmatrix}
+\] 
+We use $\gamma$ to denote the vector of $2n$ majorana operators 
+\[ 
+    (\gamma_j) = (q_1, p_1, \cdots, q_n, p_n), 
+    \quad \{\gamma_j, \gamma_k\} = 2\delta_{jk}
+\] 
+The $2n$ majorana operators freely generate a $2^{2n}$-dimensional 
+Clifford algebra we denote $\Cl_{2n}$ (note the factor of $2$). 
+The basis for $\Cl_{2n}$ are the $2^{2n}$ 
+monomials $\gamma_J$ which are at most linear in the generators $\gamma_j$. 
+:::
+::: {.definition #jw name="Jordan-Wigner transform, ONB"}
+The majorana operators may be represented by the Pauli operators 
+\[
+    q_j = Z^{\otimes (j-1)}\otimes X \otimes I^{\otimes (n-j)}, 
+    \quad p_j = Z^{\otimes (j-1)}\otimes Y \otimes I^{\otimes (n-j)}
+\] 
+One may check that this faithfully represents the Clifford algebra in 
+$\mbb C^{2n}$, the Hilbert space over $n$ qubits. Moreover, the generated 
+basis $(\gamma_J)$ is orthonormal under the Hilbert-Schmidt inner product 
+\[ 
+    \la A, B\ra = \df 1 {2^n} \tr(A^\dag B)
+\] 
+Thus, given a $n$-qubit operator $X\in \Cl_{2n}$, we have the decomposition 
+(note the implicit summation) 
+\[ 
+    X = X_J \gamma_J, \quad 
+    X_J = \la \gamma_J, X\ra = \df 1 {2^n} \tr(\gamma_J^\dag B)
+\] 
+Note that $\gamma_J^\dag = (-1)^{j(j-1)/2}\gamma_J$ since it requires 
+$j(j-1)/2$ swaps to reorder $J$ from reversed order. 
+:::
+
+::: {.definition #gra name="Grassmann numbers"}
+There are also $2n$ Grassmann numbers associated with $n$ fermionic modes 
+often labeled by $\theta, \omega, \eta, \cdots$. 
+They freely generate the $2^{2n}$-dimensional Grassmann algebra $\Gr_{2n}$. 
+
+_Grassmann numbers are always taken to anti-commute with other operators, 
+including both Grassmann and majorana operators_. 
+:::
+
+
+## Clifford-Grassmann Fourier transform
+There is a suitable definition of Fourier transform between the 
+Grassmann and Clifford algebras. To the best of our knowledge, 
+this notion of the Fourier transform first appeared in [@hudson1980translation]. 
+
+::: {.definition #clgrabij name="Fourier transform"}
+Given $X=X_J\gamma_J$, its fourier transform is the Grassmann element 
+$X(\theta)\in \Gr_{2n}$ defined by 
+\[ 
+    X(\theta) = X_J \theta_J 
+\] 
+Given the JW-transform, this takes on the more inspiring form 
+\begin{align}
+    X(\theta) &= \mca F[X](\theta) = \df 1 {2^n} \tr_{\Cl_{2n}}(e^{\gamma_j\theta_j} X) \\ 
+    \mca F^{-1}[X(\theta)](\gamma) &= 2^n \tr_{\Gr_{2n}}(-e^{\gamma_j\theta_j} X)
+\end{align}
+The constant $2^n=\tr(1_{\Gr_{2n}})/\tr(1_{\Cl_{2n}})$ specific to our representations. 
+When $X$ is a density operator, $X(\theta)$ is its moment-generating 
+function. The classical analogue is the moment-generating function 
+\[ 
+    M_X(t) = \mbb E[e^{tX}] = \int e^{tx} f_X(x)\, dx 
+\] 
+Formal substitution is equivalent to the tracial formula 
+by means of the following convenient identity. 
+:::
+::: {.proposition}
+Given Grassmann generators $\theta$ and majorana generators $\gamma$ which 
+anti-commute with each other 
+\[ 
+    \exp(\gamma_j\theta_j) = (-1)^{j(j-1)/2} \theta_J \gamma_J 
+    = \theta_J \gamma_J^\dag 
+\] 
+Similarly, for Grassmann generators $\theta, \eta$ 
+\[ 
+    \exp(\theta_j\eta_j) = (-1)^{j(j-1)/2)}\theta_J \eta_J 
+\] 
+:::
+_Proof_: without loss of generality consider $J=[k]$ for some $k\leq 2n$. 
+The $k$-th degree of the expansion 
+contains $\theta_1\gamma_1\cdots\theta_k\gamma_k$. 
+There are $k!$ of such terms, cancelling the $1/k!$ taylor coefficient, and 
+ordering this into $\theta_J\eta_J$ requires $j(j-1)/2$ swaps. 
+
+
+::: {.theorem #tracialOverlap name="Fourier formula for inner product"}
+Given $X, Y\in \Cl_{2n}$, the trace $\tr(X, Y)$ may be computed 
+in Fourier-space as a Grassmann integral 
+\[ 
+    \df 1 {2^n}\tr(XY) 
+    = (-1)^n \int D\theta\, D\eta \, e^{\theta^T\eta} X(\theta) Y(\eta)
+\] 
+:::
+Let $X=X_J \gamma_J$ and similarly for $Y$, then 
+\[ 
+    \df 1 {2^n}\tr(XY) = \df 1 {2^n}\tr(X_JY_K \gamma_J\gamma_K)
+    = X_J Y_J \df 1 {2^n}\tr(\gamma_J^2) = (-1)^{j(j-1)/2} X_JY_J
+\] 
+On the RHS, the integrand expands to 
+$(-1)^{l(l-1)/2}X_J Y_K \theta_L\eta_L\theta_J\eta_K$. 
+The highest-order in $\theta, \eta$ arises from $J=K, L=[2n]-J=\bar J$, then 
+substituting $l=2n-j$ yields 
+\[ 
+    \int D\theta\, D\eta \, e^{\theta^T\eta} X(\theta) Y(\eta) 
+    = (-1)^{(2n-j)((2n-j)-1)/2}X_J Y_J\int D\theta\, D\eta\,  \theta_{\bar J}\eta_{\bar J} \theta_J \eta_J 
+\] 
+Reordering to match the signs
+\[ 
+    \theta_{\bar J}\eta_{\bar J}\theta_J \eta_J 
+    = (-1)^{j(2n-j)}\theta_{\bar J}\theta_J \eta_{\bar J}\eta_J
+    = (-1)^{j(2n-j)}\eta_{\bar J}\eta_J\theta_{\bar J}\theta_J 
+    = (-1)^{j(2n-j)}\eta_{[2n]}\theta_{[2n]}
+\] 
+Recollecting the parity in the $(-2)^n$ factor, the parities of the LHS 
+and RHS are respectively 
+\[ 
+    \df 1 2 j(j-1) \equiv n + j(2n-j) + \df 1 2 (2n-j)(2n-j-1) \mod 2
+\] 
+
+## Grassmann calculus
+
+::: {.definition #grassmannDiff name="Grassmann differentiation and integration"}
+A partial derivative $\pd a$ over Grassmann numbers $(\theta_j)$ generating $\Gr_{2n}$ 
+is the linear operator $\pd a:\Gr_{2n}\to \Gr_{2n}$ defined by 
+\[ 
+    \pd a 1 = 0, \quad \pd a \theta_b = \delta_{ab}, \quad 
+    \pd a [\theta_b f(\theta)] = \delta_{ab}f(\theta) - \theta_b\pd a f(\theta)
+\] 
+It follows that Grassmann derives anti-commute 
+\[ 
+    \pd {ab}^2 + \pd {ba}^2 = 0
+\] 
+Grassmann integration is the same as differentiation: $\int d\theta_a = \pd a$, with 
+the notation 
+\[ 
+    \int D\theta = \int d\theta_n\cdots d\theta_1\implies \int D\theta\, \theta_{[2n]} = 1
+\] 
+:::
+
+::: {.proposition #leibniz name="Leibniz rule"}
+when $f(\theta)$ has _homogeneous degree_ $\sigma \in \{-1, 1\}$, we have 
+\[ 
+    \pd a [f(\theta)g(\theta)] = [\pd a f(\theta)]g(\theta) + \sigma f(\theta) \pd b g(\theta)
+\] 
+:::
+
+::: {.proposition #integrationByPart name="integration by part"}
+If one of $f, g$ is even, then 
+\[ 
+    \int D\theta\, (\pd a f)g = \pm \int D\theta\, f\pd a g
+\] 
+with $+, -$ standing for even $g$ or even $f$, respectively. 
+:::
+_Proof:_ Now $\pd a (fg) = (\pd a f)g + \sigma_f \pd a g$. Apply $\int D\theta$ 
+to both sides, rearrange, and note that $\int D\theta \, \pd a(\cdots) = 0$ yields 
+\[ 
+    \int D\theta\, (\pd a f)g = -\sigma_f \int D\theta\, \pd a g + \int D\theta\, (\pd a f)g 
+\] 
+
+### Grassmann fourier identities 
+
+::: {.definition #diracDelta name="dirac delta function"}
+The Grassmann analogue of the dirac delta function is 
+\begin{aligned}
+    \delta(\theta, \mu) 
+    &= \prod_a (\theta_a - \mu_a) = \int D\eta \, \exp\left[(\theta - \mu)^T\eta \right]
+    \\ 
+    X(\theta) &= \int D\mu\, \delta(\theta, \mu) X(\mu) 
+\end{aligned}
+
+To see the first equation, the $2n$-degree expansion of $\exp$ is 
+\begin{aligned}
+    \prod i(\theta_j - \mu_j)\eta_j 
+    &= i^{2n} (-1)^{2n(2n-1)/2} \mu_{[2n]} \prod \theta_j - \mu_j = \mu_{[2n]} \prod\theta_j - \mu_j
+\end{aligned}
+To see the second property, 
+$\delta(\theta, \mu) = \sigma_{J, \bar J}(-1)^j \theta_{J} \mu_{\bar J}$, 
+where $\sigma_{J, \bar J}$ is the sign associated with rearranging $[2n]\to (J, \bar J)$. 
+Note that the sign associated with rearranging $(\bar J, J)\to [2n]$ is then exactly 
+$\sigma_{J, \bar J}(-1)^j$, then 
+\[ 
+    \int D\mu\, \delta(\theta, \mu) \mu_K = \int D\mu\, 
+    \sigma_{J, \bar J}(-1)^j \theta_{J} \mu_{\bar J} \mu_K = \theta_K
+\] 
+:::
+
+
+### Gaussian integrals
+The following two formulas are found in [@bravyi2004lagrangian]. 
+We expand upon the proofs. 
+
+::: {.theorem #evenGaussianIntegral name="homogeneous Gaussian integral"}
+For $2n\times 2n$ antisymmetric $M$
+\[ 
+    \int D\theta \exp\left(\df i 2 \theta^T M \theta\right) = i^n \Pf(M)
+\] 
+:::
+_Proof:_ Using antisymmetry to cancel the factor of $2$ and summing over $j<k$ 
+\[ 
+    \exp\left(\df i 2 \theta^T M \theta\right) = 
+    \exp\left(i M_{jk}\theta_j \theta_k \right)
+\] 
+Here $D\theta$ extracts the maximal-degree element in the sum, then 
+\[ 
+    \int D\theta \, \exp\left(\df i 2 \theta^T M \theta\right) = 
+    \exp\left(i M_{jk}\theta_j \theta_k \right) 
+    = \int D\theta \, \df{i^n}{n!} \left(M_{jk}\theta_j \theta_k\right)^n 
+    = i^n \sum_{p\in \Pa_n} \sigma_p \prod_{b\in p} M_{b_1b_2}
+\] 
+where $\Pa_n$ is the set of pair-partitions of $2n$, the factor $1/n!$ is 
+canceled by the $n!$ number of ways we can pick across the 
+$n$ identical products $(M_{jk}\theta_j\theta_k)$. 
+
+
+::: {.theorem #affGaussianIntegral name="affine Gaussian integral"}
+Given anti-symmetric $M$ and $\eta, \theta\in \Gr_{4n}$ 
+mutually anticommuting
+\[ 
+    \int D\theta \, \exp \left(\eta^T\theta + \df i 2 \theta^T M \theta\right) 
+    = i^n \Pf(M)\exp\left(-\df i 2 \eta^T M^{-1}\eta\right)
+\] 
+:::
+_Proof_: Complete the square: find $\xi, N$ such that (here $j, k$ are totally summed-over)
+\[ 
+    \eta^T \theta + \df i 2 \theta^T M \theta = \df i 2 (\theta + \xi)^T M (\theta + \xi) 
+    + \df 1 2 \eta^T N \eta = \df i 2  M_{jk} (\theta_j + \xi_j)(\theta_k + \xi_k) + \df 1 2 N_{jk}\eta_j\eta_k 
+\] 
+Matching the linear term yields $\xi = i M^{-1}\eta, \xi_j = i M^{-1}_{jk}\eta_k$
+\[ 
+    \eta^T \theta 
+    = \eta_j \theta_j 
+    = \df i 2 \left(M_{jk} \theta_j \xi_k + M_{jk} \xi_j \theta_k\right) 
+    = i (M_{jk} \theta_j \xi_k) \implies \eta_j = i M_{jk}\xi_k 
+\] 
+Matching the quadratic term in $\eta$ yields $N=-iM^{-1}$
+\begin{aligned}
+    -\df 1 2 N_{jk}\eta_j \eta_k 
+    &= \df i 2 \xi_j M_{jk} \xi_k
+    = \df i 2 (i M_{ja}^{-1}\eta_a) M_{jk} (i M_{kb}^{-1}\eta_b) 
+    = -\df i 2 M_{ja}^{-1}\eta_a  \delta_{jb} \eta_b = \df i 2 \eta_a M_{ab}^{-1}\eta_b 
+\end{aligned}
+Using commutativity to bring $\exp(\eta^TN\eta/2)$ out of the integral and the shift-invariant property 
+\begin{aligned}
+    \int D\theta \, \exp \left(\eta^T\theta + \df i 2 \theta^T M \theta\right) 
+    &= \int D\theta \, \exp \left(\df i 2 (\theta + \xi)^T M (\theta + \xi) 
+    + \df 1 2 \eta^T N \eta\right)\\ 
+    &= \exp\left(\df 1 2 \eta^T N\eta\right) \int D\theta\,\left(\df i 2 (\theta + \xi)^T M (\theta + \xi) \right)\\ 
+    &= i^n \Pf(M)
+    \exp\left(-\df i 2 \eta^T M^{-1}\eta\right)
+\end{aligned}
+
+
+::: {.theorem #GaussianOverlap name="Gaussian operator overlap"}
+Given Gaussian operators $X, Y$ and $X$ Hermitian 
+\[ 
+    X(\eta) = \exp\left(\df i 2 \eta^T A\eta\right), \quad 
+    Y(\theta) = \exp\left(\df i 2 \theta^T B\theta\right)
+\] 
+Using theorems \@ref(thm:affGaussianIntegral) and \@ref(thm:tracialOverlap) 
+yields 
+\[ 
+    \la X, Y\ra = (-i)^n \Pf(A)\Pf(B - A^{-1})
+\] 
+:::
+_Proof:_ Using Hermiticity $X^\dag = X$ 
+\begin{aligned}
+    \la X, Y\ra 
+    &= \df 1 {2^n}\tr(XY) 
+    = (-1)^n \int D\theta\, D\eta \, e^{\theta^T\eta} X(\eta) Y(\theta) \\ 
+    &= (-1)^n \int D\theta \exp\left(\df i 2 \theta^T B\theta\right) 
+    \int D\eta \, e^{\theta^T\eta} 
+    \exp\left(\df i 2 \eta^T A\eta\right) \\ 
+    &= (-1)^n \int D\theta \exp\left(\df i 2 \theta^T B\theta\right) 
+    i^n \Pf(A) \exp\left(-\df i 2 \theta^T A^{-1} \theta\right) \\ 
+    &= (-i)^n \Pf(A)\Pf(B - A^{-1})
+\end{aligned}
+
+
+## Classical simulatibility
+The following notions of classical simulatibility are taken from 
+[@brod2016efficient]. 
+
+For the following two definitions, 
+we consider a uniformly family of quantum circuits $\{C_n\}$. 
+
+::: {.definition #strongSimulation name="Strong simulation"}
+$\{C_n\}$ is strongly simulable if, 
+for every $k$ and assignment of $k$ output bits $\tilde y$, 
+one can compute $\Pr(\tilde y|\psi_n)$ in $\poly(n)$ time on 
+a classical computer. 
+:::
+
+::: {.definition #weakSimulation name="weak simulation"}
+$\{C_n\}$ is weakly simulable if sampling 
+from $\Pr(\tilde y|\psi_n)$ 
+can be done in $\poly(n)$ time on a classical computer. 
+:::
+
+Now consider a uniform family of adaptive quantum circuits $\{C_n\}$ where 
+one is allowed to make intermediate measurements and condition 
+subsequent operations on their outcomes. 
+
+::: {.definition #adaptiveSimulation name="weak simulation"}
+$\{C_n\}$ is adaptively simulable if 
+
+- All intermediate measurements are weakly simulable. 
+- The final measurements on the circuit, conditioning on intermediate outcomes, 
+is strongly simulable. 
+:::
+
+
+# Preliminaries 
+
+## Notation
+::: {.definition #vecmatnot name="vector and matrix notation"}
+We sometimes denote a vector $\mbf v$ with components $v_j$ by $(v_j)$ or, 
+when it is clear from context, simply $v$. 
+Similarly, paranthesis around matrix components $(h_{jk})$ denote 
+the matrix $\mbf h$. 
+:::
+::: {.definition #multiindex name="multi-index notation"}
+We often work with multi-indices, which are ordered subsets of an index set 
+$[N]=\{1, \cdots, N\}$. The index set should be clear from context. 
+Single indices are denoted by lower-case 
+$a, b, c, d, j, k, l, \cdots$, while upper-case $I, J, K, \cdots$ 
+denote multi-indices. 
+
+For example, when $J=\{1, 2, 4\}$, the expression (here $a_j$ is often an operator) 
+\[ 
+    a_J = a_1a_2a_4 
+\] 
+Given a defined-multi-index $J$, we use $|J|$, or sometimes simply $j$, to 
+denote its order. For our example, $|J|=j=3$. 
+:::
+
+::: {.definition #implicitsum name="summation notation"}
+A free index which appears twice in an expression is summed over. 
+Single-indices sum over the index set, while multi-indices sum over the 
+power-set of the index set. 
+:::
+
+## Fermionic operators 
+
+::: {.definition #car name="creation and annihilation operators"}
+The annihilation operators $a_j^\dag$ and 
+creation operators $a_j$ satisfy the _canonical anti-commutation relations_
+\[ 
+    \{a_i, a_j^\dag\} = \delta_{ij}, \quad \{a_i, a_j\} = 0
+\] 
+We use $\mbf a$, or sometimes just $a$ (when clear from context), 
+to denote the vector of $2n$ operators 
+\[ 
+    \mbf a = (a_1, a_1^\dag, a_2, a_2^\dag, \cdots)
+\] 
+:::
+::: {.definition #maj name="majorana operators"}
+The $2n$ majorana operators over $n$ fermionic modes is given by 
+\[ 
+\begin{pmatrix}
+        q_j \\ p_j 
+    \end{pmatrix} = \Omega \begin{pmatrix}
+        a_j \\ a_j^\dag 
+    \end{pmatrix} = \begin{pmatrix}
+    a_j + a_j^\dag \\ 
+    (a_j^\dag - a_j)i
+    \end{pmatrix}, \quad 
+    \Omega 
+    = \begin{pmatrix}
+        1 & 1 \\ -i & i
+    \end{pmatrix}
+\] 
+We use $\gamma$ to denote the vector of $2n$ majorana operators 
+\[ 
+    (\gamma_j) = (q_1, p_1, \cdots, q_n, p_n), 
+    \quad \{\gamma_j, \gamma_k\} = 2\delta_{jk}
+\] 
+The $2n$ majorana operators freely generate a $2^{2n}$-dimensional 
+Clifford algebra we denote $\Cl_{2n}$ (note the factor of $2$). 
+The basis for $\Cl_{2n}$ are the $2^{2n}$ 
+monomials $\gamma_J$ which are at most linear in the generators $\gamma_j$. 
+:::
+::: {.definition #jw name="Jordan-Wigner transform, ONB"}
+The majorana operators may be represented by the Pauli operators 
+\[
+    q_j = Z^{\otimes (j-1)}\otimes X \otimes I^{\otimes (n-j)}, 
+    \quad p_j = Z^{\otimes (j-1)}\otimes Y \otimes I^{\otimes (n-j)}
+\] 
+One may check that this faithfully represents the Clifford algebra in 
+$\mbb C^{2n}$, the Hilbert space over $n$ qubits. Moreover, the generated 
+basis $(\gamma_J)$ is orthonormal under the Hilbert-Schmidt inner product 
+\[ 
+    \la A, B\ra = \df 1 {2^n} \tr(A^\dag B)
+\] 
+Thus, given a $n$-qubit operator $X\in \Cl_{2n}$, we have the decomposition 
+(note the implicit summation) 
+\[ 
+    X = X_J \gamma_J, \quad 
+    X_J = \la \gamma_J, X\ra = \df 1 {2^n} \tr(\gamma_J^\dag B)
+\] 
+Note that $\gamma_J^\dag = (-1)^{j(j-1)/2}\gamma_J$ since it requires 
+$j(j-1)/2$ swaps to reorder $J$ from reversed order. 
+:::
+
+::: {.definition #gra name="Grassmann numbers"}
+There are also $2n$ Grassmann numbers associated with $n$ fermionic modes 
+often labeled by $\theta, \omega, \eta, \cdots$. 
+They freely generate the $2^{2n}$-dimensional Grassmann algebra $\Gr_{2n}$. 
+
+_Grassmann numbers are always taken to anti-commute with other operators, 
+including both Grassmann and majorana operators_. 
+:::
+
+
+## Clifford-Grassmann Fourier transform
+There is a suitable definition of Fourier transform between the 
+Grassmann and Clifford algebras. To the best of our knowledge, 
+this notion of the Fourier transform first appeared in [@hudson1980translation]. 
+
+::: {.definition #clgrabij name="Fourier transform"}
+Given $X=X_J\gamma_J$, its fourier transform is the Grassmann element 
+$X(\theta)\in \Gr_{2n}$ defined by 
+\[ 
+    X(\theta) = X_J \theta_J 
+\] 
+Given the JW-transform, this takes on the more inspiring form 
+\begin{align}
+    X(\theta) &= \mca F[X](\theta) = \df 1 {2^n} \tr_{\Cl_{2n}}(e^{\gamma_j\theta_j} X) \\ 
+    \mca F^{-1}[X(\theta)](\gamma) &= 2^n \tr_{\Gr_{2n}}(-e^{\gamma_j\theta_j} X)
+\end{align}
+The constant $2^n=\tr(1_{\Gr_{2n}})/\tr(1_{\Cl_{2n}})$ specific to our representations. 
+When $X$ is a density operator, $X(\theta)$ is its moment-generating 
+function. The classical analogue is the moment-generating function 
+\[ 
+    M_X(t) = \mbb E[e^{tX}] = \int e^{tx} f_X(x)\, dx 
+\] 
+Formal substitution is equivalent to the tracial formula 
+by means of the following convenient identity. 
+:::
+::: {.proposition}
+Given Grassmann generators $\theta$ and majorana generators $\gamma$ which 
+anti-commute with each other 
+\[ 
+    \exp(\gamma_j\theta_j) = (-1)^{j(j-1)/2} \theta_J \gamma_J 
+    = \theta_J \gamma_J^\dag 
+\] 
+Similarly, for Grassmann generators $\theta, \eta$ 
+\[ 
+    \exp(\theta_j\eta_j) = (-1)^{j(j-1)/2)}\theta_J \eta_J 
+\] 
+:::
+_Proof_: without loss of generality consider $J=[k]$ for some $k\leq 2n$. 
+The $k$-th degree of the expansion 
+contains $\theta_1\gamma_1\cdots\theta_k\gamma_k$. 
+There are $k!$ of such terms, cancelling the $1/k!$ taylor coefficient, and 
+ordering this into $\theta_J\eta_J$ requires $j(j-1)/2$ swaps. 
+
+
+::: {.theorem #tracialOverlap name="Fourier formula for inner product"}
+Given $X, Y\in \Cl_{2n}$, the trace $\tr(X, Y)$ may be computed 
+in Fourier-space as a Grassmann integral 
+\[ 
+    \df 1 {2^n}\tr(XY) 
+    = (-1)^n \int D\theta\, D\eta \, e^{\theta^T\eta} X(\theta) Y(\eta)
+\] 
+:::
+Let $X=X_J \gamma_J$ and similarly for $Y$, then 
+\[ 
+    \df 1 {2^n}\tr(XY) = \df 1 {2^n}\tr(X_JY_K \gamma_J\gamma_K)
+    = X_J Y_J \df 1 {2^n}\tr(\gamma_J^2) = (-1)^{j(j-1)/2} X_JY_J
+\] 
+On the RHS, the integrand expands to 
+$(-1)^{l(l-1)/2}X_J Y_K \theta_L\eta_L\theta_J\eta_K$. 
+The highest-order in $\theta, \eta$ arises from $J=K, L=[2n]-J=\bar J$, then 
+substituting $l=2n-j$ yields 
+\[ 
+    \int D\theta\, D\eta \, e^{\theta^T\eta} X(\theta) Y(\eta) 
+    = (-1)^{(2n-j)((2n-j)-1)/2}X_J Y_J\int D\theta\, D\eta\,  \theta_{\bar J}\eta_{\bar J} \theta_J \eta_J 
+\] 
+Reordering to match the signs
+\[ 
+    \theta_{\bar J}\eta_{\bar J}\theta_J \eta_J 
+    = (-1)^{j(2n-j)}\theta_{\bar J}\theta_J \eta_{\bar J}\eta_J
+    = (-1)^{j(2n-j)}\eta_{\bar J}\eta_J\theta_{\bar J}\theta_J 
+    = (-1)^{j(2n-j)}\eta_{[2n]}\theta_{[2n]}
+\] 
+Recollecting the parity in the $(-2)^n$ factor, the parities of the LHS 
+and RHS are respectively 
+\[ 
+    \df 1 2 j(j-1) \equiv n + j(2n-j) + \df 1 2 (2n-j)(2n-j-1) \mod 2
+\] 
+
+## Grassmann calculus
+
+::: {.definition #grassmannDiff name="Grassmann differentiation and integration"}
+A partial derivative $\pd a$ over Grassmann numbers $(\theta_j)$ generating $\Gr_{2n}$ 
+is the linear operator $\pd a:\Gr_{2n}\to \Gr_{2n}$ defined by 
+\[ 
+    \pd a 1 = 0, \quad \pd a \theta_b = \delta_{ab}, \quad 
+    \pd a [\theta_b f(\theta)] = \delta_{ab}f(\theta) - \theta_b\pd a f(\theta)
+\] 
+It follows that Grassmann derives anti-commute 
+\[ 
+    \pd {ab}^2 + \pd {ba}^2 = 0
+\] 
+Grassmann integration is the same as differentiation: $\int d\theta_a = \pd a$, with 
+the notation 
+\[ 
+    \int D\theta = \int d\theta_n\cdots d\theta_1\implies \int D\theta\, \theta_{[2n]} = 1
+\] 
+:::
+
+::: {.proposition #leibniz name="Leibniz rule"}
+when $f(\theta)$ has _homogeneous degree_ $\sigma \in \{-1, 1\}$, we have 
+\[ 
+    \pd a [f(\theta)g(\theta)] = [\pd a f(\theta)]g(\theta) + \sigma f(\theta) \pd b g(\theta)
+\] 
+:::
+
+::: {.proposition #integrationByPart name="integration by part"}
+If one of $f, g$ is even, then 
+\[ 
+    \int D\theta\, (\pd a f)g = \pm \int D\theta\, f\pd a g
+\] 
+with $+, -$ standing for even $g$ or even $f$, respectively. 
+:::
+_Proof:_ Now $\pd a (fg) = (\pd a f)g + \sigma_f \pd a g$. Apply $\int D\theta$ 
+to both sides, rearrange, and note that $\int D\theta \, \pd a(\cdots) = 0$ yields 
+\[ 
+    \int D\theta\, (\pd a f)g = -\sigma_f \int D\theta\, \pd a g + \int D\theta\, (\pd a f)g 
+\] 
+
+### Grassmann fourier identities 
+
+::: {.definition #diracDelta name="dirac delta function"}
+The Grassmann analogue of the dirac delta function is 
+\begin{aligned}
+    \delta(\theta, \mu) 
+    &= \prod_a (\theta_a - \mu_a) = \int D\eta \, \exp\left[(\theta - \mu)^T\eta \right]
+    \\ 
+    X(\theta) &= \int D\mu\, \delta(\theta, \mu) X(\mu) 
+\end{aligned}
+
+To see the first equation, the $2n$-degree expansion of $\exp$ is 
+\begin{aligned}
+    \prod i(\theta_j - \mu_j)\eta_j 
+    &= i^{2n} (-1)^{2n(2n-1)/2} \mu_{[2n]} \prod \theta_j - \mu_j = \mu_{[2n]} \prod\theta_j - \mu_j
+\end{aligned}
+To see the second property, 
+$\delta(\theta, \mu) = \sigma_{J, \bar J}(-1)^j \theta_{J} \mu_{\bar J}$, 
+where $\sigma_{J, \bar J}$ is the sign associated with rearranging $[2n]\to (J, \bar J)$. 
+Note that the sign associated with rearranging $(\bar J, J)\to [2n]$ is then exactly 
+$\sigma_{J, \bar J}(-1)^j$, then 
+\[ 
+    \int D\mu\, \delta(\theta, \mu) \mu_K = \int D\mu\, 
+    \sigma_{J, \bar J}(-1)^j \theta_{J} \mu_{\bar J} \mu_K = \theta_K
+\] 
+:::
+
+
+### Gaussian integrals
+The following two formulas are found in [@bravyi2004lagrangian]. 
+We expand upon the proofs. 
+
+::: {.theorem #evenGaussianIntegral name="homogeneous Gaussian integral"}
+For $2n\times 2n$ antisymmetric $M$
+\[ 
+    \int D\theta \exp\left(\df i 2 \theta^T M \theta\right) = i^n \Pf(M)
+\] 
+:::
+_Proof:_ Using antisymmetry to cancel the factor of $2$ and summing over $j<k$ 
+\[ 
+    \exp\left(\df i 2 \theta^T M \theta\right) = 
+    \exp\left(i M_{jk}\theta_j \theta_k \right)
+\] 
+Here $D\theta$ extracts the maximal-degree element in the sum, then 
+\[ 
+    \int D\theta \, \exp\left(\df i 2 \theta^T M \theta\right) = 
+    \exp\left(i M_{jk}\theta_j \theta_k \right) 
+    = \int D\theta \, \df{i^n}{n!} \left(M_{jk}\theta_j \theta_k\right)^n 
+    = i^n \sum_{p\in \Pa_n} \sigma_p \prod_{b\in p} M_{b_1b_2}
+\] 
+where $\Pa_n$ is the set of pair-partitions of $2n$, the factor $1/n!$ is 
+canceled by the $n!$ number of ways we can pick across the 
+$n$ identical products $(M_{jk}\theta_j\theta_k)$. 
+
+
+::: {.theorem #affGaussianIntegral name="affine Gaussian integral"}
+Given anti-symmetric $M$ and $\eta, \theta\in \Gr_{4n}$ 
+mutually anticommuting
+\[ 
+    \int D\theta \, \exp \left(\eta^T\theta + \df i 2 \theta^T M \theta\right) 
+    = i^n \Pf(M)\exp\left(-\df i 2 \eta^T M^{-1}\eta\right)
+\] 
+:::
+_Proof_: Complete the square: find $\xi, N$ such that (here $j, k$ are totally summed-over)
+\[ 
+    \eta^T \theta + \df i 2 \theta^T M \theta = \df i 2 (\theta + \xi)^T M (\theta + \xi) 
+    + \df 1 2 \eta^T N \eta = \df i 2  M_{jk} (\theta_j + \xi_j)(\theta_k + \xi_k) + \df 1 2 N_{jk}\eta_j\eta_k 
+\] 
+Matching the linear term yields $\xi = i M^{-1}\eta, \xi_j = i M^{-1}_{jk}\eta_k$
+\[ 
+    \eta^T \theta 
+    = \eta_j \theta_j 
+    = \df i 2 \left(M_{jk} \theta_j \xi_k + M_{jk} \xi_j \theta_k\right) 
+    = i (M_{jk} \theta_j \xi_k) \implies \eta_j = i M_{jk}\xi_k 
+\] 
+Matching the quadratic term in $\eta$ yields $N=-iM^{-1}$
+\begin{aligned}
+    -\df 1 2 N_{jk}\eta_j \eta_k 
+    &= \df i 2 \xi_j M_{jk} \xi_k
+    = \df i 2 (i M_{ja}^{-1}\eta_a) M_{jk} (i M_{kb}^{-1}\eta_b) 
+    = -\df i 2 M_{ja}^{-1}\eta_a  \delta_{jb} \eta_b = \df i 2 \eta_a M_{ab}^{-1}\eta_b 
+\end{aligned}
+Using commutativity to bring $\exp(\eta^TN\eta/2)$ out of the integral and the shift-invariant property 
+\begin{aligned}
+    \int D\theta \, \exp \left(\eta^T\theta + \df i 2 \theta^T M \theta\right) 
+    &= \int D\theta \, \exp \left(\df i 2 (\theta + \xi)^T M (\theta + \xi) 
+    + \df 1 2 \eta^T N \eta\right)\\ 
+    &= \exp\left(\df 1 2 \eta^T N\eta\right) \int D\theta\,\left(\df i 2 (\theta + \xi)^T M (\theta + \xi) \right)\\ 
+    &= i^n \Pf(M)
+    \exp\left(-\df i 2 \eta^T M^{-1}\eta\right)
+\end{aligned}
+
+
+::: {.theorem #GaussianOverlap name="Gaussian operator overlap"}
+Given Gaussian operators $X, Y$ and $X$ Hermitian 
+\[ 
+    X(\eta) = \exp\left(\df i 2 \eta^T A\eta\right), \quad 
+    Y(\theta) = \exp\left(\df i 2 \theta^T B\theta\right)
+\] 
+Using theorems \@ref(thm:affGaussianIntegral) and \@ref(thm:tracialOverlap) 
+yields 
+\[ 
+    \la X, Y\ra = (-i)^n \Pf(A)\Pf(B - A^{-1})
+\] 
+:::
+_Proof:_ Using Hermiticity $X^\dag = X$ 
+\begin{aligned}
+    \la X, Y\ra 
+    &= \df 1 {2^n}\tr(XY) 
+    = (-1)^n \int D\theta\, D\eta \, e^{\theta^T\eta} X(\eta) Y(\theta) \\ 
+    &= (-1)^n \int D\theta \exp\left(\df i 2 \theta^T B\theta\right) 
+    \int D\eta \, e^{\theta^T\eta} 
+    \exp\left(\df i 2 \eta^T A\eta\right) \\ 
+    &= (-1)^n \int D\theta \exp\left(\df i 2 \theta^T B\theta\right) 
+    i^n \Pf(A) \exp\left(-\df i 2 \theta^T A^{-1} \theta\right) \\ 
+    &= (-i)^n \Pf(A)\Pf(B - A^{-1})
+\end{aligned}
+
+
+## Classical simulatibility
+The following notions of classical simulatibility are taken from 
+[@brod2016efficient]. 
+
+For the following two definitions, 
+we consider a uniformly family of quantum circuits $\{C_n\}$. 
+
+::: {.definition #strongSimulation name="Strong simulation"}
+$\{C_n\}$ is strongly simulable if, 
+for every $k$ and assignment of $k$ output bits $\tilde y$, 
+one can compute $\Pr(\tilde y|\psi_n)$ in $\poly(n)$ time on 
+a classical computer. 
+:::
+
+::: {.definition #weakSimulation name="weak simulation"}
+$\{C_n\}$ is weakly simulable if sampling 
+from $\Pr(\tilde y|\psi_n)$ 
+can be done in $\poly(n)$ time on a classical computer. 
+:::
+
+Now consider a uniform family of adaptive quantum circuits $\{C_n\}$ where 
+one is allowed to make intermediate measurements and condition 
+subsequent operations on their outcomes. 
+
+::: {.definition #adaptiveSimulation name="weak simulation"}
+$\{C_n\}$ is adaptively simulable if 
+
+- All intermediate measurements are weakly simulable. 
+- The final measurements on the circuit, conditioning on intermediate outcomes, 
+is strongly simulable. 
+:::
+
+
+# Gaussian Operators
+The following definition Gaussian operators in terms of their 
+Fourier property is made by [@bravyi2005classical].
+
+::: {.definition #gaussianDef name="Gaussian operator"}
+An operator $A\in \Cl_{2n}$ with $\tr(A)\neq 0$ is Gaussian if 
+\[ 
+    X(\theta) = C\exp\left(\df 1 2 \theta^T M\theta + d^T\theta\right)
+\] 
+for some antisymmetric $(M_{jk})\in \mbb C^{2n\times 2n}$ and 
+$d\in \mbb C^{2n}$. We usually mean $d=0$ by default 
+when we talk about Gaussian operators, 
+and we use ``displaced Gaussian'' to explicitly include the possibility that $d\neq 0$. 
+Traceless Gaussian operators are defined as limits. The _correlation matrix _
+of $X(\theta)$ as above is in fact $-iM$. 
+Two special cases
+
+- Affine Gaussian hermitian operator: in this case the correlation matrix is just $h$ 
+\[ 
+    H(\theta) = C\exp\left(\df i 2 \theta^T h\theta + d^T\theta\right), 
+    \quad (h_{jk})\in \mfk{so}(2n, \mbb R), \quad (d_j)\in \mbb R^{2n}
+\] 
+- Affine Gaussian unitary: 
+\[ 
+    U(\theta) = C\exp\left(\df 1 2 \theta^T u\theta + id^T\theta\right), 
+    \quad (u_{jk})\in \mfk{so}(2n, \mbb R), \quad (d_j)\in \mbb R^{2n}
+\] 
+:::
+Unlike in traditional statistics, fermionic Gaussians with zero mean 
+is the norm rather than exception for most existing research. This is 
+partly due to the boson-fermion superselection rule. 
+We focus on even Gaussians first then extend known results, as possible, 
+to affine Gaussians. 
+
+## Even Gaussian
+### Characterization {-}
+::: {.theorem #evenGaussianEffect
+name="effect of Gaussian unitaries"}
+Consider a Gaussian unitary 
+\[ 
+    U = \exp\left(\df 1 2 \gamma^T h \gamma\right), \quad h_{jk}=-h_{kj}\in \mbb R 
+\] 
+Then it affects rotation of the majorana operators 
+\[ 
+    U \gamma_j U^\dag = R_{jk}\gamma_k, \quad R = e^{2h}
+\] 
+:::
+_Proof:_ Using standard Lie theory technique, define $\gamma_j=\theta(0)$ and 
+\[ 
+    \theta(t) = U(t) \theta(0) U(t)^\dag
+    = \tilde \gamma_j(t)\gamma_j, \quad U(t) = \exp\left(\df t 2 \gamma^T h \gamma \right)
+\] 
+Differentiation yields 
+\[ 
+    \pd t \theta(t) = 
+    \left[\df 1 2 \gamma^T h \gamma, \theta(t) \right]
+\] 
+The key here is the commutator bracket. 
+Using $[\gamma_a\gamma_b, \gamma_a]=-2\gamma_b$ we obtain 
+\begin{align}
+    \pd t \theta(t) 
+    &= \df 1 2 \sum_{a, b, j} \tilde \gamma_j(t)h_{ab}[\gamma_a\gamma_b, \gamma_j]
+    = \df 1 2 \sum_{b, j} \tilde \gamma_j(t)h_{jb}[\gamma_j\gamma_b, \gamma_j]
+    + \df 1 2 \sum_{a, j} \tilde \gamma_j(t)h_{aj}[\gamma_a\gamma_j, \gamma_j] \\ 
+    &= \sum_{j, b} -2 h_{jb} \tilde \gamma_j(t) \gamma_b
+    = \sum_b \pd t \tilde \gamma_b(t)\gamma_b  \\ 
+    \pd t \tilde \gamma_b(t) &= -2 h_{jb} \gamma_j(t) = 2h_{bj}\gamma_j(t)
+\end{align}
+The solution to this differential equation is 
+\[ 
+    \tilde \gamma(t) = R(t)\tilde \gamma(0), \quad R(t) = e^{2ht} \in SO(2n)
+\] 
+It follows that $(UXU^\dag)(\theta) = X(R\theta)$. 
+
+::: {.theorem #unifiedGaussian
+name="characterization of Gaussian states"}
+The following three characterizations of Gaussian states $\rho$ 
+are equivalent. 
+
+- $\rho(\theta) = 2^{-n} \exp(i \theta^T M \theta/2)$. 
+- $\rho(\theta) = U(|0\ra \la 0|)^{\otimes n}U^\dag$, for some 
+    Gaussian unitary $U$. 
+- $\rho = e^{H}/\tr(e^H)$ for some $H$ which is homogeneously quadratic in 
+    majorana operators. Pure states are defined in the limit 
+    $H\mapsto \lim_{t\to \infty} tH$. 
+:::
+ 
+
+### Fourier perspective {-}
+Bravyi's work [@bravyi2004lagrangian] provides many important 
+results about Gaussian operators and maps from the Fourier perspective.
+
+::: {.theorem #fourierEvenGaussianCharacterization 
+name="fourier characterization of Gaussian operators"}
+
+An operator $X\in \Cl_{2n}$ is Gaussian iff it is even and satisfies 
+\[ 
+    [\hat \Lambda, X\otimes X]=0, \quad \hat \Lambda = \gamma_a\otimes \gamma_a
+\] 
+:::
+
+_Proof:_ We first derive the adjoint action of $\hat \Lambda$ in fourier space 
+\@ref(lem:adjointLambda). 
+The two directions \@ref(lem:fourierEvenGaussianfwd), 
+\@ref(lem:fourierEvenGaussianbwd) follow. 
+
+::: {.lemma #adjointLambda}
+Consider the following differential operator 
+$\Delta_a:\Gr_{2n}\otimes \Gr_{2n}\to \Gr_{2n}\otimes \Gr_{2n}$. 
+\[ 
+    \Delta_a = 2(\theta_a\otimes \pd a + \pd a \otimes \theta_a)
+\] 
+For any $Y, Z\in \Cl_{2n}$ having the same parity 
+\[  
+    [\gamma_a\otimes \gamma_a, Y\otimes Z](\theta) = \Delta_a[Y(\theta)\otimes Z(\theta)]
+\] 
+:::
+_Proof:_ Take $Y, Z$ to be monomials $\gamma_J, \gamma_K$. 
+If neither $J, K$ contains $a$ then both sides vanish. 
+If both $J, K$ contains $a$, then the LHS vanishes by commutation, 
+and both terms of the RHS are annihilated by $\theta_a$. 
+If only $J$ contains $a$, then $\gamma_a\otimes \gamma_a$ anticommutes with 
+$\gamma_J\otimes \gamma_K$ since $J$ contains one less factor than $K$ for $\gamma_a$ 
+to commute across, then 
+\[ 
+    [\gamma_a\otimes \gamma_a, \gamma_J\otimes \gamma_K] 
+    = 2 \gamma_a \gamma_J \otimes \gamma_a \gamma_K 
+\] 
+On the right hand side, only the second term in $\Delta_a$ survives, with 
+\[ 
+    2 (\pd a \otimes \theta_a) \theta_J \otimes \theta_K 
+\] 
+The two coefficients are seen to be equal: commuting $\pd a$ (resp. $\gamma_a$) 
+across $\gamma_J$ (resp. $\theta_J$) takes the same number of swaps. 
+
+::: {.lemma #fourierEvenGaussianfwd}
+
+Given a Gaussian operator $X(\theta)=\exp(i\theta^TM\theta/2)$
+\[ 
+    \sum_a \Delta_a[X(\theta)\otimes X(\theta)]=0\implies [\Lambda, X\otimes X] = 0 
+\] 
+The traceless case follows by continuity. 
+:::
+
+_Proof:_ First compute $\pd a X = i M_{ab}\theta_b X$. This is not at all 
+apparant as it seems, the exponential property arises from the power rule 
+$\pd x x^n = nx^{n-1}$, which is only true in Grassmann calculus if 
+$x$ (in this case $iM_{ab}\theta^TM\theta/2$) is even. Then 
+\begin{equation}\begin{aligned}
+\left[\hat \Lambda, X\otimes X\right](\theta)
+&= 2\sum_a \left(\theta_a \otimes \pd a + \pd a \otimes \theta_a \right)
+\exp\left(\df i 2 \theta^T M \theta\right)^{\otimes 2} \\ 
+&= 2\sum_{a, b} \theta_a X \otimes iM_{ab} \theta_b X 
+    + iM_{ab} \theta_b X \otimes \theta_a X  \\ 
+&= 2 i \sum_{a, b} M_{ab} (\theta_a \otimes \theta_b) (X\otimes X) = 0
+\end{aligned}\end{equation}
+
+::: {.lemma #fourierEvenGaussianbwd}
+Suppose $X\in \Cl_{2n}$ is even with $\sum \Delta_a [X(\theta)\otimes X(\theta)]=0$, 
+then $X$ is Gaussian. 
+:::
+
+_Proof:_ We provide the proof for non-vanishing trace case. 
+Pin down the degree expansion of $X(\theta)$ 
+\[ 
+    X(\theta) = C + \df{iC}{2} M_{ab}\theta_a\theta_b + O(\theta^4) 
+    \iff X(\theta) = C \exp\left(\df{i}{2} M_{ab}\theta_a\theta_b + \cdots\right)
+\] 
+Apply $1\otimes \pd b$ to the equation of interest, yielding 
+\begin{aligned}
+    0 &= (1\otimes \pd b) \sum_a (\theta_a X \otimes \pd a X + \pd a X\otimes \theta_a X) \\ 
+    &= \sum_a \theta_aX \otimes \pd {ba}^2 X + \pd a X \otimes 
+        (\delta_{ab}X - \theta_a \pd b X) \\ 
+    &= \pd b X \otimes X + \sum_a \theta_aX \otimes \pd {ba}^2 X 
+        - \pd a X \otimes \theta_a \pd b X \\
+\end{aligned}
+Consider the weaker equation where we only look at the linear term in the second 
+tensor component, then the last term above vanishes due to $\theta_a$ 
+and the equation simplifies to 
+\begin{aligned}
+    0 &= \pd b X \otimes C + \sum_a \theta_aX \otimes \df{iC}{2}M_{ab} \implies 
+    0 = \pd b X + \df i 2 \sum_a M_{ab} \theta_a X 
+\end{aligned}
+This suffices to show that $X$ must be Gaussian.
+
+
+### Gaussian linear maps {-}
+::: {.definition #gaussianMapDef name="Gaussian linear map"}
+A linear map $\mca E:\Cl_{2n}\to \Cl_{2n}$ is Gaussian if 
+\[ 
+    \mca E(X)(\theta) = C\int D\eta\, D\mu\, 
+    \exp \left[S(\theta, \eta) + i \eta^T \mu\right] X(\mu), \quad 
+    S(\theta, \eta) = \df i 2 \begin{pmatrix}
+        \theta \\ \eta
+    \end{pmatrix} ^T \begin{pmatrix}
+        A & B \\ -B^T & D 
+    \end{pmatrix} \begin{pmatrix}
+        \theta \\ \eta
+    \end{pmatrix}
+    (\#eq:gaussianLinearMap)
+\] 
+Here $A, D$ are antisymmetric and $B$ arbitrary. All values are complex. 
+It's also insightful to expand the whole expression using 
+$\theta^TB\eta - \eta^TB^T\theta = 2\theta^T B \eta$ 
+\[ 
+    \mca E(X)(\theta) = C\exp\left(\df i 2 
+        \theta^TA\theta\right)\int D\eta\, 
+    \exp \left[(iB^T \theta)^T \eta + \df i 2 \eta^T D \eta
+    \right] \int D\mu\, \exp(i \eta^T \mu) X(\mu)
+    (\#eq:gaussianLinearMapExtended)
+\] 
+:::
+
+::: {.example #identityExample name="identity map"}
+Recalling the Grassmann dirac delta \@ref(def:diracDelta). 
+\[ 
+    X(\theta) = \int D\eta\, D\mu\, \exp(i\theta^T\eta + i\eta^T\mu) X(\mu) 
+    \implies S = \begin{pmatrix}
+        0 & I \\ -I & 0
+    \end{pmatrix}
+\] 
+:::
+
+::: {.proposition}
+Gaussian linear maps are parity-preserving. 
+:::
+_Proof:_ Consider the automorphism $\overline{(\cdot)}$ 
+such that $\overline X(\theta) = X(-\theta)$. It suffices to prove that 
+\[ 
+    \overline{\mca E(X)} = \mca E(\overline X)
+\] 
+Here $\overline{\mca E(X)}(\theta)$ is equivalent to replacing 
+$\theta\mapsto -\theta$ in \@ref(eq:gaussianLinearMap), while 
+$\mca E(\overline X)(\theta)$ 
+is equivalent to replacing $\mu\mapsto -\mu$. 
+They yield the same expression upon substitution by virtue of 
+$S(\theta, -\eta) = S(-\theta, \eta)$ 
+and $D(-\mu) = D\mu, D(-\eta) = D\eta$. 
+
+
+::: {.proposition}
+Gaussian linear maps map Gaussian operators into Gausian operators. 
+:::
+_Proof:_ Since $\mca E$ is parity preserving, it suffices to apply 
+\@ref(thm:fourierEvenGaussianCharacterization) on $\mca E(X)$, for $X$ Gaussian. 
+Note the following identity 
+\begin{equation}
+    \sum_a (\theta_a\otimes \pd {\theta_a} + \pd {\theta_a}\otimes \theta_a) 
+        (e^{i\theta^TB\eta})^{\otimes 2}
+    = -\sum_a (\eta_a\otimes \pd {\eta_a} + \pd {\eta_a}\otimes \eta_a) 
+        (e^{i\theta^TB\eta})^{\otimes 2}
+    (\#eq:convenientIdentity)
+\end{equation}
+We also need the Leibniz rule \@ref(prp:leibniz) and integration 
+by part formula \@ref(prp:integrationByPart). Rewrite \@ref(eq:gaussianLinearMap) 
+using an auxillary polynomial $f(\eta)$ 
+\[ 
+    \mca E(X)(\theta) = C\int D\eta\, 
+    \exp \left[S(\theta, \eta)\right] f(\eta), \quad 
+    f(\eta) = \int D\mu\, e^{i\eta^T\mu} X(\mu)
+\] 
+One can show that $f(\eta)$ is even. One can go on to show that 
+\[ 
+    \Lambda_{\mrm{ad}} \, \mca E(X)\otimes \mca E(X) 
+    = \mca E\otimes \mca E(\Lambda_{\mrm{ad}}\, X\otimes X) = 0
+\] 
+
+::: {.theorem name="effect of Gaussian linear maps"}
+Let $X$ be a Gaussian operator with correlation $M$ and pre-exponential 
+factor $C$, then $\mca E(X)$ as defined in \@ref(eq:gaussianLinearMap) 
+has correlation matrix 
+\begin{equation} 
+    \mca E(M) = B(M^{-1}+D)^{-1}B^T + A 
+(\#eq:linearMapCovGeneral)
+\end{equation}
+The pre-exponential factor is 
+\begin{equation} 
+\begin{split}
+    \tr\, \mca E(X) &= C (-1)^n \Pf(M)\Pf(M^{-1}+D)\tr(X) \\ 
+    \tr[\mca E(X)]^2 &= C^2 \det (I+MD)\tr(X)^2
+\end{split}
+(\#eq:linearMapTrace)
+\end{equation} 
+:::
+
+_Proof:_ Picking up from \@ref(eq:gaussianLinearMapExtended)
+\begin{align}
+    \mca E(X)(\theta) 
+    &= C\, \tr(X)\, \exp\left(\df i 2 
+        \theta^TA\theta\right)\int D\eta\, 
+    \exp \left[(iB^T \theta)^T \eta + \df i 2 \eta^T D \eta
+    \right] \int D\mu\, \exp(i \eta^T \mu + \df i 2 \mu^T M \mu) X(\mu) \\ 
+    &= i^n C \, \Pf(M)\, \tr(X) \exp \left(\df i 2 
+        \theta^TA\theta \right) \int D\eta\, 
+    \exp \left[ (iB^T\theta)^T \eta + \df i 2 \eta^T (D+M^{-1}) \eta\right] \\ 
+    &= i^n C \, \Pf(M)\, \tr(X) \exp \left(\df i 2 
+        \theta^TA\theta \right) i^n \Pf(D+M^{-1}) 
+    \exp\left[\df i 2 \theta^T B (D+M^{-1})^{-1} B^T \theta\right] \\ 
+    &= (-1)^n C \, \Pf(M)\, \Pf(D+M^{-1}) \, \tr(X)
+    \exp\left[\df i 2 \theta^T (B (D+M^{-1})^{-1} B^T + A)\theta\right]
+\end{align}
+The $\tr[\mca E(X)]^2$ formula follows from $\Pf(A)^2=\det A$ and 
+$\det A\, \det B = \det(AB)$. 
+
+::: {.corollary name="trace-preserving bistochastic linear maps"}
+If $\mca E$ is trace-preserving (TP), then $D=0$ and $C=1$ in 
+\@ref(eq:gaussianLinearMap), in which case 
+\[ 
+    \mca E(M) = BMB^T + A 
+\] 
+If $\mca E$ is bistochastic (i.e. preserves the identity) 
+then $A=D=0$ and 
+\[ 
+    \mca E(M) = BMB^T 
+\] 
+:::
+
+### Complete-positive Gaussian linear maps {-}
+It turns out that, when interpreted as a Gaussian channel, the $4n\times 4n$ 
+block matrix in \@ref(eq:gaussianLinearMap) is the covariance matrix 
+of the corresponding Choi state. 
+
+::: {.theorem name="fourier characterization of CP Gaussian linear maps"}
+$\mca E$ is completely positive if $C\geq 0$ and 
+\[ 
+    E = \begin{pmatrix} 
+        A & B \\ -B^T & D 
+    \end{pmatrix}
+\] 
+satisfies $E^TE \leq I$. 
+:::
+To prove this, we need a notion of fermionic tensor product of linear maps. 
+
+::: {.definition name="fermionic tensor product map"}
+Given $\mca E_1, \mca E_2:\Cl_{2n}\to \Cl_{2n}$, define 
+$\mca E_1\otimes_f \mca E_2:\Cl_{4n}\to \Cl_{4n}$ by 
+\[ 
+    (\mca E_1\otimes_f\mca E_2)(\gamma_J\gamma_K) = \mca E_1(\gamma_J)\mca E_2(\gamma_K)
+\] 
+where $\gamma_J$ is supported on the first $n$ modes and $\gamma_K$ is supported on the last $n$ modes. 
+:::
+
+::: {.lemma}
+Given a parity preserving linear map $\mca E$, $\mca E\otimes 1$ is positive if and only 
+if $\mca E\otimes_f 1$ is positive. 
+:::
+_Proof:_ Let $\iota:\Cl_{2n}\otimes \Cl_{2n}\to \Cl_{4n}$ be the natural unitary 
+isomorphism which converts between the natural (commuting) and fermionic (anti-commuting) tensor 
+products of majorana operators. 
+\[
+    \iota(\gamma_J\otimes \gamma_K) = \gamma_J \hat P_2^{j} \gamma_{2n+K}
+\] 
+With a slight overload of notation above, the $\gamma$ on the RHS are elements of $\Cl_{4n}$ while those 
+on the LHS are elements of $\Cl_{2n}$, and $2n+K$ denotes the multi-index with each element shifted by $2n$. 
+Here $\hat P_2$ is the parity operator of $1\otimes \mca Cl_{2n}\subset \Cl_{4n}$, in the JW representation 
+simply $I^{\otimes n}\otimes Z^{\otimes n}$. Then by parity preserving, the parity of $\mca E(\gamma_J)$ 
+is the same as that of $\gamma_J$, so 
+\begin{align}
+    [\iota^{-1}\circ (\mca E\otimes_f 1)\circ \iota] (\gamma_J\otimes \gamma_K)
+    = [\iota^{-1}\circ (\mca E\otimes_f 1)] (\gamma_J \hat P_1^j \gamma_{2n+K})
+    = \iota^{-1}(\mca E(\gamma_J) \hat P_1^j \gamma_{2n+K}) = \mca E(\gamma_J)\otimes \gamma_K
+\end{align}
+Now $\iota$ 
+
+## Lie algebra embedding
+Results from [@knill2001fermionic] provide the mathematical 
+link between even and affine Gaussians. 
+
+::: {.definition #gaussianLie name="Gaussian Lie groups and algebras"}
+Fixing $n$ fermionic modes
+
+- Let $\mca L_1, \mca L_2$ denote the linear and quadratic polynomials in $2n$ 
+    majorana operators, respectively. 
+- Let $\mca L_2'$ denote quadratic monomials. 
+    Note that $\dim \mca L_2=2n^2 + n + 1, \dim \mca L_2'=2n^2-n$. 
+- Let $\mca L_2^*$ denote the quadratic polynomials without constant terms, so 
+    $\dim \mca L_2^*=2n^2+n$. 
+:::
+
+::: {.theorem #evenReduction name="even Gaussian algebra reduction"}
+the affine Gaussian algebra $\mca L_2^*$ is isomorphic to a subalgebra 
+of the even Gaussian algebra $\mca L_2'$ on one more mode.
+:::
+
+_Proof:_ Let the new mode append majorana operators $\gamma_{2n+1}, \gamma_{2n+2}$. 
+Consider $\iota:\mca L_2^*\to \mca L_2'$ acting on generators and extending multiplicatively 
+\[ 
+    \iota(\gamma_j) = -i \gamma_j \gamma_{2n+1}\implies 
+    \iota(\gamma_j\gamma_k) = \iota(\gamma_j)\iota(\gamma_k) = \gamma_j\gamma_k
+\] 
+It appends $-i\gamma_{2n+1}$ to linear terms and 
+leaves quadratic terms unchanged. This is manifestly and injection, to 
+demonstrate embedding it then suffices to show that 
+$\iota\, [a, b] = [\iota\, a, \iota\, b]$. Consider the following representative 
+cases with nonvanishing brackets
+\begin{aligned}
+    \iota\, [\gamma_1, \gamma_2] &= \iota(2\gamma_1\gamma_2) = 2\gamma_1\gamma_2 \\ 
+    [\iota\, \gamma_1, \iota\, \gamma_2] 
+    &= [i\gamma_1\gamma_{2n+1}, i\gamma_2\gamma_{2n+1}] = 2\gamma_1\gamma_2 \\ 
+    \iota[\gamma_1, \gamma_1\gamma_2] 
+    &= \iota(2\gamma_2) = 2i\gamma_2\gamma_{2n+1} \\ 
+    [\iota\, \gamma_1, \iota\, \gamma_1\gamma_2] 
+    &= [i\gamma_1\gamma_{2n+1}, \gamma_1\gamma_2] = 2i\gamma_2\gamma_{2n+1}
+\end{aligned}
+This underpins the construction in lemma \@ref(lem:dgEmbedding). 
+
+## Displaced Gaussian
+
+::: {.proposition name="displaced Gaussian unitary action"}
+Consider a displaced Gaussian unitary and a quadratic operator 
+\begin{equation} 
+    U = \exp\left(\df 1 2 \gamma^T h \gamma + id^T \gamma\right), \quad 
+    A = \df 1 2 \sum_{a, b}\Gamma_{ab}\gamma_a \gamma_b + \sum_j \Gamma_j \gamma_j, 
+    \quad \Gamma_{ab}=-\Gamma_{ba}
+    (\#eq:dispGaussianUnitary)
+\end{equation}
+Define the affine encodings $\psi, \iota$ of the coefficients 
+\begin{equation}
+\begin{split}
+    E &= \psi(U) = \begin{pmatrix}
+        0 & \cdots & -id_k & \cdots \\ 
+        \vdots & \ddots && \\ 
+        -id_j && h_{jk} & \\ 
+        \vdots  &&& \ddots 
+    \end{pmatrix}, \quad 
+    \iota\left(A\right) = 
+    \begin{pmatrix}
+        0 & \cdots & -\Gamma_k & \cdots \\ 
+        \vdots & \ddots && \\ 
+        \Gamma_j & & \Gamma_{jk} & \\ 
+        \vdots &&& \ddots \\ 
+    \end{pmatrix}
+\end{split}
+(\#eq:affEncoding)
+\end{equation}
+Note that the encoding $\psi$ of unitary is anti-Hermitian 
+while the encoding $\iota$ of $A$ is antisymmetric. 
+The displaced Gaussian unitary effects \@ref(eq:dispGaussianUnitary)
+\[ 
+    \iota(UAU^\dag) = V\, \iota(A) \, V^T, \quad V = \exp(2E)
+\] 
+Denote the Gaussian unitary group by $DG(n)\subset U(2^n)$ and 
+its algebra $\mfk{dg}(n)$. The even Gaussian group is denoted 
+$G(n)\subsetneq DG(n)$ and its algebra $\mfk g(n)=\mfk{so}(2n)$. 
+:::
+
+::: {.lemma #dgEmbedding}
+The DG algebra $\mfk{dg}(n)$ is isomorphic to $\mfk{so}(2n+1)$. 
+It follows that $DG(n)$ is isomorphic to $SO(2n+1)$. 
+:::
+_Proof:_ Define the isomorphism $\varphi:\mfk{dg}(n)\to \mfk{so}(2n+1)$ by 
+\[ 
+    \varphi \begin{pmatrix} 0 & -id^T \\ -id & h 
+    \end{pmatrix} = \begin{pmatrix}
+        0 & d^T \\ -d & h
+    \end{pmatrix}
+    (\#eq:dgLieIsomorphism)
+\] 
+The map $\varphi$ is obviously bijective. Showing 
+$[\varphi(E_1), \varphi(E_2)] = \varphi[E_1, E_2]$ establishes 
+that this is a bijection
+\begin{align}
+    [\varphi(E_1), \varphi(E_2)] &= \left[\begin{pmatrix}
+        0 & d_1^T \\ -d_1 & h_1
+    \end{pmatrix}, \begin{pmatrix}
+        0 & d_2^T \\ -d_2 & h_2
+    \end{pmatrix}\right] = \begin{pmatrix}
+        - d_1^T d_2 + d_2^Td_1 & d_1^T h_2 - d_2^T h_1 \\ 
+        -h_1 d_2 + h_2 d_1 & h_1h_2 - d_1d_2^T - h_2h_1+ d_2d_1^T 
+    \end{pmatrix} \\ 
+    &= \begin{pmatrix}
+        0 & -(h_2d_1 - h_1d_2)^T \\ 
+        h_2d_1 - h_1d_2 & [h_1, h_2] + d_2d_1^T - d_1d_2^T
+    \end{pmatrix} \\ 
+    \varphi [E_1, E_2] 
+    &= \varphi \left[
+        \begin{pmatrix} 0 & -id_1^T \\ -id_1 & h_1\end{pmatrix}
+        ,
+        \begin{pmatrix} 0 & -id_2^T \\ -id_2 & h_2\end{pmatrix}
+    \right] 
+    = \varphi \begin{pmatrix}
+        -id_1^T d_2 + id_2^T d_1 & -id_1^T h_2 + id_2^Th_1 \\ 
+        -ih_1d_2 + ih_2d_1 & h_1h_2 -d_1d_2^T - h_2h_1 + d_2 d_1^T
+    \end{pmatrix} \\ 
+    &= \varphi \begin{pmatrix}
+        0 & -i (d_1^Th_2 - d_2^Th_1)\\ 
+        i(h_2d_1 - h_1d_2) & [h_1, h_2] + d_2d_1^T - d_1d_2^T
+    \end{pmatrix} = \begin{pmatrix}
+        0 & -(h_2d_1 - h_1d_2)^T \\ 
+        h_2d_1 - h_1d_2 & [h_1, h_2] + d_2d_1^T - d_1d_2^T
+    \end{pmatrix}
+\end{align}
+
+::: {.theorem #dispGsDecomp name="local decomposition of displaced Gaussian"}
+Displaced Gaussian unitaries are generated by nearest-neighbor even Gaussian 
+and arbitrary single-qubit unitary on a special line. 
+:::
+_Proof:_ Let the first line be special without loss of generality. 
+As per the previous lemma \@ref(lem:dgEmbedding) it suffices to show that 
+the rotations generated by the image of matchgates and $R_x$ under $\varphi$ 
+generate $SO(2n+1)$. 
+The image of matchgates under $\varphi$. generate rotations on all subspaces but the first. 
+
+Now $R_x(\theta)$ first line correspond to zero $h$ and 
+nonzero $d_j=-\delta_{1j}\theta/2$: using the Lie algebra 
+representation \@ref(eq:affEncoding) and isomorphism \@ref(eq:dgLieIsomorphism)
+\begin{align}
+    \varphi\circ\psi(e^{-i \theta \gamma_1/2}) 
+    &= \varphi \begin{pmatrix}
+        0 & i\theta/2 & \cdots \\ 
+        i\theta/2 \\ 
+        \vdots && \ddots \\ 
+    \end{pmatrix} = \begin{pmatrix}
+        0 & -\theta/2 \\ 
+        \theta/2 & 0 \\ 
+        &&& \ddots 
+    \end{pmatrix} 
+\end{align}
+Thus $R_x(\theta)$ generates rotation between the first and second subspaces. 
+This suffices to generate $SO(2n+1)$ together with arbitrary 
+rotation in all subspaces but the first. 
+
+::: {.proposition name="generality of DG states"}
+DG states constitute a strict superset of matchgates acting on product states. 
+\[ 
+    [G(n) \circ (I^{\otimes (n-1)}\otimes H)]
+    |0\ra^{\otimes n}\ra \subsetneq DG(n) |0\ra^{\otimes n}
+\] 
+:::
+
+::: {.proposition name="decomposition of GHZ state"}
+Let $|GHZ_4\ra = |0000\ra + |1111\ra$ denote the $4$-qubit GHZ state. Consider the unitaries 
+\begin{align}
+    U_1 &= \exp\left[\df \pi 4 (3\gamma_1\gamma_7 + \gamma_3\gamma_5 - 4\gamma_4\gamma_8)\right] \\ 
+    U_2 &= \exp\left[\df \pi 4 (3\gamma_2\gamma_8 + 4\gamma_5\gamma_6)\right]
+\end{align}
+Let $CZ_{12}$ denote controlled-$Z$ on the first and second qubits, then 
+\[ 
+    |GHZ_4\ra = U_2CZ_{12}U_1|0\ra^{\otimes 4}
+\] 
+:::

@@ -1,0 +1,7 @@
+# Lagrange's Equations
+
+In this section we develop two perspectives on Lagrange's equations: 
+
+1. A ''covariant'' formulation of Newton's equations 
+in Cartesian coordinates. 
+2. 
